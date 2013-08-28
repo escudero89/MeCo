@@ -31,15 +31,15 @@ end
 K(1, 1:2) = [ (h^2 - 2) , 2 ];
 K(length(K), (length(K) - 1 : length(K))) = [ 2 , (h^2 - 2) ];
 
-f(1) = h * (20 - h * (Q(1) + 10));
+f(1) = h * (-20 - Q(1) * h);
 
 for i = 2 : length(f)
 	f(i) = - Q(i) * h^2;
 
 	if (i < length(f)) 
-		K(i, i - 1) = 1 + h / 2;
+		K(i, i - 1) = 1;
 		K(i, i) = h^2 - 2;
-		K(i, i + 1) = 1 - h / 2;
+		K(i, i + 1) = 1;
 	end
 end
 
@@ -55,17 +55,15 @@ ylabel('Temperatura: T(x) [ºC]');
 
 symbols
 
-t = sym('t');
+x = sym('x');
 
-%T = (4 * e^(t/2) - 12 * e^(t/2)*  t + 4 * e^(t/2) * t^2 - 11 * Cos((Sqrt(3) * t)/2) + 11 * Sqrt(3) * Cos((Sqrt(3) * t)/2) * 1 / Tan(Sqrt(3)/2) - 2 * Sqrt(3 * e) * Cos((Sqrt(3) * t)/2) / Sin(Sqrt(3)/2) + 11 * Sqrt(3) * Sin((Sqrt(3) * t)/2) + 11 / Tan(Sqrt(3)/2) * Sin((Sqrt(3) * t)/2) - 2 * Sqrt(e) / Sin(Sqrt(3)/2) * Sin((Sqrt(3) * t)/2))/e^(t/2)
-T_temp = 10.5;
-
-T=((14*e-36)/(3*e-3)+(22*e^(1-t))/(3*e-3)+(4*t^3-18*t^2+36*t-36)/3) / (1 - (3*e-3)/(3*e-3));
+C2 = (-6 * Cos(1) + 4) / Sin(1);
+T = -6 * Sin(x) + C2 * Cos(x) + 4 * x^2 - 4 * x - 8
 
 pause;
 
 hold on;
-%plot(t, T_val, 'r');
-splot(T, t, 0:1)
+
+splot(T, x, 0:1)
 
 hold off;

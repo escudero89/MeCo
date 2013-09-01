@@ -134,7 +134,7 @@ y = [y_range(1) : y_range(end) / (M - 1) : y_range(end)];
 
 % Prueba, inserto el dibujo de un rectangulo (arista_bajo, arista_izq, arista_arriba, arista der)
 
-ro_points = [1.1 1.1 ; 2.3 2.3];
+ro_points = [1 1 ; 2.3 2.3];
 
 % Voy a recorrer toda la matriz horizontalmente, parandome en un punto y recibando su cuadrado inferior izq :; (asi pero reflejado vertical)
 
@@ -154,9 +154,9 @@ for kContador = [1 : (N - 1) * (M - 1)]
 	% Estoy parado en ella?
 	for j = 1 : size(ro_points)(1)
 
-		if (ro_points(j, 1) >= celda_actual(1, 1) && ro_points(j, 1) <= celda_actual(2, 1))
+		if (ro_points(j, 1) > celda_actual(1, 1) && ro_points(j, 1) <= celda_actual(2, 1))
 			% Otra prueba para ver si estoy realmente ahi
-			if (ro_points(j, 2) >= celda_actual(1, 2) && ro_points(j, 2) <= celda_actual(2, 2))
+			if (ro_points(j, 2) > celda_actual(1, 2) && ro_points(j, 2) <= celda_actual(2, 2))
 
 				% Quiere decir aca que realmente esta el punto en la celda.
 				celda_subdividida = [ 

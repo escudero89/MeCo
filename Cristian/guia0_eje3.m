@@ -44,9 +44,11 @@ t_xy = D(3, 1) * e_xx + D(3, 2) * e_yy + D(3, 3) * e_xy;
 b_x = -1 * ( differentiate(t_xx, x) + differentiate(t_xy, y) )
 b_y = -1 * ( differentiate(t_xy, x) + differentiate(t_yy, y) )
 
-% No se bien como graficarlo aun
+% Ahora ya se como graficarlo
 e_graph = [];
 t_graph = [];
+
+b_graph = [];
 
 for xx = axis_X 
 	for yy = axis_Y
@@ -65,5 +67,26 @@ for xx = axis_X
 
 		t_graph = [t_graph ; t_xx_solved t_yy_solved t_xy_solved];
 
+		%%
+
+		b_x_solved = sym2poly(subs(b_x, {x, y}, {xx, yy}));
+		b_y_solved = sym2poly(subs(b_y, {x, y}, {xx, yy}));
+
+		b_graph = [b_graph; b_x_solved b_y_solved];
+
 	end
 end
+
+M_XX = size(XX)(1);
+N_XX = size(XX)(2);
+
+E_XX = reshape(e_graph(:, 1), M_XX, N_XX);
+E_YY = reshape(e_graph(:, 2), M_XX, N_XX);
+E_XY = reshape(e_graph(:, 3), M_XX, N_XX);
+
+T_XX = reshape(t_graph(:, 1), M_XX, N_XX);
+T_YY = reshape(t_graph(:, 2), M_XX, N_XX);
+T_XY = reshape(t_graph(:, 3), M_XX, N_XX);
+
+B_X = reshape(b_graph(:, 1), M_XX, N_XX);
+B_Y = reshape(b_graph(:, 2), M_XX, N_XX);

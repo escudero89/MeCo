@@ -188,7 +188,7 @@ function [ phi ] = conduccionCalor_estacionario_2d (
     endfor
     
     i = 1;
-    length(phi)
+    length(ph)
     while i <= length(phi)
 i
         [l, m] = vec2coord(i, ir_dir_y, cant_nodo_en_dir)

@@ -24,7 +24,7 @@ function [ phi ] = conduccionCalor_estacionario_2d (
     cant_y,         # Cantidad de nodos en y
     Lx,             # Tamanho del rectangulo en el eje x
     Ly,             # Tamanho del rectangulo en el eje y
-    Q,              # Fuente
+    Q,              # Fuente, funcion
     k,              # La conductividad termica
     C,              # El calor especifico
     phi_amb,        # El valor de phi del ambiente
@@ -68,7 +68,7 @@ function [ phi ] = conduccionCalor_estacionario_2d (
     es_interior = zeros(length(phi), 1);
     
     # Hasta length(phi) - cant_nodo_en_dir porque salteamos la ultima parte que son nodos de borde.
-    for pos = pos_en_malla : length(phi) - cant_nodo_en_dir
+    for pos = pos_en_malla : length(phi) - cant_nodo_en_dir - 1
         
         if (mod(pos, cant_nodo_en_dir) > 1)
             es_interior(pos) = 1;
@@ -77,42 +77,50 @@ function [ phi ] = conduccionCalor_estacionario_2d (
     endfor
     
     # Asignamos 21 22 23 24 a los nodos  esquinas en sentido horario.
-    es_interior(1) = 21;
-    es_interior(cant_nodo_en_dir) = 22;
-    es_interior(end - cant_nodo_en_dir) = 23;
-    es_interior(end) = 24;
+    if(ir_dir_y)
+        es_interior(1) = 21;
+        es_interior(cant_nodo_en_dir) = 22;
+        es_interior(end - cant_nodo_en_dir + 1) = 24;
+        es_interior(end) = 23;
+    else
+        es_interior(1) = 21;
+        es_interior(cant_nodo_en_dir) = 24;
+        es_interior(end - cant_nodo_en_dir + 1) = 22;
+        es_interior(end) = 23;
+    
+    endif
+    # Cambiamos dx2 dy2 dependiendo de la direccion y lo traajamos en forma
+    # transparente con da db
+    if(ir_dir_y)
+        da2 = dy2;
+        db2 = dx2;
+        signo = 1;
+    else
+        da2 = dx2;
+        db2 = dy2;
+        signo = -1;
+    endif
     
     # Armamos la matriz k diagonal en bordes.
     for i = 1 : length(es_interior)
-        
+
         ###########################################################################
         # Si hay un 1, es porque es un nodo interior: tomamos cartas en el asunto.
         if (es_interior(i) == 1)
             
-            K(i, i) = C / k - 2 * (dx2 + dy2) / (dx2 * dy2);
+            K(i, i) = C / k - 2 * (db2 + da2) / (db2 * da2);
             
-            K(i, i - 1) = 1 / dy2;
-            K(i, i + 1) = 1 / dy2;
+            K(i, i - 1) = 1 / da2;
+            K(i, i + 1) = 1 / da2;
             
-            K(i, i - cant_nodo_en_dir) = 1 / dx2;
-            K(i, i + cant_nodo_en_dir) = 1 / dx2;
+            K(i, i - cant_nodo_en_dir) = 1 / db2;
+            K(i, i + cant_nodo_en_dir) = 1 / db2;
  
         ###########################################################################       
         #Si es mayor a 20 es xq es una esquina                
         elseif ( es_interior(i) > 20 ) 
         
             K(i, i) = C / k + 2 * (dx2 + dy2) / (dx2 * dy2);
-        
-            # Depende la direccion, el delta que usaremos sera uno u el otro en la division
-            if(ir_dir_y)
-                da2 = dy2;
-                db2 = dx2;
-                signo = 1;
-            else
-                da2 = dx2;
-                db2 = dy2;
-                signo = -1;
-            endif
             
             if( es_interior(i) == 21 )
                 
@@ -145,11 +153,11 @@ function [ phi ] = conduccionCalor_estacionario_2d (
                 K(i, i - 3 * cant_nodo_en_dir) = -1/db2;
                     
             elseif ( es_interior(i) == 24 )
-                
+
                 K(i, i + signo * 1) = -5/da2;
                 K(i, i + signo * 2) = 4/da2;
                 K(i, i + signo * 3) = -1/da2;
-                
+
                 K(i, i - signo * 1 * cant_nodo_en_dir) = -5/db2;
                 K(i, i - signo * 2 * cant_nodo_en_dir) = 4/db2;
                 K(i, i - signo * 3 * cant_nodo_en_dir) = -1/db2;
@@ -173,7 +181,7 @@ function [ phi ] = conduccionCalor_estacionario_2d (
             
                 es_interior(i) = idx(1);
             
-            elseif (i < length(phi) - cant_nodo_en_dir)
+            elseif (i < length(phi) - cant_nodo_en_dir + 1)
                 
                 es_interior(i) = idx(3 - mod(i, cant_nodo_en_dir));
             
@@ -186,78 +194,102 @@ function [ phi ] = conduccionCalor_estacionario_2d (
         endif
              
     endfor
-    
+
     i = 1;
-    length(phi)
-    while i <= length(phi)
-i
+
+    while i < length(phi)
+
         [l, m] = vec2coord(i, ir_dir_y, cant_nodo_en_dir)
 
         # Si es nodo interior o de esquina
         if (es_interior(i) == 1 || es_interior(i) > 20)
                         
-            f(i) = 1 / k * (C * phi_amb);
-            
-            %if(ir_dir_y)
-            f(i) -= Q(x(l), y(m)) / k;
-            %else
-            %   f(i) -= Q(x(mod_i), y(floor(i / cant_nodo_en_dir) + 1)) / k;
-            %endif
-           
+                f(i) = 1 / k * (C * phi_amb) - Q(x(l), y(m)) / k;
+
         # nodo de borde no esquina
         else
-            
+
             K(i,i) = C/k - 2 * (dx2 + dy2)/(dx2 * dy2); #igual para todos los bordes
-            
-            [l, m] = vec2coord(i, ir_dir_y, cant_nodo_en_dir);    
-            
+            f(i) = -Q(x(l), y(m)) / k;
+              
             if(es_interior(i) == 11)
-            
-                K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
-                K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-                K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
+                # Si es 1, es neumann
+                if (cond_contorno(1))
+                        
+                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
+                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
+                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
 
-                f(i) = 1/k * (C * phi_amb - 2 * valor_cc_1(m) / dx2);
-
+                    f(i) += 1/k * (C * phi_amb - 2 * valor_cc_1(m) / dx);
+                
+                else # Dirichlet
+                
+                    K(i, i) = 1;
+                    f(i) = valor_cc_1(m);
+                
+                endif
+    
             elseif(es_interior(i) == 12)
             
-                K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
-                K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-                K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-
-                f(i) = 1/k * (C * phi_amb + 2 * valor_cc_2(l) / dy2);
-            
-            elseif(es_interior(i) == 13)
-            
-                K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
-                K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-                K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-
-                f(i) = 1/k * (C * phi_amb + 2 * valor_cc_3(m) / dx2);
-                            
-            elseif(es_interior(i) == 14)
-            
-                K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
-                K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-                K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
+                if (cond_contorno(2))
                 
-                f(i) = 1/k * (C * phi_amb - 2 * valor_cc_4(l) / dy2); 
+                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
+                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
+                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
 
+                    f(i) += 1/k * (C * phi_amb + 2 * valor_cc_2(l) / dy);
+            
+                else
+                    
+                    K(i, i) = 1;
+                    f(i) = valor_cc_2(l);
+                
+                endif
+                
+            elseif(es_interior(i) == 13)
+                
+                if (cond_contorno(3))
+                
+                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
+                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
+                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
+
+                    f(i) += 1/k * (C * phi_amb + 2 * valor_cc_3(m) / dx);
+                    
+                else
+                    
+                    K(i, i) = 1;
+                    f(i) = valor_cc_3(m);
+                
+                endif
+                       
+            elseif(es_interior(i) == 14)
+         
+                if (cond_contorno(4))
+                
+                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
+                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
+                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
+                    
+                    f(i) += 1/k * (C * phi_amb - 2 * valor_cc_4(l) / dy); 
+
+                else
+                    
+                    K(i, i) = 1;
+                    f(i) = valor_cc_4(l);
+                
+                endif
+                
             endif
            
-            %if(ir_dir_y)
-               f(i) -= Q(x(l), y(m)) / k;
-            %else
-             %  f(i) -= Q(x(mod_i), y(floor(i / cant_nodo_en_dir) + 1)) / k;
-            %endif
-             
         endif
         
         i++;
   
     endwhile
-    
-    phi = K \ f;
+    K
+    f
+    phi = K \ f
     
     ## PLOTEO
     

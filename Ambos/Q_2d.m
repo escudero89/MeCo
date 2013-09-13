@@ -21,6 +21,7 @@
 
 function [ Q ] = Q_2d(XX, YY)
 
-    Q = 2 * (XX.^2 + YY.^2);
+#    Q = 2 * (XX.^2 + YY.^2);
+    Q = 1;
 
 endfunction;

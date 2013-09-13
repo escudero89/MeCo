@@ -16,7 +16,7 @@
 
 ## conduccionCalor_estacionario_2d
 
-## Author: Marcos <marcos@marcosNetbook>
+## Author: Marcos <marcos@marcosNetbook> y Cristian tambien che :(
 ## Created: 2013-09-04
 
 function [ phi ] = conduccionCalor_estacionario_2d (

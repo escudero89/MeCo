@@ -12,6 +12,7 @@ val_cond = [-1 10];
 phi_0 = zeros(length(0:dx:Lx), 1);
 
 [PHI_1] = conduccion_calor_no_estacionario_1d( 1, phi_0, Lx, dx, t_f, dt, tipo_cond, val_cond );
+
 [PHI_2] = conduccion_calor_no_estacionario_1d( 2, phi_0, Lx, dx, t_f, dt, tipo_cond, val_cond );
 
 cant_N = 10;

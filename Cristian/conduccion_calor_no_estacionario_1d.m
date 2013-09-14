@@ -164,12 +164,16 @@ function [PHI] = backward_euler(
 	phi_amb_vec = k_vec;
 	Q_vec = k_vec;
 
+	% Es una variable que ayuda a agilizar
+	K_old = zeros(length(phi));
+	K_inv = K_old;
+
 	% Avanzamos en todos los pasos del tiempo
 	for t = tt
 
 		% Lo definimos aca para reinicializarlo en cada dt
 		f = phi_0 * 0;
-		K = zeros(length(phi), 1);
+		K = zeros(length(phi));
 
 		for i = begin : length(f)
 			
@@ -213,7 +217,11 @@ function [PHI] = backward_euler(
 			f(end) += - 2 * h / k_vec(i) * val_cond(end);
 		end
 
-		K_inv = inv(K);
+		% Solo sacamos la inversa si esta vario
+		if (sum(sum(K_old != K)) > 0)
+			K_old = K;
+			K_inv = inv(K);
+		end
 
 		phi = K_inv * f;
 		

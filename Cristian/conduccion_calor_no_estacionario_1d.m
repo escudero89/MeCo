@@ -1,4 +1,5 @@
 function [PHI] = conduccion_calor_no_estacionario_1d(
+	tipo_df,
 	phi_0,
 	Lx,
 	dx,
@@ -12,7 +13,31 @@ function [PHI] = conduccion_calor_no_estacionario_1d(
 	Q = @Q_default
  	)
 
-% VARIABLES GENERICAS
+	% FORWARD EULER
+	if (tipo_df == 1)
+ 		PHI = fordward_euler(phi_0, Lx, dx, t_f, dt, tipo_cond, val_cond, k, c, phi_amb, Q);
+	end
+
+
+	return;
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [PHI] = fordward_euler(
+	phi_0,
+	Lx,
+	dx,
+	t_f,
+	dt,
+	tipo_cond,	% array dirichlet(0), neumann(1)
+	val_cond,		
+	k = @k_default,
+	c = @c_default,
+	phi_amb= @phi_amb_default,
+	Q = @Q_default
+ 	)
+	
+	% VARIABLES GENERICAS
 
 	xx = 0 : dx : Lx;
 	tt = 0 : dt : t_f;
@@ -27,8 +52,6 @@ function [PHI] = conduccion_calor_no_estacionario_1d(
 
 	begin = 1; % Begin, para utilizarlo junto con end
 
-% FORWARD EULER
-	
 	% Verificamos que sea estable
 	v = 0;
 	dt_critico = h2 / (v * h + k(xx(begin), tt(begin)))
@@ -99,6 +122,8 @@ function [PHI] = conduccion_calor_no_estacionario_1d(
 
 end
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [ret] = k_default(x_i, t_i)
 	ret = 1;
 	return;
@@ -115,6 +140,6 @@ function [ret] = phi_amb_default(x_i, t_i)
 end
 
 function [ret] = Q_default(x_i, t_i)
-	ret = 0;
+	ret = 1;
 	return;
 end

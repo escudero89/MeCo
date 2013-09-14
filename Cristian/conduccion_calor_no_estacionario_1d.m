@@ -27,10 +27,6 @@ function [PHI] = conduccion_calor_no_estacionario_1d(
 
 	begin = 1; % Begin, para utilizarlo junto con end
 
-	% Para la grafica
-	colors = ['rgbcmyrgbcmyrgbcmyrgbcmyrgbcmyrgbcmyrgbcmyrgbcmyrgbcmy'];
-	color = 1;
-
 % FORWARD EULER
 	
 	% Verificamos que sea estable

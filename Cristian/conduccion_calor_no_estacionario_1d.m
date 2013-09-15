@@ -20,8 +20,11 @@ function [PHI] = conduccion_calor_no_estacionario_1d(
  	% BACKWARD EULER
  	elseif (tipo_df == 2)
  		PHI = backward_euler(phi_0, Lx, dx, t_f, dt, tipo_cond, val_cond, k, c, phi_amb, Q);
+	
+ 	% CRANK-NICHOLSON
+ 	elseif (tipo_df == 3)
+ 		PHI = crank_nicholson(phi_0, Lx, dx, t_f, dt, tipo_cond, val_cond, k, c, phi_amb, Q);
 	end
-
 
 	return;
 end
@@ -188,11 +191,11 @@ function [PHI] = backward_euler(
 
 		end
 
-		% Armo f de forma vectorizada
-		f = h2 ./ k_vec .* (Q_vec + phi / dt + c_vec .* phi_amb_vec);
-
 		% La parte de arriba y la de abajo de la diagonal
 		K += diag(ones(length(phi) - 1, 1) * -1, 1) + diag(ones(length(phi) - 1, 1) * -1, -1);
+
+		% Armo f de forma vectorizada
+		f = h2 ./ k_vec .* (Q_vec + phi / dt + c_vec .* phi_amb_vec);
 
 		% Revisamos los extremos
 		if (tipo_cond(begin) == 0)
@@ -232,6 +235,130 @@ function [PHI] = backward_euler(
 	end
 
 end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [PHI] = crank_nicholson(
+	phi_0,
+	Lx,
+	dx,
+	t_f,
+	dt,
+	tipo_cond,	% array dirichlet(0), neumann(1)
+	val_cond,		
+	k = @k_default,
+	c = @c_default,
+	phi_amb= @phi_amb_default,
+	Q = @Q_default
+ 	)
+	
+	% VARIABLES GENERICAS
+
+	xx = 0 : dx : Lx;
+	tt = 0 : dt : t_f;
+
+	% Redefino para usar h en vez de dx
+	h = dx;
+	h2 = h^2;
+
+	% Sea como fuere, voy a trabajar con length(phi_0) - 2 incognitas, dado que conozco los extremos
+	PHI = phi_0';
+	phi = phi_0;
+
+	begin = 1; % Begin, para utilizarlo junto con end
+
+	% No verificamos estabilidad, no es necesario
+
+	% Para agilizar, guardamos los vectores de k, c, phi_amb y Q
+	k_vec = phi;
+	c_vec = k_vec;
+	phi_amb_vec = k_vec;
+	Q_vec = k_vec;
+
+	% Para el Q^(n) y phi_amb^(n)
+	Q_vec_ant = k_vec;
+	phi_amb_vec_ant = k_vec;
+
+	r_vec = k_vec;
+
+	% Es una variable que ayuda a agilizar
+	K_old = zeros(length(phi));
+	K_inv = K_old;
+
+	% Avanzamos en todos los pasos del tiempo
+	for t = tt
+
+		% Lo definimos aca para reinicializarlo en cada dt
+		f = phi_0 * 0;
+		K = zeros(length(phi));
+
+		for i = begin : length(f)
+			
+			% Usamos el n+1, por eso + d_t
+			k_vec(i) = k(xx(i), t + dt);
+			c_vec(i) = c(xx(i), t + dt);
+			phi_amb_vec(i) = phi_amb(xx(i), t + dt);
+			Q_vec(i) = Q(xx(i), t + dt);
+
+			% Iteraciones en n
+			Q_vec_ant(i) = Q(xx(i), t);
+			phi_amb_vec_ant(i) = phi_amb(xx(i), t);
+
+			r_vec(i) = k_vec(i) / (2 * h2);
+
+			% Armamos la matriz base K, y calculamos su inversa, para acelerar
+			K(i, i) = 1 / dt + 2 * r_vec(i) + c_vec(i)/2;
+
+		end
+
+		% La parte de arriba y la de abajo de la diagonal
+		K += diag(-r_vec(begin:end-1), -1) + diag(-r_vec(begin+1:end), 1);
+
+		% Armo f de forma vectorizada
+		f = .5 * (Q_vec + Q_vec_ant - c_vec .* (phi_amb_vec + phi_amb_vec_ant));
+
+		% No recorro los extremos
+		for i = begin + 1 : length(f) - 1
+			f(i) += r_vec(i) * (phi(i-1) + phi(i) * (1 / r_vec(i) * (c_vec(i)/2 + 1/dt) - 2) + phi(i+1));
+		end
+
+		% Revisamos los extremos
+		if (tipo_cond(begin) == 0)
+			K(begin, begin) = 1;
+			K(begin, begin + 1) = 0;
+			f(begin) = val_cond(begin);
+
+		% Antes las condiciones de neumann, en los extremos aparece un -2 en vez de un -1
+		elseif (tipo_cond(begin) == 1) % @TODO %%
+			%K(begin, begin + 1) = -2;
+			%f(begin) += 2 * h / k_vec(i) * val_cond(begin);
+		end
+
+		% Otro extremo
+		if (tipo_cond(end) == 0)
+			K(end, end) = 1;
+			K(end, end - 1) = 0;
+			f(end) = val_cond(end);
+
+		elseif (tipo_cond(end) == 1) % @TODO %%
+			%K(end, end - 1) = -2;
+			%f(end) += - 2 * h / k_vec(i) * val_cond(end);
+		end
+
+		% Solo sacamos la inversa si esta vario
+		if (sum(sum(K_old != K)) > 0)
+			K_old = K;
+			K_inv = inv(K);
+		end
+
+		phi = K_inv * f;
+		
+		% Guardamos los phis como filas en la matriz
+		PHI = [PHI ; phi'];
+
+	end
+
+end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Funciones por default                                                     %%

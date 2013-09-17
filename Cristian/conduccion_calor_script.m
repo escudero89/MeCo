@@ -7,7 +7,7 @@ Lx = 1;
 dx = 0.1;
 t_f = 1;
 dt = 0.005;
-tipo_cond = [0 0];
+tipo_cond = [1 0];
 val_cond = [-1 10];
 phi_0 = zeros(length(0:dx:Lx), 1);
 

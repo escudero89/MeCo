@@ -328,9 +328,13 @@ function [PHI] = crank_nicholson(
 			f(begin) = val_cond(begin);
 
 		% Antes las condiciones de neumann, en los extremos aparece un -2 en vez de un -1
-		elseif (tipo_cond(begin) == 1) % @TODO %%
-			%K(begin, begin + 1) = -2;
-			%f(begin) += 2 * h / k_vec(i) * val_cond(begin);
+		elseif (tipo_cond(begin) == 1) % 
+			% Aproximacion de tres puntos
+			K(begin, begin) = -3;
+			K(begin, begin + 1) = 4;
+			K(begin, begin + 2) = -1;
+
+			f(begin) = - 2 * h / k_vec(i) * val_cond(begin);
 		end
 
 		% Otro extremo
@@ -339,9 +343,13 @@ function [PHI] = crank_nicholson(
 			K(end, end - 1) = 0;
 			f(end) = val_cond(end);
 
-		elseif (tipo_cond(end) == 1) % @TODO %%
-			%K(end, end - 1) = -2;
-			%f(end) += - 2 * h / k_vec(i) * val_cond(end);
+		elseif (tipo_cond(end) == 1) %
+			% Aproximacion de tres puntos
+			K(end, end) = 3;
+			K(end, end - 1) = -4;
+			K(end, end - 2) = 1;
+
+			f(end) = - 2 * h / k_vec(i) * val_cond(end);
 		end
 
 		% Solo sacamos la inversa si esta vario

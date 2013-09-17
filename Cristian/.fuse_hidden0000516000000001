@@ -76,7 +76,7 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 		pos = begin + 1;
 		
 
-		if (cond_contorno(begin, 2)) % du/dx
+		if (cond_contorno(end, 2)) % du/dx
 
 			K(pos, pos - 1) = -4;
 			K(pos, pos) = 7;
@@ -85,7 +85,7 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 
 			f(pos) = ( q(xx(pos), l, q0) * dx4 / EI ) - ( 2 * dx * val_contorno(begin, 2) );
 
-		elseif (cond_contorno(begin, 3)) % d2u/dx2 [M]
+		elseif (cond_contorno(end, 3)) % d2u/dx2 [M]
 
 			K(pos, pos - 1) = -2;
 			K(pos, pos) = 5;
@@ -94,20 +94,9 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 
 			f(pos) = dx2 * ( q(xx(pos), l, q0) * dx2 / EI - val_contorno(begin, 3) );
 		
-%		elseif (cond_contorno(begin, 4)) % d3u/dx3 [Q] @TODOODODODO
-
-			%K(pos, pos - 1) = -2;
-		%	K(pos, pos) = 5;
-	%		K(pos, pos + 1) = -4;
-	%		K(pos, pos + 2) = 1;
-
-	%		f(pos) = dx2 * ( q(xx(pos), l, q0) * dx2 / EI - val_contorno(begin, 3) );
-
 		else % Sin ninguno de los datos no puedo trabajar
 
-			disp ('--------------------------------------------------------------------');
-			disp ('ERROR: No se pasaron los datos requeridos: du/dx, d2u/dx2, o d3u/dx3');
-			disp ('--------------------------------------------------------------------');
+			disp ('ERROR: No se pasaron los datos requeridos: du/dx o d2u/dx');
 			return;
 
 		end
@@ -160,16 +149,11 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 	% Extremo M(x0) [d2u/dx2]
 	if (cond_contorno(begin, 3))
 		M(begin) = val_contorno(begin, 3);
-	else
-		% Aproximacion por cuatro puntos (d2u/dx2) [error dx2] (es *, no = {no asigna})
-		M(begin) *= 2 * u(begin) - 5 * u(begin+1) + 4 * u(begin+2) - 1	* u(begin+3);
 	end
 
 	% Extremo M(xl)
 	if (cond_contorno(end, 3))
 		M(end) = val_contorno(end, 3);
-	else
-		M(end) *= 2 * u(end) - 5 * u(end-1) + 4 * u(end-2) - 1	* u(end-3);
 	end
 
 	% Los extremos no los conocemos
@@ -179,21 +163,20 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 
 	%% ESFUERZO CORTANTE
 
-	Q = 1 / (2 * dx) * ones(length(u), 1);
+	Q = 2 / dx * ones(length(u), 1);
 
 	% Extremo Q(x0) [d3u/dx3]
 	if (cond_contorno(begin, 4))
 		Q(begin) = val_contorno(begin, 4);
 	else
-		% Aproximacion usando 3 puntos para la primera derivada [error dx2] (es *, no = {no asigna})
-		Q(begin) *= -3 * M(begin) + 4 * M(begin+1) - M(begin+2);
+		Q(begin) = M(begin);
 	end
 
 	% Extremo Q(xl)
-	if (cond_contorno(end, 4))
+	if (cond_contorno(begin, 4))
 		Q(end) = val_contorno(end, 4);
 	else
-		Q(end) *= 3 * M(end) - 4 * M(end-1) + M(end-2);
+		Q(end) = M(end);
 	end
 
 	% Resto de puntos

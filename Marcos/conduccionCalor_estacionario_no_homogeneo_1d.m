@@ -31,13 +31,13 @@
 ##------------------------------------------------------------------------------
 
 function [ phi ] = conduccionCalor_estacionario_no_homogeneo_1d (cant_x, Lx, 
-                             dirich_1=0, dirich_2=1, neumman_1=-1, neumman_2=-1, 
+                             dirich_1=1, dirich_2=0, neumman_1=-1, neumman_2=-1, 
                              Q=@Q_default, k=@k_default, c=@c_default,
                              phi_amb=@phi_amb_default)
 
-#    dx = Lx/cant_x;
-#    x = 0:dx:Lx-dx;
-    x=[0 0.05 0.15 0.35 0.5 0.75 1];
+    dx = Lx/cant_x;
+    x = 0:dx:Lx-dx;
+#    x=[0 0.05 0.15 0.35 0.5 0.75 1];
     
 
   ## SI DIRICHLET

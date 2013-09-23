@@ -62,4 +62,8 @@ normals = [
 	+1.0 +1.0 ;
 	];
 
-malla(lim_x, dx, lim_y, dy, object, normals)
+malla(lim_x, dx, lim_y, dy, object, normals);
+
+hold on;
+plot(object(:,1), object(:,2),'xr');
+hold off;

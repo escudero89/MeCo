@@ -7,7 +7,7 @@
 %% normals : las normales a cada punto del objeto: [nx ; ny ; nz]
 
 %% TODO 2D por ahora
-function [ret] = malla(lim_x, dx, lim_y, dy, object, normals)
+function [ret] = malla(lim_x, dx, lim_y, dy, object, normals, depth = 6)
 
 	% Establezco algunas variables para utilizar
 	begin = 1;
@@ -47,17 +47,20 @@ function [ret] = malla(lim_x, dx, lim_y, dy, object, normals)
 	original_tracked = tracked;
 	original_object_idx = object_idx;
 
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 1);
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 2);
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 3);
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 4);
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 5);
-	[xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, 6);
+	% Creo el mismo vector con dos columnas, para llevar rastro de que celda pertenecia (estado | celda padre)
+	multi_tracked = [ tracked , (1:length(tracked))' ];
+
+	for d = 1 : 4%depth
+		[xnode, inode, multi_tracked, object_idx] = r_dividir(xnode, inode, multi_tracked, object, object_idx, d);
+	end
+
+	tracked = multi_tracked(:, 1);
 
 	for t = 1 : length(original_tracked)
 		
 		if (original_tracked(t) > 0)
 			continue;
+
 		elseif (t < length(original_tracked) && original_tracked(t + 1) != 0)
 			elegidos = original_object_idx == t + 1;
 
@@ -85,7 +88,46 @@ function [ret] = malla(lim_x, dx, lim_y, dy, object, normals)
 
 	% Una vez llegado al final, terminamos de arreglarlo que tenga -2
 	tracked(find(original_tracked == -2)) = -1;
-	
+
+	for t = 1 : length(tracked)
+		
+		if tracked(t) > 0,
+			elegidos = (multi_tracked(object_idx, 2) == multi_tracked(t, 2))';
+			
+			% Saco un promedio de todos los puntos de la celda
+			avg_celda = [sum(xnode(inode(t, :)', 1) / 4) sum(xnode(inode(t, :)', 2) / 4)];
+
+			minimo = 9999;
+			pos_minimo = 1;
+
+			% Busco el punto mas cercano
+			for pto = 1 : length(object(elegidos))
+				object_elegido = object(elegidos, :)(pto, :);
+
+				distancia = sum(abs(avg_celda - [ object_elegido(1) , object_elegido(2) ]));
+
+				if (distancia < minimo), 
+					minimo = distancia;					
+					%pos_minimo = find((object(elegidos, :) == object_elegido(:)')(:, 1));
+					pos_minimo = find(ismember(object(elegidos, :), object_elegido(:)')(:, 1));
+				end
+
+			end
+
+			avg_next = object(elegidos, :)(pos_minimo, :);
+			nrm_next = normals(elegidos, :)(pos_minimo, :);
+
+			% Hago el producto
+			if (dot((avg_next - avg_celda), nrm_next) < 0)
+				tracked(t) = -1;
+			else
+				tracked(t) = 0;
+			end
+
+		end
+
+	end
+
 	view2d_by_ele(xnode, inode, tracked);
 
 end
@@ -165,11 +207,11 @@ function [state, object_idx] = hay_puntos(xnode_celda, celda_padre, celda, objec
 end
 
 % Para hacer recursiva la division
-function [xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, object, object_idx, depth)
+function [xnode, inode, multi_tracked, object_idx] = r_dividir(xnode, inode, multi_tracked, object, object_idx, depth)
 
-	for c = 1 : length(tracked)
+	for c = 1 : length(multi_tracked(:, 1))
 
-		if (tracked(c) == depth)		
+		if (multi_tracked(c, 1) == depth)		
 
 			[ xnode, inode_celda, inode_end, state, object_idx ] ...
 				= subdividir(xnode, inode, inode(c, :), c, object, object_idx, depth);
@@ -179,9 +221,10 @@ function [xnode, inode, tracked, object_idx] = r_dividir(xnode, inode, tracked, 
 			inode = [ inode ; inode_end ];
 
 			% Reviso los que antes estaban marcados
-			tracked(c) = state(1);
+			multi_tracked(c, 1) = state(1);
 
-			tracked = [ tracked ; state(2:end) ];
+			% Agrego el nuevo estado, pero manteniendo conocimiento del padre
+			multi_tracked = [ multi_tracked ; state(2:end) , ones(length(state(2:end)), 1) * multi_tracked(c, 2) ];
 
 		end
 

@@ -54,10 +54,10 @@ function C = hay_interseccion(E, figura)
   while( i < length(figura.x) && ! C )
    
    if(
-      figura.x(i) >= x_min &&
-      figura.x(i) <= x_max && 
-      figura.y(i) >= y_min &&
-      figura.y(i) <= y_max)
+      figura.x(i) > x_min &&
+      figura.x(i) < x_max && 
+      figura.y(i) > y_min &&
+      figura.y(i) < y_max)
       
       C = 1;
       

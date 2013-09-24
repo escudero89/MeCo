@@ -5,29 +5,29 @@ clear all
 clc
 disp("Parametros: ")
 Lx = 1
-dx = 0.1
+dx = 0.2
 phi0 = zeros( 1, length(0:dx:Lx) )
 phi0(1,1) = 0
 dt = 0.5 * dx^2
-t_f = 1
+t_f = 0.5
 tipo_cond = [0 0]	# array dirichlet(0), neumann(1)
 # Matriz de condiciones (pueden variar en el tiempo
-val_cond = [0 * ones( length(0: dt : (t_f - dt) ), 1 ), 0 * ones( length(0: dt : (t_f - dt) ), 1 ) ]
+#val_cond = [0 * ones( length(0: dt : (t_f - dt) ), 1 ), 0 * ones( length(0: dt : (t_f - dt) ), 1 ) ];
 pause
 
-# k = @k_default;
-# c = @c_default;
-# phi_amb= @phi_amb_default;
+ k = 1;
+ c = 0;
+ phi_amb= 0;
 # Q = @Q_default;
 
 
 
 [PHI] = conduccion_calor_no_estacionario_1d_BE(phi0, Lx, dx, dt, t_f,
                             tipo_cond,	# array dirichlet(0), neumann(1)
-                            val_cond  # Matriz de val_condes (pueden variar en el tiempo) 		
-                            #k = @k_default,
-                            #c = @c_default,
-                            #phi_amb= @phi_amb_default,
+                            [0 5],  # Matriz de val_condes (pueden variar en el tiempo) 		
+                            k,
+                            c,
+                            phi_amb
                             #Q = @Q_default
                             );
                             
@@ -36,7 +36,7 @@ pause
         plot(0:dx:Lx, PHI(i,:), color( mod(i,6) + 1 ) )
         xlabel('x');
         ylabel('phi');
-        title('Fordward Euler');
+        title('Backward Euler');
         hold on;
     endfor
     

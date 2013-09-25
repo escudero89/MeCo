@@ -47,10 +47,6 @@
     end
 
 
-
-
-
-
     pause
 
     cd EsquemasTemporales;
@@ -79,7 +75,7 @@
                             Q = @Q_default
                             );
     figure(2);
-    plot(0:dx:Lx,PHI_1)
+    plot(0:dx:Lx,PHI_2)
     xlabel('x');
     ylabel('phi');
     title('Backward Euler');
@@ -94,7 +90,7 @@
                             Q = @Q_default
                             );
     figure(3);
-    plot(0:dx:Lx,PHI_1)
+    plot(0:dx:Lx,PHI_3)
     xlabel('x');
     ylabel('phi');
     title('Crank Nicholson');           

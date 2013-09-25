@@ -41,19 +41,18 @@
 ## Author: Marcos <marcosyedro@gmail.com>
 ## Created: 2013-09-13
 ##------------------------------------------------------------------------------
-function [PHI] = conduccion_calor_no_estacionario_1d_BE(phi0, Lx, dx, dt, t_f,
+function [PHI] = conduccion_calor_no_estacionario_1d_BE_EJ2(phi0, Lx, dx, dt, t_f,
                             tipo_cond,	# array dirichlet(0), neumann(1)
                             val_cond,  # Matriz de condiciones (pueden variar en el tiempo) 		
-                            k = 1, #@k_default,
-                            c = 0, #@c_default,
-                            phi_amb = 0, # @phi_amb_default,
+                            k =@k_default,
+                            c =@c_default,
+                            phi_amb =@phi_amb_default,
                             Q = @Q_default
                             )
 
     ##  ------------------------------------------------------------------------
-    ##  METODO: BACKWARD EULER, resolveremos A x = b    
+    ##  METODO: CRANK NICHOLSON, resolveremos A x = b    
     ##  ------------------------------------------------------------------------
-
     
     # Algunas declaraciones generales
     dx2 = dx^2;
@@ -67,61 +66,90 @@ function [PHI] = conduccion_calor_no_estacionario_1d_BE(phi0, Lx, dx, dt, t_f,
     # Asignamos temperaturas a tiempo 0
     PHI(1,:) = phi0;
     
+    diagonal_central = diagonal_superior = diagonal_inferior = [];
     # GENERAMOS LA MATRIZ A
-    diagonal_central =  diag( (-1/dt - 2 * k/dx2 + c) * ones(1, length(cant_x) ) );
-    diagonal_superior = diag( (k/dx2) * ones(1,length(cant_x)-1), +1 );
-    diagonal_inferior = diag( (k/dx2) * ones(1,length(cant_x)-1), -1 );
+    for( i = 1 : length(cant_x) )
+        diagonal_central =  [diagonal_central, (-1/dt - 2*k(cant_x(i))/dx2 + c(cant_x(i)))];
+        diagonal_superior = [diagonal_superior, (k(cant_x(i))/dx2)];
+        diagonal_inferior = [diagonal_inferior, (k(cant_x(i))/dx2)];
+    endfor
+    
+    diagonal_central = diag(diagonal_central);
+    diagonal_superior = diag(diagonal_superior(1:end-1),1);
+    diagonal_inferior = diag(diagonal_inferior(2:end),-1);
+    
     A = diagonal_central + diagonal_superior + diagonal_inferior;
 
-    # GENERAMOS EL TERMINO INDEPENDIENTE
-    f = zeros(length(cant_x),1);
-    # AGREGAMOS CONDICIONES DE CONTORNO
+    
+    # AGREGAMOS CONDICIONES DE CONTORNO EN MATRIZ
     # En x = 0    
     if( tipo_cond(1) )  # Contorno Neumann en x = 0
-    
-        A(1,2) = 2 * k/dx2;
-        f(1) = c * phi_amb - Q(cant_t(1),cant_x(1)) - PHI(1,1)/dt -2 * val_cond(1)/dx; 
-    
+        A(1,2) = 2 * k(cant_x(1))/dx2;
     else                # Contorno Dirichlet en x = 0
-    
         A(1,:) = [ 1, zeros(1,length(cant_x)-1) ];
-        f(1) = val_cond(1);
-    
     endif
    
     # En x = Lx
-    if( tipo_cond(2) )  # Contorno Neumann en x = 0
-    
-        A(end,end-1) = 2 * k/dx2;
-        f(end) = c * phi_amb - Q(cant_t(1),cant_x(end)) - PHI(1,end)/dt + 2 * val_cond(2)/dx; 
-    
-    else                # Contorno Dirichlet en x = 0
-    
+    if( tipo_cond(2) )  # Contorno Neumann en x = l
+        A(end,end-2) = 0;
+        A(end,end-1) = 2 * k(cant_x(end))/dx2;
+        A(end,end) = -1/dt - 2*k(cant_x(end))/dx2 + c(cant_x(end)) + 2*k(cant_x(end))/dx; ## AGREGADO  
+    else                # Contorno Dirichlet en x = l
         A(end,:) = [zeros(1,length(cant_x)-1), 1 ];
-        f(end) = val_cond(2);
-    
     endif
     
     # FACTORIZAMOS MATRIZ para resolver dos sist triangulares.
     [L U P] = lu(A);
     
+    # GENERAMOS EL TERMINO INDEPENDIENTE
+    f = zeros(length(cant_x),1);
+
     # CICLO TEMPORAL (n)
     for n = 1 : t_iter - 1
+            
+        # AGREGAMOS CONDICIONES DE CONTORNO A TERMINO INDEPENDIENTE
+        # En x = 0    
+        if( tipo_cond(1) )  # Contorno Neumann en x = 0
+            
+            f(1) = c(cant_x(1)) * phi_amb(cant_x(1)) - ...
+            Q(cant_t(n+1),cant_x(1)) ...
+            - PHI(n,1)/dt - 2 * val_cond(n+1,1)/dx;
         
-        # Recalculamos Q para c/ instante de tiempo
-        Q_vec = [];
-        for(i=2:length(cant_x)-1)
-            Q_vec = [Q_vec Q(cant_t(n),cant_x(i))];
+        else                # Contorno Dirichlet en x = 0
+        
+            f(1) = val_cond(n+1, 1);
+        
+        endif
+       
+        # En x = Lx
+        if( tipo_cond(2) )  # Contorno Neumann en x = 0
+
+            f(end) = c(cant_x(i)) * phi_amb(cant_x(i)) - ...
+                   Q(cant_t(n+1),cant_x(i)) - ...
+                   PHI(n,i)/dt;   
+
+        else                # Contorno Dirichlet en x = 0
+
+            f(end) = val_cond(n+1,2);
+
+        endif
+            
+        # Actualizamos f
+        for(i = 2 : (length(cant_x)-1) )
+            
+            f(i) = c(cant_x(i)) * phi_amb(cant_x(i)) - ...
+                   Q(cant_t(n+1),cant_x(i)) - ...
+                   PHI(n,i)/dt;
+            
         endfor
         
-        # Actualizamos f
-        f(2:end-1) = c * phi_amb * ones(length(Q_vec),1) - Q_vec' - PHI(n,2:end-1)'/dt;
         
         # Resolvemos sistema en dos pasos
         y = (P'*L) \ f;
         phi_nuevo = U\y;  
         
         # Almacenamos en la matriz PHI
+        
         PHI(n+1,:) = phi_nuevo';
                                
     endfor
@@ -129,23 +157,23 @@ function [PHI] = conduccion_calor_no_estacionario_1d_BE(phi0, Lx, dx, dt, t_f,
 endfunction
  
  
- function [ret] = k_default(t_i, x_i)
+function [ret] = k_default(t_i, x_i=0)
 	ret = 1;
 	return;
 end
 
-function [ret] = c_default(t_i, x_i)
+function [ret] = c_default(t_i, x_i=0)
 	ret = 0;
 	return;
 end
 
-function [ret] = phi_amb_default(t_i, x_i)
+function [ret] = phi_amb_default(t_i, x_i=0)
 	ret = 0;
 	return;
 end
 
 function [ret] = Q_default(t_i, x_i)
-	ret = 1;
+	 ret = sin(2 * pi * x_i);
 	return;
 end
 

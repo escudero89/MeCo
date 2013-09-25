@@ -1,4 +1,4 @@
-function plot_malla(M)
+function plot_malla(M, etiquetado = 0)
   
   if(isempty(M))
     return;
@@ -8,22 +8,29 @@ function plot_malla(M)
       for( j = 1 : size(M)(2) )
         
         if(! iscell(M{i,j}))
-          #dx = abs(M{1,1}(1,1) - M{1,1}(4,1));
-          #dy = abs(M{1,1}(1,2) - M{1,1}(2,2));
-    
-          #x_center = dx/3 + M{1,1}(1,1);
-          #y_center = dy/2 + M{1,1}(1,2);
-        
-          #x_c = x_center + (i-1) * dx;
-          #y_c = y_center + (j-1) * dy;
+          if(etiquetado)
+            dx = abs(M{i,j}(1,1) - M{i,j}(4,1));
+            dy = abs(M{i,j}(1,2) - M{i,j}(2,2));
+      
+            x_center = dx/3 + M{i,j}(1,1);
+            y_center = dy/2 + M{i,j}(1,2);
           
-          #label = strcat("E=", num2str(i),",", num2str(j));
-          plot(M{i,j});
-          #text(x_c, y_c, label);
+            x_c = x_center ;#+ (i-1) * dx;
+            y_c = y_center ;#+ (j-1) * dy;
+            
+            label = strcat("E=", num2str(i),",", num2str(j));
+            plot(M{i,j});
+            text(x_c, y_c, label);
+           
+          elseif
+           
+            plot(M{i,j});
+           
+          endif
         
         else
 
-          plot_malla(M{i,j});
+          plot_malla(M{i,j}, etiquetado);
 
         endif
       endfor

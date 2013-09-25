@@ -1,0 +1,28 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+
+Q : 1 - 4 * (x - 1/2)^2;
+eq : 'diff(T, x, 2) + T = -Q;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+http://maxima.sourceforge.net/docs/tutorial/en/gaertner-tutorial-revision/Pages/ODE0001.htm
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+sol : ode2(eq, T, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ps : bc2(sol, x= 0, 'diff(T, x)= 10, x= 1, 'diff(T, x)= 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(4+14*cos(1))/sin(1)
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -3,10 +3,10 @@ clear all;
 clf;
 close;
 
-lim_x = [0 6];
-dx = 1;
-lim_y = [0 6];
-dy = 1;
+lim_x = [-1 4];
+dx = .5;
+lim_y = [-1 4];
+dy = .5;
 
 x = 0 : 6;
 y = 0 : 6;
@@ -61,6 +61,21 @@ normals = [
 
 	+1.0 +1.0 ;
 	];
+
+object = [ 
+	[1 : 0.1 : 3]' , ones(length([1 : 0.1 : 3]), 1) ;
+	[1 : 0.1 : 3]' , 3*ones(length([1 : 0.1 : 3]), 1) ;
+	
+	ones(length([1.1 : 0.1 : 2.9]), 1) , [1.1 : 0.1 : 2.9]' ;
+	3*ones(length([1.1 : 0.1 : 2.9]), 1) , [1.1 : 0.1 : 2.9]' ;
+];
+
+normals = [
+	0*ones(length([1 : 0.1 : 3]), 1) , -1*ones(length([1 : 0.1 : 3]), 1) ;
+	0*ones(length([1 : 0.1 : 3]), 1) , 1*ones(length([1 : 0.1 : 3]), 1) ;
+	-1*ones(length([1 : 0.1 : 3]), 1) , 0*ones(length([1 : 0.1 : 3]), 1) ;
+	1*ones(length([1 : 0.1 : 3]), 1) , 0*ones(length([1 : 0.1 : 3]), 1) ;
+];
 
 malla(lim_x, dx, lim_y, dy, object, normals);
 

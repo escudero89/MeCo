@@ -102,20 +102,21 @@ function [ret] = malla(lim_x, dx, lim_y, dy, object, normals, depth = 6)
 
 			% Busco el punto mas cercano
 			for pto = 1 : length(object(elegidos))
-				object_elegido = object(elegidos, :)(pto, :);
+				object_elegido = object(elegidos, :)(pto, :)
 
 				distancia = sum(abs(avg_celda - [ object_elegido(1) , object_elegido(2) ]));
 
 				if (distancia < minimo), 
 					minimo = distancia;					
 					%pos_minimo = find((object(elegidos, :) == object_elegido(:)')(:, 1));
-					pos_minimo = find(ismember(object(elegidos, :), object_elegido(:)')(:, 1));
+					pos_minimo = find(ismember(object(elegidos, :), object_elegido(:)')(:, 1))(1)
 				end
 
 			end
 
-			avg_next = object(elegidos, :)(pos_minimo, :);
-			nrm_next = normals(elegidos, :)(pos_minimo, :);
+			avg_next = object(elegidos, :)(pos_minimo, :)
+			nrm_next = normals(elegidos, :)(pos_minimo, :)
+			nrm_next = [sum(normals(elegidos, 1)) sum(normals(elegidos, 2))]
 
 			% Hago el producto
 			if (dot((avg_next - avg_celda), nrm_next) < 0)

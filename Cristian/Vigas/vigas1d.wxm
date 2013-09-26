@@ -1,0 +1,52 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+eq : phi[i-2]-4*phi[i-1]+(6+k*dx^4/EI)*phi[i]-4*phi[i+1]+phi[i+2]=q(x)*dx^4/EI;
+
+eq_3 : (phi[i-2]+2*phi[i-1]-2*phi[i+1]+phi[i+2])/(2*dx^3)=d3u;
+
+eq_2 : (phi[i-1]-2*phi[i]+phi[i+1])/dx^2=d2u;
+
+ext0_2 : subst(0, i, eq_2);
+extL_2 : subst(L, i, eq_2);
+
+sol0_2 : solve(ext0_2,phi[-1]);
+solL_2 : solve(extL_2,phi[L+1]);
+
+ext0_3 : subst(0, i, eq_3);
+extL_3 : subst(L, i, eq_3);
+
+"Despejadas las variables";
+sol_0 : solve(subst(args(sol0_2[1])[2], phi[-1], ext0_3), phi[-2])[1];
+sol_L : solve(subst(args(solL_2[1])[2], phi[L+1], extL_3), phi[L+2])[1];
+
+eq_0 : subst(0, i, eq);
+eq_L : subst(L, i, eq);
+
+"--------------------------------------------";
+subst(args(sol0_2[1])[2], phi[-1], eq_0);
+subst(args(sol_0)[2], phi[-2], %);
+ratsimp(%);
+
+"--------------------------------------------";
+subst(args(solL_2[1])[2], phi[L+1], eq_L);
+subst(args(sol_L)[2], phi[L+2], %);
+ratsimp(%);
+
+"--------------------------------------------";
+"--------------------------------------------";
+
+eq_1 : subst(1, i, eq);
+subst(args(sol0_2[1])[2], phi[-1], eq_1);
+ratsimp(%);
+
+"--------------------------------------------";
+
+eq_L_1 : subst(L-1, i, eq);
+subst(args(solL_2[1])[2], phi[L+1], eq_L_1);
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

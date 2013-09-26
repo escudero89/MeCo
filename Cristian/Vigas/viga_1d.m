@@ -108,7 +108,9 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 
 		% Primera fila
 		K(begin, begin) = -6 + k(xx(begin)) * dx4/EI;
-		f(begin) -= 2 * dx2 * (val_contorno(begin, 3) + val_contorno(begin, 4) * dx);
+		K(begin, begin+1) = 4;
+
+		f(begin) += 2 * dx2 * (3 * val_contorno(begin, 3) - val_contorno(begin, 4) * dx);
 
 		% Segunda fila 
 		pos = begin + 1;
@@ -162,6 +164,8 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 
 		% Primera fila
 		K(end, end) = 2 + k(xx(end)) * dx4/EI;
+		K(end, end-1) = -4;
+
 		f(end) += 2 * dx2 * (val_contorno(end, 3) - val_contorno(end, 4) * dx);
 
 		% Segunda fila 
@@ -175,7 +179,7 @@ function [u, M, Q] = viga_1d(l, dx, h, E, cond_contorno, val_contorno, q = @q_de
 		f(pos) += -val_contorno(end, 3) * dx2;
 
 	end
-K
+
 	u = K \ f;
 
 	%% ESTO ES PARA TENER A CONSIDERACION EL MOMENTO y el ESFUERZO CORTANTE

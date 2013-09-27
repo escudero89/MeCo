@@ -53,11 +53,33 @@ function [ phi ] = placa_2d (
     y = 0 : dy : Ly;
     
     %% PARA OPTIMIZAR el calculo de nodos interiores
-
     A_interior = 6 * (dy4 + dx4) + 8 * dx2 * dy2;
+
+    Aint_interior = 3 * (dx4 + dy4) + 8 * dx2 * dy2;
+
+    Ax_interior = 6 * dy4 + 8 * ( dx2 * dy2 + dx4 );
+    Ay_interior = 6 * dx4 + 8 * ( dx2 * dy2 + dy4 );
+
     B_interior = 2 * dx2 * dy2;
+
     Cx_interior = -4 * (dx4 + dx2 * dy2);
     Cy_interior = -4 * (dy4 + dx2 * dy2);
+
+    Dx_interior = -5 * dx4 - 4 * dx2 * dy2;
+    Dy_interior = -5 * dy4 - 4 * dx2 * dy2;
+
+    Ex_interior = 14 * dx4 + 4 * dx2 * dy2;
+    Ey_interior = 14 * dy4 + 4 * dx2 * dy2;
+
+    alfa_x_interior = 26 * dx4;
+    beta_x_interior = 24 * dx4;
+    gamma_x_interior = 11 * dx4;
+    delta_x_interior = 2 * dx4;
+
+    alfa_y_interior = 26 * dy4;
+    beta_y_interior = 24 * dy4;
+    gamma_y_interior = 11 * dy4;
+    delta_y_interior = 2 * dy4;
 
     %% Definimos direccion de etiquetado de nodos
     if (cant_x > cant_y)
@@ -68,51 +90,55 @@ function [ phi ] = placa_2d (
         cant_nodo_en_dir = cant_x;
     end
 
-    % Generamos un vector que nos dice si un nodo es interior (1), o de borde ext (-1) o int(0)
-    es_interior = ones(length(phi), 1);
+    % Generamos un vector que nos dice si un nodo es interior (0), u otro valor si es de borde
+    es_interior = zeros(length(phi), 1);
 
     % Lo armamos como matriz
     ES_INTERIOR = reshape(es_interior, cant_y, cant_x)
 
+    % Bordes en orden antihorario
+    borde = [1 2 3 4];
+
+    % Constante de esquina
+    ESQ = 20;
+
     % Llenamos los bordes exteriores
-    ES_INTERIOR(begin, :) = -1;
-    ES_INTERIOR(:, begin) = -1;
-    ES_INTERIOR(:, end) = -1;
-    ES_INTERIOR(end, :) = -1;
+    ES_INTERIOR(begin, :) = -borde(3);
+    ES_INTERIOR(:, begin) = -borde(4);
+    ES_INTERIOR(:, end) = -borde(2);
+    ES_INTERIOR(end, :) = -borde(1);
 
     % Y los bordes interiores
-    ES_INTERIOR(begin + 1, 2 : cant_x - 1) = 0;
-    ES_INTERIOR(2 : cant_y - 2, begin + 1) = 0;
-    ES_INTERIOR(2 : cant_y - 2, end - 1) = 0;
-    ES_INTERIOR(end - 1, 2 : cant_x - 1) = 0;
+    ES_INTERIOR(begin + 1, 2 : cant_x - 1) = borde(3);
+    ES_INTERIOR(2 : cant_y - 2, begin + 1) = borde(4);
+    ES_INTERIOR(2 : cant_y - 2, end - 1) = borde(2);
+    ES_INTERIOR(end - 1, 2 : cant_x - 1) = borde(1);
 
-    % Esquinas en orden antihorario
-    esquina = [21 22 23 24];
 
     % Asignamos -21 -22 -23 -24 a los nodos borde-exteriores esquinas en sentido horario.
-    ES_INTERIOR(begin, begin) = -esquina(4);
-    ES_INTERIOR(begin, end) = -esquina(3);
-    ES_INTERIOR(end, end) = -esquina(2);
-    ES_INTERIOR(end, begin) = -esquina(1);
+%    ES_INTERIOR(begin, begin) = -borde(4) * ESQ;
+%    ES_INTERIOR(begin, end) = -borde(3) * ESQ;
+%    ES_INTERIOR(end, end) = -borde(2) * ESQ;
+%    ES_INTERIOR(end, begin) = -borde(1) * ESQ;
 
     % Asignamos 21, 22, 23, 24 a los nodos borde-interior esquinas en sentido horario
-    ES_INTERIOR(begin + 1, begin + 1) = esquina(4);
-    ES_INTERIOR(begin + 1, end - 1) = esquina(3);
-    ES_INTERIOR(end - 1, begin + 1) = esquina(1);
-    ES_INTERIOR(end - 1, end - 1) = esquina(2);
+    ES_INTERIOR(begin + 1, begin + 1) = borde(4) * ESQ;
+    ES_INTERIOR(begin + 1, end - 1) = borde(3) * ESQ;
+    ES_INTERIOR(end - 1, begin + 1) = borde(1) * ESQ;
+    ES_INTERIOR(end - 1, end - 1) = borde(2) * ESQ;
 
     % Asignamos un valor especial a los nodos vecinos a los de las esquinas
-    ES_INTERIOR(begin + 1, begin) = -esquina(4) * 5;
-    ES_INTERIOR(begin, begin + 1) = -esquina(4) * 7;
-    
-    ES_INTERIOR(begin + 1, end) = -esquina(3) * 5;
-    ES_INTERIOR(begin, end - 1) = -esquina(3) * 7;
-
-    ES_INTERIOR(end - 1, begin) = -esquina(1) * 5;
-    ES_INTERIOR(end, begin + 1) = -esquina(1) * 7;
-
-    ES_INTERIOR(end - 1, end) = -esquina(2) * 5;
-    ES_INTERIOR(end, end - 1) = -esquina(2) * 7;
+%    ES_INTERIOR(begin + 1, begin) = -borde(4) * ESQ * 5;
+%    ES_INTERIOR(begin, begin + 1) = -borde(4) * ESQ * 7;
+%    
+%    ES_INTERIOR(begin + 1, end) = -borde(3) * ESQ * 5;
+%    ES_INTERIOR(begin, end - 1) = -borde(3) * ESQ * 7;
+%
+%    ES_INTERIOR(end - 1, begin) = -borde(1) * ESQ * 5;
+%    ES_INTERIOR(end, begin + 1) = -borde(1) * ESQ * 7;
+%
+%    ES_INTERIOR(end - 1, end) = -borde(2) * ESQ * 5;
+%    ES_INTERIOR(end, end - 1) = -borde(2) * ESQ * 7;
 
     ES_INTERIOR
 
@@ -123,249 +149,239 @@ function [ phi ] = placa_2d (
     for i = 1 : cant_y
         for j = 1 : cant_x
 
+            % Esta matriz la voy a convertir en fila y se la asigno a K
+            Z = zeros(cant_y, cant_x);
+
             % Posicion actual en formato vector
             pos_vec = coord2vec(j, i, ir_dir_y, cant_nodo_en_dir);
             
-            f(pos_vec) = q * D;
+            f(pos_vec) = (q / D) * dx4 * dy4;
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % Si hay un 1, es porque es un nodo interior: stencil de 8 puntos.
-            if (ES_INTERIOR(i, j) == 1)
-
-                % Esta matriz la voy a convertir en fila y se la asigno a K
-                Z = zeros(cant_y, cant_x);
+            % Si hay un 0, es porque es un nodo interior: stencil de 8 puntos.
+            if (ES_INTERIOR(i, j) == 0)
 
                 Z(i, j) = A_interior;
             
                 Z(i + 1, j + 1) = Z(i + 1, j - 1) = Z(i - 1, j + 1) = Z(i - 1, j - 1) = B_interior;
 
-                Z(i + 2, j) = Z(i - 2, j) = dy4;
-                Z(i, j + 2) = Z(i, j - 2) = dx4;
+                Z(i + 2, j) = Z(i - 2, j) = dx4;
+                Z(i, j + 2) = Z(i, j - 2) = dy4;
 
-                Z(i + 1, j) = Z(i - 1, j) = Cy_interior;
-                Z(i, j + 1) = Z(i, j - 1) = Cx_interior;
+                Z(i + 1, j) = Z(i - 1, j) = Cx_interior;
+                Z(i, j + 1) = Z(i, j - 1) = Cy_interior;
 
-                % Si avanzamos en x, lo transponemos (el reshape es por columnas)
-                if (!ir_dir_y)
-                    Z = Z'
+            % Si hay un 1,2,3,4 es porque es un nodo de borde INTERIOR (excluida esquinas)
+            elseif (sum(ES_INTERIOR(i, j) == borde)),
+
+                current_border = abs(ES_INTERIOR(i, j));
+                current_cc = cond_contorno(current_border);
+
+                % Siempre se cumple            
+                Z(i + 1, j + 1) = Z(i + 1, j - 1) = Z(i - 1, j + 1) = Z(i - 1, j - 1) = B_interior;
+
+                % Para cada tipo de borde interior, tengo una formula diferente
+                switch(current_border)
+                    % Borde inferior
+                    case {1}
+
+                        Z(i, j) = Ax_interior;
+
+                        Z(i - 2, j) = dx4;
+                        Z(i, j + 2) = Z(i, j - 2) = dy4;
+
+                        Z(i, j + 1) = Z(i, j - 1) = Cy_interior;
+                        Z(i + 1, j) = Cx_interior;
+                        
+                        Z(i - 1, j) = Dx_interior; % <=
+                        
+                        f(pos_vec) += -1 * dx4 * dy2 * valor_cc_1(i);
+
+                    % Borde derecha
+                    case {2}
+
+                        Z(i, j) = Ay_interior;
+        
+                        Z(i, j - 2) = dy4;
+                        Z(i + 2, j) = Z(i - 2, j) = dx4;
+
+                        Z(i, j + 1) = Cy_interior;
+                        Z(i + 1, j) = Z(i - 1, j) = Cx_interior;
+                        
+                        Z(i, j - 1) = Dy_interior; % <=
+
+                        f(pos_vec) += -1 * dy4 * dx2 * valor_cc_2(j);
+
+                    % Borde superior
+                    case {3}
+                        Z(i, j) = Ax_interior;
+        
+                        Z(i + 2, j) = dx4;
+                        Z(i, j + 2) = Z(i, j - 2) = dy4;
+
+                        Z(i, j + 1) = Z(i, j - 1) = Cy_interior;
+                        Z(i - 1, j) = Cx_interior;
+                        
+                        Z(i + 1, j) = Dx_interior; % <=
+
+                        f(pos_vec) += -1 * dx4 * dy2 * valor_cc_3(i);
+
+                    % Borde izquierda
+                    case {4}
+
+                        Z(i, j) = Ay_interior;
+        
+                        Z(i, j + 2) = dy4;
+                        Z(i + 2, j) = Z(i - 2, j) = dx4;
+
+                        Z(i, j - 1) = Cy_interior;
+                        Z(i + 1, j) = Z(i - 1, j) = Cx_interior;
+                        
+                        Z(i, j + 1) = Dy_interior; % <=
+
+                        f(pos_vec) += -1 * dy4 * dx2 * valor_cc_4(j);
+
+                    otherwise
+                        error('Error: valor invalido en switch (borde interior)');
                 end
 
-                % Reshape a vector
-                Z_vec = reshape(Z, 1, cant_x * cant_y);    
+            % Si es mayor que los valores es bordes, es porque es un nodo de esquina borde interior
+            elseif (ES_INTERIOR(i, j) > max(borde)),
+
+                current_border = abs(ES_INTERIOR(i, j) / ESQ);
+                current_cc = cond_contorno(current_border);
+
+                Z(i, j) = Aint_interior;
+                Z(i + 1, j + 1) = Z(i + 1, j - 1) = Z(i - 1, j + 1) = Z(i - 1, j - 1) = B_interior;
+
+                switch (current_border)
+                    % esquina |_
+                    case {1}
+
+                        Z(i + 1, j) = -2 * B_interior;
+                        Z(i, j - 1) = -2 * B_interior;
+
+                        Z(i, j + 1) = -Ey_interior;
+                        Z(i - 1, j) = -Ex_interior;
+
+                        Z(i, j + 2) = alfa_y_interior;
+                        Z(i, j + 3) = -beta_y_interior;
+                        Z(i, j + 4) = gamma_y_interior;
+                        Z(i, j + 5) = -delta_y_interior;
+
+                        Z(i - 2, j) = alfa_x_interior;
+                        Z(i - 3, j) = -beta_x_interior;
+                        Z(i - 4, j) = gamma_x_interior;
+                        Z(i - 5, j) = -delta_x_interior;
+
+                    % esquina _|
+                    case {2}
+
+                        Z(i + 1, j) = -2 * B_interior;
+                        Z(i, j + 1) = -2 * B_interior;
+
+                        Z(i, j - 1) = -Ey_interior;
+                        Z(i - 1, j) = -Ex_interior;
+
+                        Z(i, j - 2) = alfa_y_interior;
+                        Z(i, j - 3) = -beta_y_interior;
+                        Z(i, j - 4) = gamma_y_interior;
+                        Z(i, j - 5) = -delta_y_interior;
+
+                        Z(i - 2, j) = alfa_x_interior;
+                        Z(i - 3, j) = -beta_x_interior;
+                        Z(i - 4, j) = gamma_x_interior;
+                        Z(i - 5, j) = -delta_x_interior;
+                    
+                    % esquina ^|
+                    case {3}
+
+                        Z(i - 1, j) = -2 * B_interior;
+                        Z(i, j + 1) = -2 * B_interior;
+
+                        Z(i, j - 1) = -Ey_interior;
+                        Z(i + 1, j) = -Ex_interior;
+
+                        Z(i, j - 2) = alfa_y_interior;
+                        Z(i, j - 3) = -beta_y_interior;
+                        Z(i, j - 4) = gamma_y_interior;
+                        Z(i, j - 5) = -delta_y_interior;
+
+                        Z(i + 2, j) = alfa_x_interior;
+                        Z(i + 3, j) = -beta_x_interior;
+                        Z(i + 4, j) = gamma_x_interior;
+                        Z(i + 5, j) = -delta_x_interior;
+                    
+                    % esquina |^
+                    case {4}
+
+                        Z(i - 1, j) = -2 * B_interior;
+                        Z(i, j - 1) = -2 * B_interior;
+
+                        Z(i, j + 1) = -Ey_interior;
+                        Z(i + 1, j) = -Ex_interior;
+
+                        Z(i, j + 2) = alfa_y_interior;
+                        Z(i, j + 3) = -beta_y_interior;
+                        Z(i, j + 4) = gamma_y_interior;
+                        Z(i, j + 5) = -delta_y_interior;
+
+                        Z(i + 2, j) = alfa_x_interior;
+                        Z(i + 3, j) = -beta_x_interior;
+                        Z(i + 4, j) = gamma_x_interior;
+                        Z(i + 5, j) = -delta_x_interior;
+
+                    otherwise
+                        error('Error: valor invalido en switch (nodo borde interior)');
+                end
+
+            % Si hay un -1,-2,-3,-4 es porque es un nodo de borde EXTERIOR (excluida esquinas)
+            elseif (sum(ES_INTERIOR(i, j) == -borde)),
                 
-                % Y lo guardamos en la matriz en su respectiva fila
-                K(pos_vec, :) = Z_vec;
+                current_border = abs(ES_INTERIOR(i, j));
+                current_cc = cond_contorno(current_border);
+
+                % Me fijo que condicion de contorno tiene (simple y empotrado comparten u_borde=0)
+                if (current_cc == 0 || current_cc == 1),
+                    
+                    Z(i, j) = 1;
+
+                    switch (current_border)
+                        case {1}
+                            f(pos_vec) = valor_cc_1(i);
+                        case {2}
+                            f(pos_vec) = valor_cc_2(j);
+                        case {3}
+                            f(pos_vec) = valor_cc_3(i);
+                        case {4}
+                            f(pos_vec) = valor_cc_4(j);
+                        otherwise
+                            error('Error: valor invalido en switch (borde exterior)');
+                    end
+
+                end
 
             end
 
+            % Si avanzamos en x, lo transponemos (el reshape es por columnas)
+            if (!ir_dir_y)
+                Z = Z'
+            end
+
+            % Reshape a vector
+            Z_vec = reshape(Z, 1, cant_x * cant_y);    
+            
+            % Y lo guardamos en la matriz en su respectiva fila
+            K(pos_vec, :) = Z_vec;
+            
         end
     end
-    K
-reshape(K(es_interior==1,:)(1, :), cant_y, cant_x)
-return;
 
-
-    % Cambiamos dx2 dy2 dependiendo de la direccion y lo traajamos en forma
-    % transparente con da db
-    if(ir_dir_y)
-        da2 = dy2;
-        db2 = dx2;
-        signo = 1;
-    else
-        da2 = dx2;
-        db2 = dy2;
-        signo = -1;
-    endif
+    [K f]
     
-    % Armamos la matriz k diagonal en bordes.
-    for i = 1 : length(es_interior)
+    K_vec = reshape(K(es_interior==1,:)(1, :), cant_y, cant_x)
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % Si hay un 1, es porque es un nodo interior: tomamos cartas en el asunto.
-        if (es_interior(i) == 1)
-            
-            K(i, i) = C / k - 2 * (db2 + da2) / (db2 * da2);
-            
-            K(i, i - 1) = 1 / da2;
-            K(i, i + 1) = 1 / da2;
-            
-            K(i, i - cant_nodo_en_dir) = 1 / db2;
-            K(i, i + cant_nodo_en_dir) = 1 / db2;
- 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-        %Si es mayor a 20 es xq es una esquina                
-        elseif ( es_interior(i) > 20 ) 
-        
-            K(i, i) = C / k + 2 * (dx2 + dy2) / (dx2 * dy2);
-            
-            if( es_interior(i) == 21 )
-                
-                K(i, i + 1) = -5/da2;
-                K(i, i + 2) = 4/da2;
-                K(i, i + 3) = -1/da2;
-                
-                K(i, i + 1*cant_nodo_en_dir) = -5/db2;
-                K(i, i + 2*cant_nodo_en_dir) = 4/db2;
-                K(i, i + 3*cant_nodo_en_dir) = -1/db2;
-                    
-            elseif ( es_interior(i) == 22 )
-                
-                K(i, i - signo * 1) = -5/da2;
-                K(i, i - signo * 2) = 4/da2;
-                K(i, i - signo * 3) = -1/da2;
-                
-                K(i, i + signo * 1 * cant_nodo_en_dir) = -5/db2;
-                K(i, i + signo * 2 * cant_nodo_en_dir) = 4/db2;
-                K(i, i + signo * 3 * cant_nodo_en_dir) = -1/db2;
-                    
-            elseif ( es_interior(i) == 23 )
-                
-                K(i, i - 1) = -5/da2;
-                K(i, i - 2) = 4/da2;
-                K(i, i - 3) = -1/da2;
-                
-                K(i, i - 1 * cant_nodo_en_dir) = -5/db2;
-                K(i, i - 2 * cant_nodo_en_dir) = 4/db2;
-                K(i, i - 3 * cant_nodo_en_dir) = -1/db2;
-                    
-            elseif ( es_interior(i) == 24 )
-
-                K(i, i + signo * 1) = -5/da2;
-                K(i, i + signo * 2) = 4/da2;
-                K(i, i + signo * 3) = -1/da2;
-
-                K(i, i - signo * 1 * cant_nodo_en_dir) = -5/db2;
-                K(i, i - signo * 2 * cant_nodo_en_dir) = 4/db2;
-                K(i, i - signo * 3 * cant_nodo_en_dir) = -1/db2;
-                    
-            endif
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % Nodo de borde (es_interior es 0). cond_contorno = 0 dirichlet , 1 neumann
-        else
-        
-            % El vector idx se utiliza para numerar los distintos contornos dependiendo de la direccion.
-            idx = [11 14 12 13];
-            
-            if (ir_dir_y == 0)
-            
-                idx = [ 14 11 13 12 ];
-            
-            endif
-            
-            if (i < cant_nodo_en_dir) %% Borde 1 o 4
-            
-                es_interior(i) = idx(1);
-            
-            elseif (i < length(phi) - cant_nodo_en_dir + 1)
-                
-                es_interior(i) = idx(3 - mod(i, cant_nodo_en_dir));
-            
-            else 
-            
-                es_interior(i) = idx(4);
-            
-            endif
-                
-        endif
-             
-    endfor
-
-    i = 1;
-
-    while i < length(phi)
-
-        [l, m] = vec2coord(i, ir_dir_y, cant_nodo_en_dir)
-
-        % Si es nodo interior o de esquina
-        if (es_interior(i) == 1 || es_interior(i) > 20)
-                        
-                f(i) = 1 / k * (C * phi_amb) - Q(x(l), y(m)) / k;
-
-        % nodo de borde no esquina
-        else
-
-            K(i,i) = C/k - 2 * (dx2 + dy2)/(dx2 * dy2); %igual para todos los bordes
-            f(i) = -Q(x(l), y(m)) / k;
-              
-            if(es_interior(i) == 11)
-                % Si es 1, es neumann
-                if (cond_contorno(1))
-                        
-                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
-                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-
-                    f(i) += 1/k * (C * phi_amb - 2 * valor_cc_1(m) / dx);
-                
-                else % Dirichlet
-                
-                    K(i, i) = 1;
-                    f(i) = valor_cc_1(m);
-                
-                endif
-    
-            elseif(es_interior(i) == 12)
-            
-                if (cond_contorno(2))
-                
-                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
-                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-
-                    f(i) += 1/k * (C * phi_amb + 2 * valor_cc_2(l) / dy);
-            
-                else
-                    
-                    K(i, i) = 1;
-                    f(i) = valor_cc_2(l);
-                
-                endif
-                
-            elseif(es_interior(i) == 13)
-                
-                if (cond_contorno(3))
-                
-                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 2/dx2;
-                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-                    K(i, coord2vec(l, m-1, ir_dir_y, cant_nodo_en_dir) ) = 1/dy2;
-
-                    f(i) += 1/k * (C * phi_amb + 2 * valor_cc_3(m) / dx);
-                    
-                else
-                    
-                    K(i, i) = 1;
-                    f(i) = valor_cc_3(m);
-                
-                endif
-                       
-            elseif(es_interior(i) == 14)
-         
-                if (cond_contorno(4))
-                
-                    K(i, coord2vec(l, m+1, ir_dir_y, cant_nodo_en_dir) ) = 2/dy2;
-                    K(i, coord2vec(l+1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-                    K(i, coord2vec(l-1, m, ir_dir_y, cant_nodo_en_dir) ) = 1/dx2;
-                    
-                    f(i) += 1/k * (C * phi_amb - 2 * valor_cc_4(l) / dy); 
-
-                else
-                    
-                    K(i, i) = 1;
-                    f(i) = valor_cc_4(l);
-                
-                endif
-                
-            endif
-           
-        endif
-        
-        i++;
-  
-    endwhile
-    K
-    f
-    phi = K \ f
+    phi = K \ f;
     
     %% PLOTEO
     
@@ -395,7 +411,7 @@ return;
     ylabel('y');
     zlabel('phi');
     
-endfunction
+end
 
 
 function [pos] = coord2vec( i, j, ir_dir_y, cant_nodo_en_dir)
@@ -431,4 +447,4 @@ function [l, m] = vec2coord(i, ir_dir_y, cant_nodo_en_dir)
    
     endif
 
-endfunction
+end

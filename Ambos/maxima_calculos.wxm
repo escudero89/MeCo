@@ -24,7 +24,7 @@ Borde Simple
    [wxMaxima: subsect end   ] */
 
 /* [wxMaxima: input   start ] */
-u_fic[i,j-1] : d2u_daddya[i,0]*Dy^2+2*u[i,j]-u[i,j+1]$
+u_fic[i,j-1] : d2u_dada[i,0]*Dy^2+2*u[i,j]-u[i,j+1]$
 u_fic[i,j+1] : d2u_dada[i,N]*Dy^2+2*u[i,j]-u[i,j-1]$
 u_fic[i-1,j] : d2u_dada[0,j]*Dx^2+2*u[i,j]-u[i+1,j]$
 u_fic[i+1,j] : d2u_dada[M,j]*Dx^2+2*u[i,j]-u[i-1,j]$
@@ -35,16 +35,16 @@ Nodos de borde interior (excluida esquinas de nodo interior)
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-eq_b1_int : subst(u_fic[i,j-1], u[i,j-1], eq)$
+eq_b1_int : subst(u_fic[i,j-1], u[i,j-2], eq)$
 ratsimp(%);
 
-eq_b2_int : subst(u_fic[i-1,j], u[i-1,j], eq)$
+eq_b2_int : subst(u_fic[i+1,j], u[i+2,j], eq)$
 ratsimp(%);
 
-eq_b3_int : subst(u_fic[i,j+1], u[i,j+1], eq)$
+eq_b3_int : subst(u_fic[i,j+1], u[i,j+2], eq)$
 ratsimp(%);
 
-eq_b4_int : subst(u_fic[i+1,j], u[i+1,j], eq)$
+eq_b4_int : subst(u_fic[i-1,j], u[i-2,j], eq)$
 ratsimp(%);
 /* [wxMaxima: input   end   ] */
 
@@ -62,13 +62,13 @@ d4udy4_mo_bkd : (3*u[i,j]-14*u[i,j-1]+26*u[i,j-2]-24*u[i,j-3]+11*u[i,j-4]-2*u[i,
 eq_b1_esq : d4udx4_mo_fwd + d4udy4_mo_fwd + 2*d4udx2dy2$
 ratsimp(%);
 
-eq_b2_esq : d4udx4_mo_fwd + d4udy4_mo_bkd + 2*d4udx2dy2$
+eq_b2_esq : d4udx4_mo_bkd + d4udy4_mo_fwd + 2*d4udx2dy2$
 ratsimp(%);
 
 eq_b3_esq : d4udx4_mo_bkd + d4udy4_mo_bkd + 2*d4udx2dy2$
 ratsimp(%);
 
-eq_b4_esq : d4udx4_mo_bkd + d4udy4_mo_fwd + 2*d4udx2dy2$
+eq_b4_esq : d4udx4_mo_fwd + d4udy4_mo_bkd + 2*d4udx2dy2$
 ratsimp(%);
 /* [wxMaxima: input   end   ] */
 

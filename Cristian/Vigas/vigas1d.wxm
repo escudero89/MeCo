@@ -2,9 +2,9 @@
 /* [ Created with wxMaxima version 12.04.0 ] */
 
 /* [wxMaxima: input   start ] */
-eq : phi[i-2]-4*phi[i-1]+(6+k*dx^4/EI)*phi[i]-4*phi[i+1]+phi[i+2]=q(x)*dx^4/EI;
+eq : phi[i-2]-4*phi[i-1]+(6+a+0*k*dx^4/EI)*phi[i]-4*phi[i+1]+phi[i+2]=q(x)*dx^4/EI;
 
-eq_3 : (phi[i-2]+2*phi[i-1]-2*phi[i+1]+phi[i+2])/(2*dx^3)=d3u;
+eq_3 : (-phi[i-2]+2*phi[i-1]-2*phi[i+1]+phi[i+2])/(2*dx^3)=d3u;
 
 eq_2 : (phi[i-1]-2*phi[i]+phi[i+1])/dx^2=d2u;
 

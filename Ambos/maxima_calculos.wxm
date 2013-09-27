@@ -1,16 +1,16 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
-/* [ Created with wxMaxima version 11.08.0 ] */
+/* [ Created with wxMaxima version 12.04.0 ] */
 
 /* [wxMaxima: title   start ]
 Problema Placa 2D
    [wxMaxima: title   end   ] */
 
 /* [wxMaxima: input   start ] */
-d4udx4 : (u[i-2,j]-4*u[i-1,j]+6*u[i,j]-4*u[i+1,j]+u[i+2,j])/dx^4$
-d4udy4 : (u[i,j-2]-4*u[i,j-1]+6*u[i,j]-4*u[i,j+1]+u[i,j+2])/dy^4$
-d4udx2dy2 : (u[i+1,j+1]-2*u[i+1,j]+u[i+1,j-1]-2*u[i,j+1]+4*u[i,j]-2*u[i,j-1]+u[i-1,j+1]-2*u[i-1,j]+u[i-1,j-1])/(dx^2*dy^2)$
+d4udx4 : (u[i-2,j]-4*u[i-1,j]+6*u[i,j]-4*u[i+1,j]+u[i+2,j])/Dx^4$
+d4udy4 : (u[i,j-2]-4*u[i,j-1]+6*u[i,j]-4*u[i,j+1]+u[i,j+2])/Dy^4$
+d4udx2dy2 : (u[i+1,j+1]-2*u[i+1,j]+u[i+1,j-1]-2*u[i,j+1]+4*u[i,j]-2*u[i,j-1]+u[i-1,j+1]-2*u[i-1,j]+u[i-1,j-1])/(Dx^2*Dy^2)$
 
-eq : d4udx4 + d4udy4 + 2*d4udx2dy2$
+eq : d4udx4 + d4udy4 + 2*d4udx2dy2=f$
 
 ratsimp(eq);
 /* [wxMaxima: input   end   ] */
@@ -24,10 +24,10 @@ Borde Simple
    [wxMaxima: subsect end   ] */
 
 /* [wxMaxima: input   start ] */
-u_fic[i,j-1] : d2u_daddya[i,0]*dy^2+2*u[i,j]-u[i,j+1]$
-u_fic[i,j+1] : d2u_dada[i,N]*dy^2+2*u[i,j]-u[i,j-1]$
-u_fic[i-1,j] : d2u_dada[0,j]*dx^2+2*u[i,j]-u[i+1,j]$
-u_fic[i+1,j] : d2u_dada[M,j]*dx^2+2*u[i,j]-u[i-1,j]$
+u_fic[i,j-1] : d2u_daddya[i,0]*Dy^2+2*u[i,j]-u[i,j+1]$
+u_fic[i,j+1] : d2u_dada[i,N]*Dy^2+2*u[i,j]-u[i,j-1]$
+u_fic[i-1,j] : d2u_dada[0,j]*Dx^2+2*u[i,j]-u[i+1,j]$
+u_fic[i+1,j] : d2u_dada[M,j]*Dx^2+2*u[i,j]-u[i-1,j]$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -53,11 +53,11 @@ Nodos de contorno interior (esquinas)
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-d4udx4_mo_fwd : (3*u[i,j]-14*u[i+1,j]+26*u[i+2,j]-24*u[i+3,j]+11*u[i+4,j]-2*u[i+5,j])/dx^4$
-d4udx4_mo_bkd : (3*u[i,j]-14*u[i-1,j]+26*u[i-2,j]-24*u[i-3,j]+11*u[i-4,j]-2*u[i-5,j])/dx^4$
+d4udx4_mo_fwd : (3*u[i,j]-14*u[i+1,j]+26*u[i+2,j]-24*u[i+3,j]+11*u[i+4,j]-2*u[i+5,j])/Dx^4$
+d4udx4_mo_bkd : (3*u[i,j]-14*u[i-1,j]+26*u[i-2,j]-24*u[i-3,j]+11*u[i-4,j]-2*u[i-5,j])/Dx^4$
 
-d4udy4_mo_fwd : (3*u[i,j]-14*u[i,j+1]+26*u[i,j+2]-24*u[i,j+3]+11*u[i,j+4]-2*u[i,j+5])/dy^4$
-d4udy4_mo_bkd : (3*u[i,j]-14*u[i,j-1]+26*u[i,j-2]-24*u[i,j-3]+11*u[i,j-4]-2*u[i,j-5])/dy^4$
+d4udy4_mo_fwd : (3*u[i,j]-14*u[i,j+1]+26*u[i,j+2]-24*u[i,j+3]+11*u[i,j+4]-2*u[i,j+5])/Dy^4$
+d4udy4_mo_bkd : (3*u[i,j]-14*u[i,j-1]+26*u[i,j-2]-24*u[i,j-3]+11*u[i,j-4]-2*u[i,j-5])/Dy^4$
 
 eq_b1_esq : d4udx4_mo_fwd + d4udy4_mo_fwd + 2*d4udx2dy2$
 ratsimp(%);

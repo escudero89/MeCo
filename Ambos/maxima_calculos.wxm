@@ -53,10 +53,22 @@ Nodos de borde interior (excluidas esquinas de nodo interior) [apoyo empotrado, 
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-u_fic[i,j-1] : du_dada[i,0]*Dy*2-u[i,j+1];
-u_fic[i,j+1] : du_dada[i,N]*Dy*2+u[i,j-1];
-u_fic[i-1,j] : du_dada[0,j]*Dx*2-u[i+1,j];
-u_fic[i+1,j] : du_dada[M,j]*Dx*2+u[i-1,j];
+u_fic[i,j-1] : u[i,j+1]-du_dada[i,0]*Dy*2$
+u_fic[i,j+1] : du_dada[i,N]*Dy*2+u[i,j-1]$
+u_fic[i-1,j] : u[i+1,j]-du_dada[0,j]*Dx*2$
+u_fic[i+1,j] : du_dada[M,j]*Dx*2+u[i-1,j]$
+
+eq_b1_int : subst(u_fic[i,j-1], u[i,j-2], eq)$
+ratsimp(%);
+
+eq_b2_int : subst(u_fic[i+1,j], u[i+2,j], eq)$
+ratsimp(%);
+
+eq_b3_int : subst(u_fic[i,j+1], u[i,j+2], eq)$
+ratsimp(%);
+
+eq_b4_int : subst(u_fic[i-1,j], u[i-2,j], eq)$
+ratsimp(%);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]

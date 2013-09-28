@@ -71,6 +71,9 @@ function [ phi ] = placa_2d (
     Ex_interior = 14 * dx4 + 4 * dx2 * dy2;
     Ey_interior = 14 * dy4 + 4 * dx2 * dy2;
 
+    Fx_interior = -3 * dx4 + 4 * dx2 * dy2;
+    Fy_interior = -3 * dy4 + 4 * dx2 * dy2;
+
     alfa_x_interior = 26 * dx4;
     beta_x_interior = 24 * dx4;
     gamma_x_interior = 11 * dx4;
@@ -191,16 +194,18 @@ function [ phi ] = placa_2d (
                         Z(i, j + 1) = Z(i, j - 1) = Cy_interior;
                         Z(i + 1, j) = Cx_interior;
                         
-                        Z(i - 1, j) = Dx_interior; % <=
-
                         % Aca no mas cambia si tenemos simple o empotrado
                         if (current_cc == 0) % Simple
                             Z(i, j) = Ax_interior;
+                            Z(i - 1, j) = Dx_interior; % <=
+
                             f(pos_vec) += -1 * dx4 * dy2 * valor_cc_1(i);
 
                         elseif (current_cc == 1) % Empotrado
                             Z(i, j) = A_interior;
-                            f(pos_vec) += -2 * dx4 * dy * valor_cc_1(i);
+                            Z(i - 1, j) = Fx_interior; % <=
+
+                            f(pos_vec) += 2 * dx4 * dy * valor_cc_1(i);
 
                         else
                             error('No se ha programado para esta cc');
@@ -215,15 +220,17 @@ function [ phi ] = placa_2d (
                         Z(i, j + 1) = Cy_interior;
                         Z(i + 1, j) = Z(i - 1, j) = Cx_interior;
                         
-                        Z(i, j - 1) = Dy_interior; % <=
-
                         % Aca no mas cambia si tenemos simple o empotrado
                         if (current_cc == 0) % Simple
                             Z(i, j) = Ay_interior;
+                            Z(i, j - 1) = Dy_interior; % <=
+
                             f(pos_vec) += -1 * dy4 * dx2 * valor_cc_2(j);
 
                         elseif (current_cc == 1) % Empotrado
                             Z(i, j) = A_interior;
+                            Z(i, j - 1) = Fy_interior; % <=
+
                             f(pos_vec) += -2 * dy4 * dx * valor_cc_2(j);
 
                         else
@@ -239,15 +246,16 @@ function [ phi ] = placa_2d (
                         Z(i, j + 1) = Z(i, j - 1) = Cy_interior;
                         Z(i - 1, j) = Cx_interior;
                         
-                        Z(i + 1, j) = Dx_interior; % <=
-
                         % Aca no mas cambia si tenemos simple o empotrado
                         if (current_cc == 0) % Simple
                             Z(i, j) = Ax_interior;
+                            Z(i + 1, j) = Dx_interior; % <=
                             f(pos_vec) += -1 * dx4 * dy2 * valor_cc_3(i);
 
                         elseif (current_cc == 1) % Empotrado
                             Z(i, j) = A_interior;
+                            Z(i + 1, j) = Fx_interior; % <=
+
                             f(pos_vec) += -2 * dx4 * dy * valor_cc_3(i);
 
                         else
@@ -262,17 +270,18 @@ function [ phi ] = placa_2d (
 
                         Z(i, j - 1) = Cy_interior;
                         Z(i + 1, j) = Z(i - 1, j) = Cx_interior;
-                        
-                        Z(i, j + 1) = Dy_interior; % <=
 
                         % Aca no mas cambia si tenemos simple o empotrado
                         if (current_cc == 0) % Simple
                             Z(i, j) = Ay_interior;
+                            Z(i, j + 1) = Dy_interior; % <=
                             f(pos_vec) += -1 * dy4 * dx2 * valor_cc_4(j);
 
                         elseif (current_cc == 1) % Empotrado
                             Z(i, j) = A_interior;
-                            f(pos_vec) += -2 * dy4 * dx * valor_cc_4(j);
+                            Z(i, j + 1) = Fy_interior; % <=
+
+                            f(pos_vec) += 2 * dy4 * dx * valor_cc_4(j);
 
                         else
                             error('No se ha programado para esta cc');

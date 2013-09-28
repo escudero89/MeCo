@@ -31,7 +31,7 @@ u_fic[i+1,j] : d2u_dada[M,j]*Dx^2+2*u[i,j]-u[i-1,j]$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
-Nodos de borde interior (excluida esquinas de nodo interior)
+Nodos de borde interior (excluida esquinas de nodo interior) [apoyo simple]
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -46,6 +46,17 @@ ratsimp(%);
 
 eq_b4_int : subst(u_fic[i-1,j], u[i-2,j], eq)$
 ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Nodos de borde interior (excluidas esquinas de nodo interior) [apoyo empotrado, u' = 0]
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+u_fic[i,j-1] : du_dada[i,0]*Dy*2-u[i,j+1];
+u_fic[i,j+1] : du_dada[i,N]*Dy*2+u[i,j-1];
+u_fic[i-1,j] : du_dada[0,j]*Dx*2-u[i+1,j];
+u_fic[i+1,j] : du_dada[M,j]*Dx*2+u[i-1,j];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]

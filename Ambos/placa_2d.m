@@ -94,7 +94,7 @@ function [ phi ] = placa_2d (
     es_interior = zeros(length(phi), 1);
 
     % Lo armamos como matriz
-    ES_INTERIOR = reshape(es_interior, cant_y, cant_x)
+    ES_INTERIOR = reshape(es_interior, cant_y, cant_x);
 
     % Bordes en orden antihorario
     borde = [1 2 3 4];
@@ -185,8 +185,6 @@ function [ phi ] = placa_2d (
                     % Borde inferior
                     case {1}
 
-                        Z(i, j) = Ax_interior;
-
                         Z(i - 2, j) = dx4;
                         Z(i, j + 2) = Z(i, j - 2) = dy4;
 
@@ -194,14 +192,23 @@ function [ phi ] = placa_2d (
                         Z(i + 1, j) = Cx_interior;
                         
                         Z(i - 1, j) = Dx_interior; % <=
-                        
-                        f(pos_vec) += -1 * dx4 * dy2 * valor_cc_1(i);
+
+                        % Aca no mas cambia si tenemos simple o empotrado
+                        if (current_cc == 0) % Simple
+                            Z(i, j) = Ax_interior;
+                            f(pos_vec) += -1 * dx4 * dy2 * valor_cc_1(i);
+
+                        elseif (current_cc == 1) % Empotrado
+                            Z(i, j) = A_interior;
+                            f(pos_vec) += -2 * dx4 * dy * valor_cc_1(i);
+
+                        else
+                            error('No se ha programado para esta cc');
+                        end
 
                     % Borde derecha
                     case {2}
 
-                        Z(i, j) = Ay_interior;
-        
                         Z(i, j - 2) = dy4;
                         Z(i + 2, j) = Z(i - 2, j) = dx4;
 
@@ -210,12 +217,22 @@ function [ phi ] = placa_2d (
                         
                         Z(i, j - 1) = Dy_interior; % <=
 
-                        f(pos_vec) += -1 * dy4 * dx2 * valor_cc_2(j);
+                        % Aca no mas cambia si tenemos simple o empotrado
+                        if (current_cc == 0) % Simple
+                            Z(i, j) = Ay_interior;
+                            f(pos_vec) += -1 * dy4 * dx2 * valor_cc_2(j);
+
+                        elseif (current_cc == 1) % Empotrado
+                            Z(i, j) = A_interior;
+                            f(pos_vec) += -2 * dy4 * dx * valor_cc_2(j);
+
+                        else
+                            error('No se ha programado para esta cc');
+                        end
 
                     % Borde superior
                     case {3}
-                        Z(i, j) = Ax_interior;
-        
+
                         Z(i + 2, j) = dx4;
                         Z(i, j + 2) = Z(i, j - 2) = dy4;
 
@@ -224,12 +241,21 @@ function [ phi ] = placa_2d (
                         
                         Z(i + 1, j) = Dx_interior; % <=
 
-                        f(pos_vec) += -1 * dx4 * dy2 * valor_cc_3(i);
+                        % Aca no mas cambia si tenemos simple o empotrado
+                        if (current_cc == 0) % Simple
+                            Z(i, j) = Ax_interior;
+                            f(pos_vec) += -1 * dx4 * dy2 * valor_cc_3(i);
+
+                        elseif (current_cc == 1) % Empotrado
+                            Z(i, j) = A_interior;
+                            f(pos_vec) += -2 * dx4 * dy * valor_cc_3(i);
+
+                        else
+                            error('No se ha programado para esta cc');
+                        end
 
                     % Borde izquierda
                     case {4}
-
-                        Z(i, j) = Ay_interior;
         
                         Z(i, j + 2) = dy4;
                         Z(i + 2, j) = Z(i - 2, j) = dx4;
@@ -239,7 +265,18 @@ function [ phi ] = placa_2d (
                         
                         Z(i, j + 1) = Dy_interior; % <=
 
-                        f(pos_vec) += -1 * dy4 * dx2 * valor_cc_4(j);
+                        % Aca no mas cambia si tenemos simple o empotrado
+                        if (current_cc == 0) % Simple
+                            Z(i, j) = Ay_interior;
+                            f(pos_vec) += -1 * dy4 * dx2 * valor_cc_4(j);
+
+                        elseif (current_cc == 1) % Empotrado
+                            Z(i, j) = A_interior;
+                            f(pos_vec) += -2 * dy4 * dx * valor_cc_4(j);
+
+                        else
+                            error('No se ha programado para esta cc');
+                        end
 
                     otherwise
                         error('Error: valor invalido en switch (borde interior)');
@@ -365,7 +402,7 @@ function [ phi ] = placa_2d (
 
             % Si avanzamos en x, lo transponemos (el reshape es por columnas)
             if (!ir_dir_y)
-                Z = Z'
+                Z = Z';
             end
 
             % Reshape a vector
@@ -379,7 +416,7 @@ function [ phi ] = placa_2d (
 
     [K f]
     
-    K_vec = reshape(K(es_interior==1,:)(1, :), cant_y, cant_x)
+    K_vec = reshape(K(es_interior==1,:)(1, :), cant_y, cant_x);
 
     phi = K \ f;
     
@@ -391,7 +428,7 @@ function [ phi ] = placa_2d (
     % Mapeamos punto phi a coordenada x,y
     i = 1;
     PHI = [];
-    length(phi)
+    
     while  i < length(phi)
     
         if (ir_dir_y)

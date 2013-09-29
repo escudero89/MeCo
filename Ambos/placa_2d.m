@@ -158,7 +158,7 @@ function [ phi ] = placa_2d (
             % Posicion actual en formato vector
             pos_vec = coord2vec(j, i, ir_dir_y, cant_nodo_en_dir);
             
-            f(pos_vec) = (q / D) * dx4 * dy4;
+            f(pos_vec) = (q(j * dx, i * dy) / D) * dx4 * dy4;
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % Si hay un 0, es porque es un nodo interior: stencil de 8 puntos.
@@ -425,7 +425,7 @@ function [ phi ] = placa_2d (
 
     [K f]
     
-    K_vec = reshape(K(es_interior==1,:)(1, :), cant_y, cant_x);
+    K_vec = reshape(K(es_interior == 1,:)(1, :), cant_y, cant_x);
 
     phi = K \ f;
     

@@ -1,42 +1,42 @@
 function M = refinar_malla(figura, malla_x, malla_y, lim_subd = 1, tol = 0)
   
   # Transformamos Malla en arbol de elementos.
-#  for( i = 1 : length(malla_x) - 1 )
-#    for( j = 1 : length(malla_y) - 1 )
-#    
-#      M{i,j} = Elemento([
-#        malla_x(i), malla_y(j)
-#        malla_x(i), malla_y(j+1)
-#        malla_x(i+1), malla_y(j+1)
-#        malla_x(i+1), malla_y(j)
-#        ]);
-#      endfor
-#  endfor
+  for( i = 1 : length(malla_x) - 1 )
+    for( j = 1 : length(malla_y) - 1 )
+    
+      M{i,j} = Elemento([
+        malla_x(i), malla_y(j)
+        malla_x(i), malla_y(j+1)
+        malla_x(i+1), malla_y(j+1)
+        malla_x(i+1), malla_y(j)
+        ]);
+      endfor
+  endfor
  
 
-  M = Elemento([-2 -2; -2 2; 2 2; 2 -2]);
+#  M = Elemento([-2 -2; -2 2; 2 2; 2 -2]);
   
   
   # Ploteo inicial.
-  hold on;
-  plot(figura.x, figura.y, 'dr');
-  plot(M);
-  #plot_malla(M);
-  hold off;
+#  hold on;
+#  plot(figura.x, figura.y, 'dr');
+##  plot(M);
+#  plot_malla(M);
+#  hold off;
   
   # Recorro la malla M para buscar elementos a subdividir.
-#  for( j = 1 : size(M)(2) )
-#    for( i = 1 : size(M)(1) )  
+  for( j = 1 : size(M)(2) )
+    for( i = 1 : size(M)(1) )  
       
-#      if( hay_interseccion(M{i,j}, figura) )
-       if(hay_interseccion(M,figura))  
-        M = subdividir(M, figura, 1, lim_subd);
-        #M{i,j} = subdividir(M{i,j}, figura, 1, lim_subd);
+      if( hay_interseccion(M{i,j}, figura) )
+#       if(hay_interseccion(M,figura))  
+#        M = subdividir(M, figura, 1, lim_subd);
+        M{i,j} = subdividir(M{i,j}, figura, 1, lim_subd);
         
       endif
      
-#    endfor
-#  endfor
+    endfor
+  endfor
 
 endfunction
 

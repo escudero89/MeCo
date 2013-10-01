@@ -15,8 +15,8 @@ function plot_malla(M, etiquetado = 0)
             x_center = dx/3 + M{i,j}(1,1);
             y_center = dy/2 + M{i,j}(1,2);
           
-            x_c = x_center ;#+ (i-1) * dx;
-            y_c = y_center ;#+ (j-1) * dy;
+            x_c = x_center;
+            y_c = y_center;
             
             label = strcat("E=", num2str(i),",", num2str(j));
             plot(M{i,j});

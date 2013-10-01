@@ -1,0 +1,26 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+d2_x : (phi[i-1,j]-2*phi[i,j]+phi[i+1,j])/Dr^2;
+d2_y : (phi[i,j-1]-2*phi[i,j]+phi[i,j+1])/Dtheta^2;
+
+d_x : (phi[i+1,j]-phi[i-1,j])/(2*Dr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq : d2_x+1/r*d_x+1/r^2*d2_y+1/k*g=0;
+ratsimp(%);
+
+n_fic : c/k*Dr*phi[inf]-c/k*Dr*phi[i,j]+phi[i-1,j];
+
+subst(n_fic, phi[i+1,j], eq);
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+((4*Dtheta^2*phi[i,j]-4*Dtheta^2*phi[i-1,j])*k+2*c*Dr*Dtheta^2*phi[i,j]-2*Dr^2*Dtheta^2*g-2*phi[inf]*c*Dr*Dtheta^2)*r^2+(c*Dr^2*Dtheta^2*phi[i,j]-phi[inf]*c*Dr^2*Dtheta^2)*r+(-2*Dr^2*phi[i,j+1]+4*Dr^2*phi[i,j]-2*Dr^2*phi[i,j-1])*k;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

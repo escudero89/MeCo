@@ -1,47 +1,98 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
 /* [ Created with wxMaxima version 12.04.0 ] */
 
+/* [wxMaxima: title   start ]
+Cálculo de una Viga 1D (soporte libre)
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuación general: EI * d^4(phi)/dx^4 + k * phi = q(x)
+con a = k*dx^4/EI.
+   [wxMaxima: comment end   ] */
+
 /* [wxMaxima: input   start ] */
+"Ecuación general en diferencias finitas:"$
+
 eq : phi[i-2]-4*phi[i-1]+(6+a+0*k*dx^4/EI)*phi[i]-4*phi[i+1]+phi[i+2]=q(x)*dx^4/EI;
+
+"Aproximaciones de la tercera y segunda derivada:"$
 
 eq_3 : (-phi[i-2]+2*phi[i-1]-2*phi[i+1]+phi[i+2])/(2*dx^3)=d3u;
 
 eq_2 : (phi[i-1]-2*phi[i]+phi[i+1])/dx^2=d2u;
+/* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: section start ]
+Evalúo en los extremos las derivadas
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Supongo soporte libre en ambos extremos (puedo usar solo una de las ecuaciones en otro caso)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
 ext0_2 : subst(0, i, eq_2);
-extL_2 : subst(L, i, eq_2);
-
 sol0_2 : solve(ext0_2,phi[-1]);
-solL_2 : solve(extL_2,phi[L+1]);
 
+"";
+
+extL_2 : subst(L, i, eq_2);
+solL_2 : solve(extL_2,phi[L+1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Armo las diff finitas de las derivadas tercera (que voy a reemplazar por lo que despejé antes)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
 ext0_3 : subst(0, i, eq_3);
 extL_3 : subst(L, i, eq_3);
+/* [wxMaxima: input   end   ] */
 
-"Despejadas las variables";
+/* [wxMaxima: comment start ]
+Luego de esto, obtengo la ecuación para despejar los dos nodos ficticios que restan
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
 sol_0 : solve(subst(args(sol0_2[1])[2], phi[-1], ext0_3), phi[-2])[1];
+
+"";
+
 sol_L : solve(subst(args(solL_2[1])[2], phi[L+1], extL_3), phi[L+2])[1];
+/* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: subsect start ]
+Voy a tener dos conjuntos de ecuaciones
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+El primer conjunto son para los nodos phi(0) y phi(L)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
 eq_0 : subst(0, i, eq);
-eq_L : subst(L, i, eq);
-
-"--------------------------------------------";
 subst(args(sol0_2[1])[2], phi[-1], eq_0);
 subst(args(sol_0)[2], phi[-2], %);
 ratsimp(%);
 
-"--------------------------------------------";
+"----------------------------------------------------------------------------------------";
+
+eq_L : subst(L, i, eq);
 subst(args(solL_2[1])[2], phi[L+1], eq_L);
 subst(args(sol_L)[2], phi[L+2], %);
 ratsimp(%);
+/* [wxMaxima: input   end   ] */
 
-"--------------------------------------------";
-"--------------------------------------------";
+/* [wxMaxima: comment start ]
+Y aca obtengo los phi(1) y phi(L-1) (partiendo de la ecuación general)
+   [wxMaxima: comment end   ] */
 
+/* [wxMaxima: input   start ] */
 eq_1 : subst(1, i, eq);
 subst(args(sol0_2[1])[2], phi[-1], eq_1);
 ratsimp(%);
 
-"--------------------------------------------";
+"----------------------------------------------------------------------------------------";
 
 eq_L_1 : subst(L-1, i, eq);
 subst(args(solL_2[1])[2], phi[L+1], eq_L_1);

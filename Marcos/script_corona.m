@@ -5,24 +5,24 @@ clc;
 
 function [ret] = fuente(r, tita)
 
-  ret = r^2;
+  ret = 1;
 
 endfunction
 
 
 cant_r = 20;          
 cant_tita = 28;      
-r1 = 1;             
+r1 = 0.01;             
 r2 = 3;          
 tita1 = 0;   
-tita2 = pi/2;       
+tita2 = 2*pi;       
 Q = @fuente;       
 k = 1 * ones(cant_r,cant_tita);
 
 cond_contorno = [1 1 0 1];  # Un array que indica si estamos ante dirichlet (0) o neumann (1)
 valor_cc_1 = 0 * ones(cant_tita,1);
 valor_cc_2 = 0 * ones(cant_r,1); 
-valor_cc_3 = 0 * ones(cant_tita,1);
+valor_cc_3 = 10 * ones(cant_tita,1);
 valor_cc_4 = 0 * ones(cant_r,1);
 
 conduccion_calor_corona(

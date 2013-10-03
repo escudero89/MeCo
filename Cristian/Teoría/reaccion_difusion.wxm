@@ -1,0 +1,36 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+c : 10$
+k : 0.01$
+q : 0$
+y_eq : 0$
+L : 1$
+/*kill(c,k,q);
+assume(c>0,k>0);*/
+d;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+k*'diff(y,x,2)-c*(y-y_eq)=-q;
+ode2(%, y, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq : bc2(%, x=0, y=1, x=1, y=1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsubst(theta/L, sqrt(c)/sqrt(k), %)$
+
+limit : float(sqrt(k)/sqrt(c));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([rhs(eq)], [x, 0, 1]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

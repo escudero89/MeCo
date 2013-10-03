@@ -1,0 +1,56 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+kill(z);
+h : 2/3;
+eq : (y[i-1]-2*y[i]+y[i+1])/h^2+(1-x[i]/5)*(y[i+1]-y[i-1])/(2*h)*y[i]-x[i];
+radcan(eq, [y[i-1],y[i],y[i+1]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z : makelist(k, k, 1, 3, 2/3);
+zz : makelist(x[i]=z[i], i, 1, 4);
+
+J : matrix([
+ratsimp(subst([zz], diff(subst(2,i,eq), y[2]))),
+ratsimp(subst([zz], diff(subst(2, i,eq), y[3])))
+],[
+ratsimp(subst([zz], diff(subst(3,i,eq), y[2]))),
+ratsimp(subst([zz], diff(subst(3,i,eq), y[3])))
+])$
+
+y0 : [2, 0.1538773443536, -.85400574054926, -1];
+yy : makelist(y[i]=y0[i], i, 1, 4);
+
+R : matrix([
+ratsimp(subst([yy], (subst([zz], subst(2, i,eq))))),
+ratsimp(subst([yy], (subst([zz], subst(3,i,eq)))))
+])$
+
+delta : -invert(subst([yy], J)) . R;
+
+float(y0[2] + delta[1]);
+float(y0[3] + delta[2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load('contrib_ode)$
+
+'diff(y,x,2)+(1-x/5)*'diff(y,x)*y=x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+contrib_ode(%, y, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eqn:'diff(y,x)^2+x*'diff(y,x)-y=0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+contrib_ode(%, y, x);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

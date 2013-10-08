@@ -1,17 +1,35 @@
 function print_malla(M)
 
-    for k = 1 : length(M.celdas)
+	print_malla_helper(M.celdas);
 
- 		celda = M.celdas{k};
+endfunction
 
- 		Xs = get_points(celda);
+function print_malla_helper(celdas)
 
-        Xs = [Xs; Xs(1, :)];
+	for k = 1 : length(celdas)
 
-        Us = get_state(celda) * ones(4 + 1, 1);
+    	if (isempty(get_childs(celdas{k})))
 
-        patch(Xs(:,1), Xs(:,2), Us(:,1));
+	 		celda = celdas{k};
 
-    end
+	 		Xs = get_points(celda);
+
+	        Xs = [Xs; Xs(1, :)];
+
+	        Us = get_state(celda) * ones(4 + 1, 1);
+
+	        patch(Xs(:,1), Xs(:,2), Us(:,1));
+
+	        text(.5 * (get_points(celdas{k})(2,1) + get_points(celdas{k})(1,1)), 
+	        	.5 * (get_points(celdas{k})(4,2) + get_points(celdas{k})(1,2)),
+	        	num2str(get_state(celdas{k})));
+
+		else
+	    	
+	    	% Recorremos sus cuatros hijos
+	    	print_malla_helper(get_childs(celdas{k}));
+
+	    end
+	end
 
 endfunction

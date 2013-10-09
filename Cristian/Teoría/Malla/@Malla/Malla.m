@@ -29,7 +29,7 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto)
 
 	% Voy recorriendo cada elemento de objeto, y marcando el estado nuevo en las celdas
 	elementos = get_elementos(objeto);
-
+%%%@TODO ACA
 	for k = 1 : length(elementos)
 
 		actual_ele = elementos{k};
@@ -46,9 +46,32 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto)
 
 			punto_actual = (1 - alfa) * actual_P1 + alfa * actual_P2;
 
+			% Para obtener la normal apropiada 
+			k_izq = k + 1;
+			k_der = k - 1;
+
+			% Lo hacemos ciclico por las dudas
+			if k_der < 1, k_der = length(elementos); end
+			if k_izq > length(elementos), k_izq = 1; end
+
+			% Obtengo las tres normales, y obtengo una normal
+			normal_arista_izq = get(elementos{k_izq}{4});
+			normal_arista_cur = get(actual_ele{4});
+			normal_arista_der = get(elementos{k_der}{4});
+			
+			normal_coeff = [
+				max(-2 * (alfa - 1/4), 0) * normal_arista_der ;
+				max(1 - abs(alfa - 1/2), 0) * normal_arista_cur ;
+				max(2 * alfa - 3/2, 0) * normal_arista_izq ;
+			];
+
+			% Obtenemos la normal mas correcta
+			normal = sum(normal_coeff);
+			normal /= norm(normal);
+
 			for kCelda = 1 : length(M.celdas)
 
-				M.celdas{kCelda} = set_in_state(M.celdas{kCelda}, punto_actual, actual_ele{1});
+				M.celdas{kCelda} = set_in_state(M.celdas{kCelda}, punto_actual, actual_ele{1}, normal);
 
 			end
 

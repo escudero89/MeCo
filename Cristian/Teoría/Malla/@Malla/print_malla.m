@@ -22,7 +22,7 @@ function print_malla_helper(celdas)
 
 	        text(.5 * (get_points(celdas{k})(2,1) + get_points(celdas{k})(1,1)), 
 	        	.5 * (get_points(celdas{k})(4,2) + get_points(celdas{k})(1,2)),
-	        	num2str(get_state(celdas{k})));
+	        	[ num2str(get_state(celdas{k})) ' [' num2str(k) ']' ]);
 
 		else
 	    	

@@ -1,11 +1,26 @@
-function display(M)
+function display(M, idx = 0)
 
-	for k = 1 : length(M.celdas)
+	% Es decir, le pasamos una celda
+	if (nargin == 2)
+
+		display_helper(M, idx);
 		
-		fprintf('= CELDA NUMERO %d (state: %d) =\n', k, get_state(M.celdas{k}));
-		display(M.celdas{k});
-		fprintf('--------------------------------------------\n\n');
+	else
+
+		for k = 1 : length(M.celdas)
+			
+			display_helper(M, k);
+
+		end
 
 	end
 
 endfunction
+
+function display_helper(M, idx)
+
+	fprintf('= CELDA NUMERO %d (state: %d) =\n', idx, get_state(M.celdas{idx}));
+	display(M.celdas{idx});
+	fprintf('--------------------------------------------\n\n');
+
+end

@@ -1,5 +1,5 @@
 % Mide la distancia entre dos puntos
-function d = distancia (P1, P2, norma = 1)
+function d = distancia (P1, P2, norma = 2)
 
 	if (strcmp (class (P1), 'Punto'))
 		P1 = get(P1);

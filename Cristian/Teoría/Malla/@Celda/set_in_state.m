@@ -3,15 +3,28 @@
 %% C = celda 
 %% P = punto a comparar
 %% tag = etiqueta de la arista del objeto
+%% normal = valor de la normal mas cercana
 %% state = nuevo estado a asignar
 %% depth = profundidad a descender con los hijos
 
-function C = set_in_state(C, P, tag, state = 2, depth = 0)
+function C = set_in_state(C, P, tag, normal, state = 2, depth = 0)
 
-	MAX_DEPTH = 1;
+	MAX_DEPTH = 0;
 
 	% Saco la distancia entre el punto y el punto central de la celda
 	D_P_C = distancia(P, C.punto_central);
+
+	% Si no hay una normal asignada, o si la distancia a la normal es la menor, se la asignamos
+	if (isempty(C.normal_mas_cercana) || D_P_C <= C.normal_mas_cercana(2))
+		C.normal_mas_cercana = [ tag , D_P_C , normal ];
+		C.punto_mas_cercano = P;
+	end
+
+	if (get(C.punto_central) == [2.25 , 3.75, 0]), 
+			D_P_C 
+			C.normal_mas_cercana
+	C
+	end
 
 	% Solo hacemos todo lo siguiente si el nuevo estado es diferente al anterior
 	% O si ya llegamos a la maxima profundidad
@@ -42,18 +55,13 @@ function C = set_in_state(C, P, tag, state = 2, depth = 0)
 
 				for h = 1 : length(C.hijos)
 
-					C.hijos{h} = set_in_state(C.hijos{h}, P, tag, state + 1, depth + 1);
+					C.hijos{h} = set_in_state(C.hijos{h}, P, tag, normal, state + 1, depth + 1);
 
 				end
 
 			end
 		end
 
-	end
-
-	% Si no hay una arista asignada, o si la distancia a la arista es la menor, se la asignamos
-	if (isempty(C.arista_mas_cercana) || D_P_C <= C.arista_mas_cercana(2))
-		C.arista_mas_cercana = [ tag , D_P_C ];
-	end
+	end	
 
 endfunction

@@ -30,8 +30,9 @@ function C = Celda (origen, dx, dy, state = 1)
 
      C.state = state;
 
-     % Aca guardaremos la etiqueta de la arista del objeto mas cercana, y la distancia a ella
-     C.arista_mas_cercana = [];
+     % Aca guardaremos el valor de la normal mas cercana, y la distancia a ella
+     C.normal_mas_cercana = [0, 9999, 0, 0, 0];
+     C.punto_mas_cercano = []; %y el valor del punto mas cercano
 
      % Y aca guardo a sus hijos (si tiene)
      C.hijos = {};

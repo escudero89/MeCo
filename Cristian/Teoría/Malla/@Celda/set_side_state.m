@@ -4,14 +4,14 @@ function C = set_side_state(C, objetos)
 
 	if (isempty(C.hijos))
 
-		objeto = objetos{C.arista_mas_cercana(1)};
+		objeto = objetos{C.normal_mas_cercana(1)};
 
-		punto_medio_arista = .5 * (get(objeto{2}) + get(objeto{3}));
+		punto_medio_arista = .75 * C.punto_mas_cercano + .125 * (get(objeto{2}) + get(objeto{3}));
 
 		vector = punto_medio_arista - get(C.punto_central);
 
 		% Ahora comparo con la normal mas cercana, si coinciden en producto punto, van pa el mismo lado
-		if (dot(vector, get(objeto{4})) <= 0)
+		if (dot(vector, C.normal_mas_cercana(3:end)) <= 0)
 			C.state = -abs(get_state(C));
 		end
 

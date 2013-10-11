@@ -9,25 +9,12 @@
 
 function C = set_in_state(C, P, tag, normal, state = 2, depth = 0)
 
-	MAX_DEPTH = 0;
+	MAX_DEPTH = 1;
 
 	% Saco la distancia entre el punto y el punto central de la celda
 	D_P_C = distancia(P, C.punto_central);
 
-	% Si no hay una normal asignada, o si la distancia a la normal es la menor, se la asignamos
-	if (isempty(C.normal_mas_cercana) || D_P_C <= C.normal_mas_cercana(2))
-		C.normal_mas_cercana = [ tag , D_P_C , normal ];
-		C.punto_mas_cercano = P;
-	end
-
-	if (get(C.punto_central) == [2.25 , 3.75, 0]), 
-			D_P_C 
-			C.normal_mas_cercana
-	C
-	end
-
-	% Solo hacemos todo lo siguiente si el nuevo estado es diferente al anterior
-	% O si ya llegamos a la maxima profundidad
+	% Solo hacemos todo lo siguiente si no llegamos a la maxima profundidad
 
 	if (depth <= MAX_DEPTH)%C.state != state)
 
@@ -41,18 +28,23 @@ function C = set_in_state(C, P, tag, normal, state = 2, depth = 0)
 			if (is_inside(C, P))
 				C.state = state;
 
-				% Creamos los hijos
-				Points = get_points(C);
-				dx_child = (Points(2, 1) - Points(1, 1)) / 2;
-				dy_child = (Points(4, 2) - Points(1, 2)) / 2;
+				% Creamos los hijos (si es que no existen ya, recordar que entramos varias veces aca)
+				if (isempty(C.hijos))
 
-				C.hijos = {
-					Celda(Points(1, :), dx_child, dy_child, C.state) ;
-					Celda(Points(1, :) + [ dx_child, 0 , 0], dx_child, dy_child, C.state) ;
-					Celda(Points(1, :) + [ dx_child, dy_child , 0 ], dx_child, dy_child, C.state) ;
-					Celda(Points(1, :) + [ 0, dy_child , 0], dx_child, dy_child, C.state) ;
-				};
+					Points = get_points(C);
+					dx_child = (Points(2, 1) - Points(1, 1)) / 2;
+					dy_child = (Points(4, 2) - Points(1, 2)) / 2;
 
+					C.hijos = {
+						Celda(Points(1, :), dx_child, dy_child, C.state) ;
+						Celda(Points(1, :) + [ dx_child, 0 , 0], dx_child, dy_child, C.state) ;
+						Celda(Points(1, :) + [ dx_child, dy_child , 0 ], dx_child, dy_child, C.state) ;
+						Celda(Points(1, :) + [ 0, dy_child , 0], dx_child, dy_child, C.state) ;
+					};
+
+				end
+
+				% Y volvemos a recorrer todo
 				for h = 1 : length(C.hijos)
 
 					C.hijos{h} = set_in_state(C.hijos{h}, P, tag, normal, state + 1, depth + 1);
@@ -63,5 +55,11 @@ function C = set_in_state(C, P, tag, normal, state = 2, depth = 0)
 		end
 
 	end	
+
+	% Si no hay una normal asignada, o si la distancia a la normal es la menor, se la asignamos
+	if (D_P_C <= C.normal_mas_cercana(2))
+		C.normal_mas_cercana = [ tag , D_P_C , normal ];
+		C.punto_mas_cercano = P;
+	end
 
 endfunction

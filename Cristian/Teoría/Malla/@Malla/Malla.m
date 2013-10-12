@@ -5,7 +5,7 @@
 ## El objeto esta definido dentro de ella.
 ## @end deftypefn
 
-function M = Malla (lim_x, lim_y, dx, dy, objeto)
+function M = Malla (lim_x, lim_y, dx, dy, objeto, max_depth)
 
 	Lx = [lim_x(1) : dx : lim_x(2) - dx];
 	Ly = [lim_y(1) : dy : lim_y(2) - dy];
@@ -29,7 +29,7 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto)
 
 	% Voy recorriendo cada elemento de objeto, y marcando el estado nuevo en las celdas
 	elementos = get_elementos(objeto);
-%%%@TODO ACA
+
 	for k = 1 : length(elementos)
 
 		actual_ele = elementos{k};
@@ -71,7 +71,8 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto)
 
 			for kCelda = 1 : length(M.celdas)
 
-				M.celdas{kCelda} = set_in_state(M.celdas{kCelda}, punto_actual, actual_ele{1}, normal);
+				M.celdas{kCelda} = ...
+					set_in_state(M.celdas{kCelda}, punto_actual, actual_ele{1}, normal, max_depth);
 
 			end
 
@@ -83,6 +84,11 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto)
 	for k = 1 : length(M.celdas)
 
 		M.celdas{k} = set_side_state(M.celdas{k}, elementos);
+
+		% Refino la malla (no vuelvo a reevaluar de que lado esta)
+		if (get_state(M.celdas{k}) > 0)
+			M.celdas{k} = create_childs(M.celdas{k}, max_depth, true);
+		end
 
 	end
 

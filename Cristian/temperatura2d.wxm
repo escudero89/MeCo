@@ -1,0 +1,36 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Cálculo de conducción de temperatura 2D
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuación General (ya planteé phi en i,j por motivos de resolución):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+eq_estacionaria : k*('diff(phi,x,2)+'diff(phi,y,2))+c*(phi[i,j]-phi[amb])+Q=0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuaciones de aproximación de derivadas en diferencias finitas:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+d2phi_x : (phi[i-1,j]-2*phi[i,j]+phi[i+1,j])/Dx^2;
+d2phi_y : (phi[i,j-1]-2*phi[i,j]+phi[i,j+1])/Dy^2;
+
+dphi : (phi[i+1]-phi[i-1])/(2*h);
+dphi_x : (phi[i+1,j]-phi[i-1,j])/(2*Dx);
+dphi_y : (phi[i,j+1]-phi[i,j-1])/(2*Dy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq_est_diff : subst(d2phi_y, 'diff(phi,y,2), subst(d2phi_x,'diff(phi,x,2),eq_estacionaria));
+f : Q*Dx^2*Dy^2;
+solve(eq_est_diff, [Q, phi[amb]]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

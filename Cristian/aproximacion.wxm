@@ -1,0 +1,63 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+taylor : u[i+a] = u[i]+(h*a)*'diff(u,x)+(h*a)^2/2!*'diff(u,x,2)+(h*a)^3/3!*'diff(u,x,3)+(h*a)^4/4!*'diff(u,x,4)+(h*a)^5/5!*'diff(u,x,5)+E(h^5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u[i-3] : args(subst(-3, a, taylor))[2];
+u[i-2] : args(subst(-2, a, taylor))[2];
+u[i-1] : args(subst(-1, a, taylor))[2];
+u[i+1] : args(subst(1, a, taylor))[2];
+u[i+2] : args(subst(2, a, taylor))[2];
+u[i+3] : args(subst(3, a, taylor))[2];
+u[i+4] : args(subst(4, a, taylor))[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq : 'diff(u, x) = A*u[i-2]+B*u[i-1]+C*u[i]+D*u[i+1]$
+
+solve([
+coeff(ratexpand(eq), u[i]),
+coeff(ratexpand(eq), 'diff(u,x,1)),
+coeff(ratexpand(eq), 'diff(u,x,2)),
+coeff(ratexpand(eq), 'diff(u,x,3))
+],[A, B, C, D]);
+
+eq : 'diff(u, x) = A*u[i-2]+B*u[i-1]+C*u[i+1]+D*u[i+2]$
+
+solve([
+coeff(ratexpand(eq), u[i]),
+coeff(ratexpand(eq), 'diff(u,x,1)),
+coeff(ratexpand(eq), 'diff(u,x,2)),
+coeff(ratexpand(eq), 'diff(u,x,3))
+],[A, B, C, D]);
+
+eq : 'diff(u, x, 2) = A*u[i-3]+B*u[i-2]+C*u[i-1]+D*u[i]+E*u[i+1]$
+
+solve([
+coeff(ratexpand(eq), u[i]),
+coeff(ratexpand(eq), 'diff(u,x,1)),
+coeff(ratexpand(eq), 'diff(u,x,2)),
+coeff(ratexpand(eq), 'diff(u,x,3)),
+coeff(ratexpand(eq), 'diff(u,x,4))
+],[A, B, C, D, E]);
+
+eq : 'diff(u, x, 2) = A*u[i-1]+B*u[i]+C*u[i+1]+D*u[i+2]+E*u[i+3]$
+
+solve([
+coeff(ratexpand(eq), u[i]),
+coeff(ratexpand(eq), 'diff(u,x,1)),
+coeff(ratexpand(eq), 'diff(u,x,2)),
+coeff(ratexpand(eq), 'diff(u,x,3)),
+coeff(ratexpand(eq), 'diff(u,x,4))
+],[A, B, C, D, E]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve([a+b+c+d=0, -2*a-b+d=1/h,4*a+b+d=0,-8*a-b+d=0],[a,b,c,d]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

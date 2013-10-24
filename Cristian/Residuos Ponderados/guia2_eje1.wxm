@@ -1,0 +1,84 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Guia 2 : Ejercicio 1 (Galerkin)
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos algunas variables y las funciones de forma.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+M : 6;
+L : M;
+psi : x + 1;
+N : sin(pi * z * x);
+
+pi : %pi;
+
+Nm : subst(m, z, N);
+Nl : subst(l, z, N);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Formamos nuestra ecuacion general a resolver ('' evalua la funcion).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lhs(m,l) := integrate(''(Nl*Nm), x, 0, 1);
+
+rhs(l) := integrate(''(Nl*(-x+sin(pi/2*x))), x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Creamos a K_lm y a_m:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+create_list(K[l,m] : lhs(m, l), m, 1, M, l, 1, L);
+
+create_list(f[l] : rhs(l), l, 1, L);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K_matrix : genmatrix(lambda([i,j], K[i,j]), L, M);
+K_inv : invert(%);
+
+f_matrix : genmatrix(lambda([i,j], f[i]), L, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para multiplicar matrices, usar . en vez de *.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+a : K_inv . f_matrix$
+float(a[1]), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq : args(psi + sum(a[m]*Nm, m, 1, M))[1];
+eq_analitica : 1 + sin(pi/2*x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ploteo ambos resultados.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([eq, eq_analitica], [x,0,1])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+err : abs(eq-eq_analitica)$
+
+wxplot2d(err, [x, 0, 1]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,98 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Guia 2: Ejercicio 2
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos algunas variables y la función de forma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+M : 2;
+L : M;
+psi : x * (x - 2);
+N : sin(pi * z * x);
+N : x^z*(x-1);
+
+pi : %pi;
+
+Nm : subst(m, z, N);
+Nl : subst(l, z, N);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos los operadores diferenciales.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+dL(phi) := 'diff(phi, x, 2) + phi;
+
+dM(phi) := 'diff(phi, x, 1) + phi;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos los valores que vamos a usar para obtener Klm y fl (ev hace una evaluacion de lo que indiques)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lhs(l,m) := integrate(''(Nl * dL(Nm)), x, 0, 1) - ''(subst(1, x, ev(''(Nl * dM(Nm)), diff)));
+
+rhs(l) := -integrate(''(Nl), x, 0, 1);
+
+lhs(l, m) := -integrate(''(diff(Nl, x)*diff(Nl, x)), x, 0, 1)+integrate(''(Nl*Nm), x, 0, 1)-''(subst(1, x, ev(''(Nl * Nm), diff)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Creamos Klm y fl
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+create_list(K[l,m] : ev(lhs(m, l), diff), m, 1, M, l, 1, L);
+
+create_list(f[l] : ev(rhs(l), diff), l, 1, L);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K_matrix : genmatrix(lambda([i,j], K[i,j]), L, M);
+K_inv : invert(%);
+
+f_matrix : genmatrix(lambda([i,j], f[i]), L, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Resolvemos la incognita.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+a : K_inv . f_matrix$
+float(a[1]), numer$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq : args(psi + sum(a[m]*Nm, m, 1, M))[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Planetamos la ec. analítica en otro documento porque aca me tira error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+eq_analitica : ((cos(1)-1)*sin(x)-sin(1)*cos(x)+sin(1))/(sin(x)-sin(1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ploteamos.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([eq, eq_analitica], [x, 0, 1]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

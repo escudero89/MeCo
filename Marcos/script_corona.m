@@ -12,7 +12,7 @@ endfunction
 
 cant_r = 20;          
 cant_tita = 28;      
-r1 = 0.01;             
+r1 = 1;             
 r2 = 3;          
 tita1 = 0;   
 tita2 = 2*pi;       

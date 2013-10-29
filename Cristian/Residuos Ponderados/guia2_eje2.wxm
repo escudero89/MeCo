@@ -16,7 +16,7 @@ Definimos algunas variables y la función de forma
 /* [wxMaxima: input   start ] */
 M : 2;
 L : M;
-psi : x * (x - 2);
+psi : 0;
 N : sin(pi * z * x);
 N : x^z*(x-1);
 
@@ -41,11 +41,10 @@ Definimos los valores que vamos a usar para obtener Klm y fl (ev hace una evalua
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
+lhs(l, m) := -integrate(''(diff(Nl, x)*diff(Nl, x)), x, 0, 1)+integrate(''(Nl*Nm), x, 0, 1)-''(subst(1, x, ev(''(Nl * Nm), diff)));
 lhs(l,m) := integrate(''(Nl * dL(Nm)), x, 0, 1) - ''(subst(1, x, ev(''(Nl * dM(Nm)), diff)));
 
-rhs(l) := -integrate(''(Nl), x, 0, 1);
-
-lhs(l, m) := -integrate(''(diff(Nl, x)*diff(Nl, x)), x, 0, 1)+integrate(''(Nl*Nm), x, 0, 1)-''(subst(1, x, ev(''(Nl * Nm), diff)));
+rhs(l) := -integrate(''(Nl*(dL(psi) + 1)), x, 0, 1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -83,7 +82,7 @@ Planetamos la ec. analítica en otro documento porque aca me tira error.
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-eq_analitica : ((cos(1)-1)*sin(x)-sin(1)*cos(x)+sin(1))/(sin(x)-sin(1));
+eq_analitica : -((cos(1)-1)*sin(x)-sin(1)*cos(x)+sin(1))/sin(1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]

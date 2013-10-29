@@ -8,7 +8,7 @@ ode2(%, phi, x);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-bc2(%, x=0, phi=0, x=1, 'diff(phi, x)=-phi);
+bc2(%, x=0, phi=0, x=1, phi=0);
 solve(%, phi);
 
 rhs(args(%)[1]);

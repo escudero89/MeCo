@@ -12,17 +12,18 @@
      ## @end deftypefn
      ## 
      
-     function E = Elemento (VecElem) 
+     function E = Elemento (VecElem, c_puntos = []) 
        # Contructor por defecto (nargin == 0)
        if (nargin == 0)
          E.p1 = [0 0];
          E.p2 = [0 0];
          E.p3 = [0 0];
          E.p4 = [0 0];
+         E.puntos = [];
          E = class (E, "Elemento");
        
        #Constructor por copia (nargin == 1)
-       elseif (nargin == 1)
+       elseif (nargin <= 2)
          if (strcmp (class (VecElem), "Elemento")) 
            E = VecElem;
            #Constructor normal, chequeamos formato: VecElem = [x1 y1; x2 y2; x3 y3; x4 y4];
@@ -31,6 +32,7 @@
            E.p2 = VecElem(2,:);
            E.p3 = VecElem(3,:);
            E.p4 = VecElem(4,:);
+           E.puntos = c_puntos;
                       
            E = class (E, "Elemento");
            # Formato incorrecto

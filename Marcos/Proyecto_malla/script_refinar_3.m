@@ -2,15 +2,17 @@ clf;
 clear all;
 
 # Generamos puntos (circulo)
-tita = 0:pi/90:2*pi;
-rho = ones(1,length(tita));
+tita = 0:pi/800:2*pi;
+rho = (sin(tita) .* sqrt(abs(cos(tita))))./(sin(tita) + 7/5) - 2*sin(tita) + 2;
+
 figura.x = rho .* cos(tita);
 figura.y = rho .* sin(tita);
 
+
 # Generamos la malla.
-malla_x = [-1.5:1.5/3:1.5];
-malla_y = [-1.5:1.5/3:1.5];
-lim_subd = 3;
+malla_x = [-3:1:3];
+malla_y = [-5:1:1];
+lim_subd = 4;
 #tol = 0.04;
 tol = 0.01;
 # Llamamos al metodo

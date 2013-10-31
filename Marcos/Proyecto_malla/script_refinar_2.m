@@ -1,16 +1,26 @@
 clf;
 clear all;
 
-# Generamos puntos (circulo)
-tita = 0:pi/90:2*pi;
-rho = ones(1,length(tita));
-figura.x = rho .* cos(tita);
-figura.y = rho .* sin(tita);
+# Generamos puntos (TRIANGULO)
+paso = 0.01;
+
+x1 = -1:paso:1;
+y1 = 1 + (x1 * 0);
+
+x2 = -1:paso:0;
+y2 = -x2;
+
+x3 = 0:paso:1;
+y3 = x3;
+
+
+figura.x = [x1 x2 x3];
+figura.y = [y1 y2 y3];
 
 # Generamos la malla.
 malla_x = [-1.5:1.5/3:1.5];
 malla_y = [-1.5:1.5/3:1.5];
-lim_subd = 3;
+lim_subd = 4;
 #tol = 0.04;
 tol = 0.01;
 # Llamamos al metodo

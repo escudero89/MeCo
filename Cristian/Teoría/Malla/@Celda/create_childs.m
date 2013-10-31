@@ -13,10 +13,10 @@ function C = create_childs(C, max_depth, recurssion = false)
 		state = (abs(C.state) + 1) * sign(C.state);
 
 		C.hijos = {
-			Celda(Points(1, :), dx_child, dy_child, state) ;
-			Celda(Points(1, :) + [ dx_child, 0 , 0], dx_child, dy_child, state) ;
-			Celda(Points(1, :) + [ dx_child, dy_child , 0 ], dx_child, dy_child, state) ;
-			Celda(Points(1, :) + [ 0, dy_child , 0], dx_child, dy_child, state) ;
+			Celda(Points(1, :), dx_child, dy_child, state, C.normal_mas_cercana, C.punto_mas_cercano) ;
+			Celda(Points(1, :) + [ dx_child, 0 , 0], dx_child, dy_child, state, C.normal_mas_cercana, C.punto_mas_cercano) ;
+			Celda(Points(1, :) + [ dx_child, dy_child , 0 ], dx_child, dy_child, state, C.normal_mas_cercana, C.punto_mas_cercano) ;
+			Celda(Points(1, :) + [ 0, dy_child , 0], dx_child, dy_child, state, C.normal_mas_cercana, C.punto_mas_cercano) ;
 		};
 
 	end

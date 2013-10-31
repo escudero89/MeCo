@@ -15,16 +15,16 @@ endfunction
 function display_helper(celda)
 	
 	fprintf('\n');
-	fprintf('Punto mas cercano {central}: [ %f , %f , %f ] { %f , %f , %f } <%f> \n', 
+	fprintf('Punto mas cercano {central}: [ %f , %f , %f ] { %f , %f , %f } \n', 
 		celda.punto_mas_cercano, 
 		get(celda.punto_central));
 
 	if (!isempty(celda.normal_mas_cercana))
-		fprintf('Normal mas cercana (%d) <%f>: ', 
+		fprintf('\nNormal mas cercana (%d) <%f, |%f, %f, %f|> [dir: %f, %f, %f]\n\n', 
 			celda.normal_mas_cercana(1), 
-			celda.normal_mas_cercana(2));
-
-		display(celda.normal_mas_cercana(3:end));
+			celda.normal_mas_cercana(2),
+			celda.normal_mas_cercana(3:end),
+			celda.punto_mas_cercano - celda.normal_mas_cercana(3:end));
 	else
 		fprintf('\n');
 	end

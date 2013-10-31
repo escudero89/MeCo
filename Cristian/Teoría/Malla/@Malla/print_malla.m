@@ -1,6 +1,13 @@
-function print_malla(M)
+function print_malla(M, objeto = [])
 
 	print_malla_helper(M.celdas);
+
+	if (!isempty(objeto))
+		hold on; 
+		plot(objeto(:,1),objeto(:,2),'xr'); 
+        plot(objeto(:,3),objeto(:,4),'xr'); 
+        hold off;
+	end
 
 endfunction
 

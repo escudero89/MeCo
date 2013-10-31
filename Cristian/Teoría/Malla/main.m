@@ -30,6 +30,9 @@ O = Objeto(objeto(:, 1:2), objeto(:, 3:4), objeto(:, 5:6));
 
 M = Malla(lim_x, lim_y, dx, dy, O, max_depth);
 toc;
-print_malla(M);
-hold on; plot(objeto(:,1),objeto(:,2),'xr'); 
-         plot(objeto(:,3),objeto(:,4),'xr'); hold off;
+
+print_old(M, objeto);
+
+pause;
+
+print_malla(M, objeto);

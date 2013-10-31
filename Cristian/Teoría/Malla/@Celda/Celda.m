@@ -6,7 +6,7 @@
 ## El STATE indica el estado de la celda (interior, exterior, etc).
 ## @end deftypefn
 
-function C = Celda (origen, dx, dy, state = 1)
+function C = Celda (origen, dx, dy, state = 1, normal_mas_cercana = [0 9999 0 0 0], punto_mas_cercano = [])
 
      if (strcmp (class (origen), 'Punto'))
           base = origen;
@@ -31,8 +31,8 @@ function C = Celda (origen, dx, dy, state = 1)
      C.state = state;
 
      % Aca guardaremos el valor de la normal mas cercana, y la distancia a ella
-     C.normal_mas_cercana = [0, 9999, 0, 0, 0];
-     C.punto_mas_cercano = []; %y el valor del punto mas cercano
+     C.normal_mas_cercana = normal_mas_cercana; %[0, 9999, 0, 0, 0];
+     C.punto_mas_cercano = punto_mas_cercano; %[]; %y el valor del punto mas cercano
 
      % Y aca guardo a sus hijos (si tiene)
      C.hijos = {};

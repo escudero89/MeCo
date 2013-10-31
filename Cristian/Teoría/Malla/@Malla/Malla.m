@@ -38,7 +38,7 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto, max_depth)
 		actual_P2 = get(actual_ele{3});
 		actual_distancia = norm(actual_P1 - actual_P2);
 
-		paso_interpolacion = min(min(dx, dy), actual_distancia)/actual_distancia;
+		paso_interpolacion = min(min(dx, dy), actual_distancia)/actual_distancia * .5;
 
 		% Interpolacion entre los dos puntos de la arista
 		% el vector unique es para motivos de tomar todos los intervalos correctos al interpolar
@@ -80,6 +80,12 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto, max_depth)
 
 	end
 
+	% Lo hago una clase
+	M = class (M, 'Malla');
+
+	% Guardo la malla que queda luego de subdividir
+	M.old = M;
+	
 	% Ahora recorremos todo de nuevo, pero para determinar lado interior y exterior del objeto
 	for k = 1 : length(M.celdas)
 
@@ -91,8 +97,6 @@ function M = Malla (lim_x, lim_y, dx, dy, objeto, max_depth)
 		end
 
 	end
-
-	M = class (M, 'Malla');
 
 endfunction
 

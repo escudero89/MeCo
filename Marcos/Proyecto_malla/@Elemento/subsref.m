@@ -55,8 +55,14 @@ function b = subsref (a, s)
                	b = a.p4;
                endif
                
+             case 5
+               if( ind{2} )
+               	b = a.puntos(ind{2},:);
+               else
+               	b = a.puntos;
+               endif
              otherwise
-               error ("get: Indice invalido, elija 1 2 3 o 4 %s");
+               error ("get: Indice invalido, elija 1 2 3 4 o 5 para el conjunto de puntos %s");
            endswitch
          
          endif

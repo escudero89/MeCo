@@ -10,7 +10,7 @@ function a = subsasgn (a, s, val)
            ind = s(1).subs;
            
           
-           if(!isscalar(val) && numel(ind) == 2 )
+           if(!isscalar(val) && numel(ind) == 2 && ind{1}!=5 )
                  error("Error entre nro indices y tipo de elemento a asignar")
              endif
            	
@@ -18,7 +18,7 @@ function a = subsasgn (a, s, val)
             if (numel (ind) < 2)
              ind{2} = 0;
              
-             if(numel(val)!=2)
+             if(numel(val)!=2 && ind{1}!=5)
                  error("Si pasa solo un indice, el elemento a asignar debe ser un vector.")
              endif
              
@@ -67,8 +67,16 @@ function a = subsasgn (a, s, val)
                	a.p4=val;
                endif
                
+            case 5
+               if( ind{2} )
+               	a.puntos(ind{2},:) = val;
+               else
+               	a.puntos = val;
+               endif
+
+
              otherwise
-               error ("get: Indice invalido, elija 1 2 3 o 4 %s");
+               error ("get: Indice invalido, elija 1 2 3 4 o 5 para todos los puntos %s");
            endswitch
          
          endif

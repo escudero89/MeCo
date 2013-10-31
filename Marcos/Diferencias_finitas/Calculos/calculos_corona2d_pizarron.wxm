@@ -1,0 +1,25 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: input   start ] */
+cc_3 : k * (dT/dr) + h*T = h*Tref;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dT_dr : (3*T[i,j] - 4*T[i-1,j] + T[i-2,j])/(2*dr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cc_3_discr : k[i,j] * dT_dr + h*T[i,j] = h*Tref;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cc_3_discr: ratsimp(cc_3_discr, T[i,j], T[i-1,j], T[i-2,j]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cc_3_discr: cc_3_discr * 2*dr;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

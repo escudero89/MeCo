@@ -1,0 +1,22 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+eq1 : 'diff(phi, x, 2) + phi + 1 = 0;
+
+ode2(%, phi, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bc2(%, x=0, phi=0, x=1, phi=0);
+solve(%, phi);
+
+rhs(args(%)[1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([%], [x,0,1])$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

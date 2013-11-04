@@ -1,0 +1,114 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Guia 2: Ejercicio 4
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos algunas variables y la función de forma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+M : 3;
+L : M;
+psi : matrix([0],[0]);
+N_en_x : x^z * (1-y^2);
+N_en_y : y^z * (1-y^2);
+
+pi : %pi;
+
+Nm_en_x : subst(m, z, N_en_x);
+Nl_en_x : subst(l, z, N_en_x);
+
+Nm_en_y : subst(m, z, N_en_y);
+Nl_en_y : subst(l, z, N_en_y);
+
+lim_x_l : 0;
+lim_x_r : 1;
+lim_y_l : 0;
+lim_y_r : 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Defino un par de matrices para trabajar mas comodo:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+E : 30/16;
+v : 1/4;
+
+D : E / (1 - v^2) * matrix([1, v, 0], [v, 1, 0], [0, 0, (1-v)/2]);
+
+Nm : matrix([Nm_en_x, 0], [0, Nm_en_y]);
+Nl : matrix([Nl_en_x, 0], [0, Nl_en_y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos los operadores diferenciales. La funcion recibe una matriz 2x2, y devuelve como si hubiese multiplicado por el L de 3x2.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+dL(X) := matrix(['diff(X[1,1], x), 0], [0, 'diff(X[2,2], y)], ['diff(X[1,1], y), 'diff(X[2,2], x)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Trabajamos con la matriz para obtener el integrando en forma matricial.
+Definimos los valores que vamos a usar para obtener Klm y fl (ev hace una evaluacion de lo que indiques)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+N : transpose(matrix([x*(1-y^2),x^3*(1-y^2),x*y^2*(1-y^2)], [y*(1-y^2),y^3*(1-y^2),y*x^2*(1-y^2)]));
+
+Nmatrix(z) := matrix([N[z,1], 0], [0, N[z, 2]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mat_unblocker(genmatrix(lambda([l,m], ev(transpose(dL(Nmatrix(l))) . (D . dL(Nmatrix(m))), diff)), 3, 3));
+K : integrate(integrate(''%, x, lim_x_l, lim_x_r), y, lim_y_l, lim_y_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(matrix([Nmatrix(1)[1,1], Nmatrix(2)[1,1], Nmatrix(3)[1,1], 0, 0, 0]));
+f : integrate(6*(1-y^2)*''(subst(1, x, ''%)), y, lim_y_l, lim_y_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora tengo que considerar que voy a armar una matriz K con las submatrices Klm. MAT_UNBLOCKER ES LA POSTA.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+K_inv : invert(K);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Resolvemos la incognita.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+a : K_inv . f;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Armamos la resolucion para u y v (desplazamientos).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+u_vec : psi[1,1] + sum(a[m,1]*Nmatrix(m)[1,1], m, 1, M);
+v_vec : psi[2,1] + sum(a[m+2,1]*Nmatrix(m)[2,2], m, 1, M);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ploteamos.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(v_vec, [x, -1, 1], [y, -1, 1])$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

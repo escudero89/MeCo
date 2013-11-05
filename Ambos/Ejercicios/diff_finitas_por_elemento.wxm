@@ -1,0 +1,54 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+N : matrix([
+1/2*(xi*(xi-1)),
+1-xi^2,
+1/2*xi*(xi+1)
+]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+l : 2;
+dx : l/2;
+dxi_x : 2/l;
+
+k : 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K(i,j) := integrate((diff(N[1, i],xi)*dxi_x*k*diff(N[1,j],xi)*dxi_x*dx), xi, -1, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+KK : genmatrix(lambda([i,j],ratsimp(ev(K(i,j), diff))), 3, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(i) := integrate(N[1,i]*Q*dx, xi, -1, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ff : genmatrix(lambda([i,j], ratsimp(ev(f(i),diff))), 3, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(KK);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+matrix([14,-16,2],[-16,32,-16],[2,-16,14]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

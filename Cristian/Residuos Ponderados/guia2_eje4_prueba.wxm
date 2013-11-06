@@ -11,7 +11,7 @@ K : matrix(
 [0.22800,0.22800,0.02540,2.74200,0.91400,2.33600]
 );
 
-f : transpose(matrix([3.2,3.2,0.457,0,0,0]));
+f : transpose(matrix([3.2,3.2,0.457143,0,0,0]));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -32,7 +32,8 @@ v : sum(A[m,2]*N[m,2],m, 1, 3);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-plot3d(v,[y, -1, 1], [x, -1,1]);
+wxplot3d(u, [x, -1, 1], [y, -1, 1])$
+wxplot3d(v, [x, -1, 1], [y, -1, 1])$
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

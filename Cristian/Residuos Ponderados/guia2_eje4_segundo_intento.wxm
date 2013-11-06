@@ -14,24 +14,16 @@ Definimos algunas variables y la función de forma
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-M : 3;
-L : M;
+M : 3$
+L : M$
 psi : matrix([0],[0]);
-N_en_x : x^z * (1-y^2);
-N_en_y : y^z * (1-y^2);
 
-pi : %pi;
+pi : %pi$
 
-Nm_en_x : subst(m, z, N_en_x);
-Nl_en_x : subst(l, z, N_en_x);
-
-Nm_en_y : subst(m, z, N_en_y);
-Nl_en_y : subst(l, z, N_en_y);
-
-lim_x_l : 0;
-lim_x_r : 1;
-lim_y_l : 0;
-lim_y_r : 1;
+lim_x_l : 0$
+lim_x_r : 1$
+lim_y_l : 0$
+lim_y_r : 1$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -39,13 +31,10 @@ Defino un par de matrices para trabajar mas comodo:
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-E : 30/16;
-v : 1/4;
+E : 30/16$
+v : 1/4$
 
 D : E / (1 - v^2) * matrix([1, v, 0], [v, 1, 0], [0, 0, (1-v)/2]);
-
-Nm : matrix([Nm_en_x, 0], [0, Nm_en_y]);
-Nl : matrix([Nl_en_x, 0], [0, Nl_en_y]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -69,12 +58,12 @@ Nmatrix(z) := matrix([N[z,1], 0], [0, N[z, 2]]);
 
 /* [wxMaxima: input   start ] */
 mat_unblocker(genmatrix(lambda([l,m], ev(transpose(dL(Nmatrix(l))) . (D . dL(Nmatrix(m))), diff)), 3, 3));
-K : integrate(integrate(''%, x, lim_x_l, lim_x_r), y, lim_y_l, lim_y_r);
+K : float(4 * integrate(integrate(''%, x, lim_x_l, lim_x_r), y, lim_y_l, lim_y_r));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-transpose(matrix([Nmatrix(1)[1,1], Nmatrix(2)[1,1], Nmatrix(3)[1,1], 0, 0, 0]));
-f : integrate(6*(1-y^2)*''(subst(1, x, ''%)), y, lim_y_l, lim_y_r);
+transpose(matrix([Nmatrix(1)[1,1], 0, Nmatrix(2)[1,1], 0, Nmatrix(3)[1,1], 0]));
+f : float(integrate(6*(1-y^2)*''(subst(1, x, ''%)), y, lim_y_l, lim_y_r));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -98,8 +87,8 @@ Armamos la resolucion para u y v (desplazamientos).
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-u_vec : psi[1,1] + sum(a[m,1]*Nmatrix(m)[1,1], m, 1, M);
-v_vec : psi[2,1] + sum(a[m+2,1]*Nmatrix(m)[2,2], m, 1, M);
+u_vec : psi[1,1] + a[1,1]*Nmatrix(1)[1,1] + a[3,1]*Nmatrix(2)[1,1] + a[5,1]*Nmatrix(3)[1,1];
+v_vec : psi[2,1] + a[2,1]*Nmatrix(1)[2,2] + a[4,1]*Nmatrix(2)[2,2] + a[6,1]*Nmatrix(3)[2,2];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
@@ -107,7 +96,8 @@ Ploteamos.
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-plot3d(v_vec, [x, -1, 1], [y, -1, 1])$
+wxplot3d(u_vec, [x, -1, 1], [y, -1, 1])$
+wxplot3d(v_vec, [x, -1, 1], [y, -1, 1])$
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

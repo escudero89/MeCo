@@ -1,42 +1,28 @@
 1;
 
-function [ M ] = generar_malla(x,y, objeto)
+# Generamos puntos (circulo)
 
-    cant_x = length(x);
-    cant_y = length(y);
+paso = pi/20;
+rho = 0.8;
 
-    
-    for j = 1:cant_y - 1
-        for i = 1 : cant_x - 1
-           
-            
-            idx = i + (j - 1) * cant_x;
-            
-            P1 = [x(i), y(j)];
-            P2 = [x(i+1), y(j)];
-            P3 = [x(i+1), y(j+1)];
-            P4 = [x(i), y(j+1)];            
-            
-            # Creamos Elemento [idx_padre, idx_elemento, profundidad]
-             E = struct("cabecera", [0, idx, 0],
-                        "puntos", [P1 ; P2 ; P3 ; P4],
-                        "interseccion_idx", []);
-            
-            # Guardamos el Elemento en la malla
-            M{i,j} = E;
-           
-        
-        # Asignamos los puntos de la figura a los Elementos Correspondientes
-    %    [E idx_figura] = mapear_puntos(E, figura, idx_figura, tol);
-        
-            
-        endfor
-    endfor
+tita = 0:paso:2*pi-paso;
+rho = ones(1,length(tita));
+figura_x = rho .* cos(tita) + 0.3;
+figura_y = rho .* sin(tita) + 0.3;
+	
+segmentos_next = ...
+	[ figura_x'(2:end) figura_y'(2:end) ; figura_x'(1) figura_y'(1) ];
 
-
-endfunction
-
+segmentos = ...
+	[ figura_x' figura_y' segmentos_next ] ;
 
 tic
-generar_malla([-1:0.02:1], [-1:0.02:1], 3);
+M = generar_malla([-2:1:2], [-2:1:2], segmentos);
+toc
+tic
+
+plot_malla(M, 1);
+hold on;
+plot(figura_x,figura_y)
+hold off;
 toc

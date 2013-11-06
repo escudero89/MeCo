@@ -1,20 +1,22 @@
 % Se lo paso en forma de filas a los puntos
+% Devuelve si hubo interseccion (0 no hubo, 1 unica, 2 coincidente) y dos puntos
+% el segundo punto es [0 0] al menos que sea coincidente (devuelve rango)
 function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
 
     hay_inter = 0;
-    punto_inter = [];
+    punto_inter = [0 0 0 0];
 
-    K = [(P2 - P1)' , (A1 - A2)']
-    f = [(A1 - P1)']
+    K = [(P2 - P1)' , (A1 - A2)'];
+    f = [(A1 - P1)'];
 
     % Sistema compatible determinado
     if (det(K) != 0)
 
-        t = K \ f
+        t = K \ f;
     
         if (sum(t >= 0) == 2 && sum(t <= 1) == 2)
             
-            punto_inter = P1 + (P2 - P1) * t(1)
+            punto_inter = [ P1 + (P2 - P1) * t(1) , 0 , 0 ];
             hay_inter = 1;
 
         endif
@@ -39,7 +41,7 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
                 % Estoy en uno de los dos puntos que no son min ni max
                 if (i != max_P && i!= min_P)
                         
-                    punto_inter = [punto_inter ; P(i, :)]
+                    punto_inter = [punto_inter , P(i, :)];
 
                 endif
 
@@ -48,6 +50,8 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
         endif
 
     endif
+
+#{
 punto_inter
 
     clf;
@@ -56,5 +60,5 @@ punto_inter
     line([A1(1), A2(1)], [A1(2), A2(2)]);
     plot(punto_inter(:, 1), punto_inter(:, 2), 'xm');
     hold off;
-
+#}
 endfunction

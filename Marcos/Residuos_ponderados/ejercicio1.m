@@ -44,11 +44,11 @@ function [ret] = ejercicio1(M)
   end
   
   % Original
-      %plot(x,1+sin(x*pi/2));
-      %hold on
+      plot(x,1+sin(x*pi/2));
+      hold on
   % Aproximacion
-      %plot(x,psi,'r');
-      %hold off
+      plot(x,psi,'r');
+      hold off
   
   ret = psi;
   

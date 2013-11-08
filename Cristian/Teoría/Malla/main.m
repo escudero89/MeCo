@@ -6,8 +6,8 @@ close;
 dx = 1;
 dy = 1;
 
-lim_x = [1 7];
-lim_y = [1 7];
+lim_x = [1 8];
+lim_y = [1 8];
 
 max_depth = 3;
 
@@ -31,8 +31,8 @@ O = Objeto(objeto(:, 1:2), objeto(:, 3:4), objeto(:, 5:6));
 M = Malla(lim_x, lim_y, dx, dy, O, max_depth);
 toc;
 
-print_old(M, objeto);
+%print_old(M, objeto);
 
-pause;
+%pause;
 
-print_malla(M, objeto);
+%print_malla(M, objeto);

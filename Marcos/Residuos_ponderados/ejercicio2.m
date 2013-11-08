@@ -15,17 +15,13 @@ function [ret] = ejercicio1(M)
 % Dominio, solo para fines de graficacion
     x = 0:0.01:1;
 % Funcion psi, que satisface el contorno.
-    psi = x + 1;
-% Funciones de forma
+    psi = 0;
+% Funciones de forma N_m
     N = zeros(M,length(x));
     for m = 1 : M 
        N(m,:)= sin(pi * x' * m);
     end
   
-% Puntos de colocacion
-    for l = 1 : L
-      puntos(l) = ((1/L)*l) - 1/(2*L);
-    end
   % Armamos la matriz
     for l = 1 : L
         for m = 1 : M

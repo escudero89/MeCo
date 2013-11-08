@@ -4,8 +4,8 @@ function print_malla(M, objeto = [])
 
 	if (!isempty(objeto))
 		hold on; 
-		plot(objeto(:,1),objeto(:,2),'xr'); 
-        plot(objeto(:,3),objeto(:,4),'xr'); 
+		plot(objeto(:,1),objeto(:,2),'r'); 
+        plot(objeto(:,3),objeto(:,4),'r'); 
         hold off;
 	end
 
@@ -27,9 +27,9 @@ function print_malla_helper(celdas)
 
 	        patch(Xs(:,1), Xs(:,2), Us(:,1));
 
-	        text(.5 * (get_points(celdas{k})(2,1) + get_points(celdas{k})(1,1)), 
-	        	.5 * (get_points(celdas{k})(4,2) + get_points(celdas{k})(1,2)),
-	        	[ num2str(get_state(celdas{k})) ' [' num2str(k) ']' ]);
+	        %text(.5 * (get_points(celdas{k})(2,1) + get_points(celdas{k})(1,1)), 
+	        %	.5 * (get_points(celdas{k})(4,2) + get_points(celdas{k})(1,2)),
+	        %	[ num2str(get_state(celdas{k})) ' [' num2str(k) ']' ]);
 
 		else
 	    	

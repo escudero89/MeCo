@@ -2,7 +2,7 @@ clf;
 clear all;
 
 # Generamos puntos (circulo)
-tita = 0:pi/90:2*pi;
+tita = 0:pi/30:2*pi;
 rho = ones(1,length(tita));
 figura.x = rho .* cos(tita);
 figura.y = rho .* sin(tita);

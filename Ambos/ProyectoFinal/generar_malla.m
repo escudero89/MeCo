@@ -1,4 +1,4 @@
-function [ M ] = generar_malla(x,y, segmentos)
+function [ M ] = generar_malla(x,y, segmentos, max_profundidad = 0)
 
     cant_ele_x = length(x) - 1;
     cant_ele_y = length(y) - 1;
@@ -14,8 +14,6 @@ function [ M ] = generar_malla(x,y, segmentos)
     Z(:,end) = 4;
     Z(1,:) += 7;
     Z(end,:) += 5;
-    
-    Z
     
     % No recorremos la ultima fila ni la ultima columna
     for j = 1 : cant_ele_y
@@ -35,24 +33,26 @@ function [ M ] = generar_malla(x,y, segmentos)
             # Creamos Elemento [idx_padre ; idx_elemento ; profundidad ]
              E = struct("cabecera", cabecera,
                         "puntos", [P1 ; P2 ; P3 ; P4],
-                        "idx_segmentos", [],
+                        "matriz_intersecciones", [],
                         "vecinos", asignar_vecinos(idx, cant_ele_x, Z(j,i)));
 
 
-            [matriz_intersecciones , E] = segmentos_en_elemento(E, segmentos);
+            [ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos);
+
+            E.matriz_intersecciones = matriz_intersecciones;
             
             # Guardamos el Elemento en la malla
             M{idx} = E;
 
-            if( !isempty(E.idx_segmentos_internos) )
+            if( !isempty(E.matriz_intersecciones) )
                            
-                M{idx} =  subdividir(E, matriz_intersecciones, max_profundidad);
+                M{idx} =  subdividir(E,                    
+                                     max_profundidad,
+                                     cant_ele_x * cant_ele_y,
+                                     segmentos);
                 
             endif
 
-            
-            
-            
             
         # Asignamos los puntos de la figura a los Elementos Correspondientes
     %    [E idx_figura] = mapear_puntos(E, figura, idx_figura, tol);
@@ -61,4 +61,3 @@ function [ M ] = generar_malla(x,y, segmentos)
     endfor
 
 endfunction
-

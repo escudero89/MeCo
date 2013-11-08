@@ -1,7 +1,7 @@
 % Va a devolver una fila de la forma
 % idx_segm , inter_x, inter_y, idx_ele, profundidad_ele
 
-function [matriz_intersecciones, E] = segmentos_en_elemento(E, segmentos)
+function [ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos, aristas = [1 1 1 1])
 
 	% Tenemos una matriz de inter. por elemento
 	% [ idx_segm_1 , hay_inter_1(1:4) , punto_inter_1(:, :) ]
@@ -16,28 +16,42 @@ function [matriz_intersecciones, E] = segmentos_en_elemento(E, segmentos)
 	
 		if ( dentro_elemento(E,P1) && dentro_elemento(E,P2) )
 
-			idx_segm = kSeg;
-			E.idx_segmentos = [ E.idx_segmentos idx_segm ];
-			
+			% Una fila con todos ceros excepto el primer elemento marca un segmento interno
+			matriz_intersecciones = [
+				matriz_intersecciones ; kSeg, zeros(1, 20),
+				];
+				
 		else
 		
 			A = E.puntos;
 
-			[hay_inter(1), punto_inter(1:4)] = hay_interseccion(P1, P2, A(1,:), A(2,:));
-			[hay_inter(2), punto_inter(5:8)] = hay_interseccion(P1, P2, A(2,:), A(3,:));
-			[hay_inter(3), punto_inter(9:12)] = hay_interseccion(P1, P2, A(3,:), A(4,:));
-			[hay_inter(4), punto_inter(13:16)] = hay_interseccion(P1, P2, A(4,:), A(1,:));
+			for kAr = 1 : 4
+				
+				if (aristas(kAr))
+					[hay_inter_n, punto_inter_n] = ...
+						hay_interseccion(P1, P2, A(kAr,:), A(mod(kAr,4)+1,:));
+				else
+					hay_inter_n = 0;
+					punto_inter_n = zeros(1, 4);					
+				endif
+				
+				hay_inter(kAr) = hay_inter_n;
+				punto_inter(4*(kAr-1)+1 : 4*kAr) = punto_inter_n;
+				
+			endfor
+			
+			% El for de arriba hace esto:
+			%~ [hay_inter(1), punto_inter(1:4)] = hay_interseccion(P1, P2, A(1,:), A(2,:));
+			%~ [hay_inter(2), punto_inter(5:8)] = hay_interseccion(P1, P2, A(2,:), A(3,:));
+			%~ [hay_inter(3), punto_inter(9:12)] = hay_interseccion(P1, P2, A(3,:), A(4,:));
+			%~ [hay_inter(4), punto_inter(13:16)] = hay_interseccion(P1, P2, A(4,:), A(1,:));
 
 			if (sum(hay_inter) > 0)
 
-				idx_segm = kSeg;
-				
 				matriz_intersecciones = [
-					matriz_intersecciones ; idx_segm, hay_inter, punto_inter
+					matriz_intersecciones ; kSeg, hay_inter, punto_inter
 					];
 
-				E.idx_segmentos = [ E.idx_segmentos idx_segm ];
-			
 			endif
 			
 		endif

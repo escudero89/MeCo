@@ -1,38 +1,14 @@
-# Subdivide recursivamente en elemento hasta sub_max.
-function D = subdividir(E, max_profundidad, cant_ele_inicial, segmentos)
-
-    D = {};
-    profundidad = E.cabecera(3);
-
-    idx_mod = cant_ele_inicial * 4^profundidad;
-
-    if( profundidad == max_profundidad)
-
-        D = hijos(E, idx_mod, segmentos); # hijos devuelve {cell}
-
-    else
-
-        D = hijos(E, idx_mod, segmentos);
-
-        for i = 1:size(D,2)
-      
-            if( !isempty(D{i}.matriz_intersecciones) ) % si hay interseccion
-                D{i} = subdividir(D{i},
-                                  max_profundidad,
-                                  cant_ele_inicial,
-                                  segmentos);
-            endif
-
-        endfor
-
-    endif
-
-endfunction
+1;
 
 
-function [ H ] = hijos(E, idx_mod, segmentos)
+clear all;
+clf;
+close;
 
-    cabecera = [E.cabecera(1), E.cabecera(1) + idx_mod, E.cabecera(3)+1];
+
+function [ H ] = hijos_marcos(E, idx_mod, segmentos)
+
+    cabecera = [E.cabecera(1), idx_mod, E.cabecera(3)+1];
 
     % p7 -- p6 -- p5
     % ||    ||    ||
@@ -94,7 +70,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
         H{3}.puntos(2,:) ;
         H{3}.puntos(4,:) ;
         H{1}.puntos(4,:) ];
-        
+
     elemento_ganador = [ 1 2 ; 2 3 ; 4 3 ; 1 4 ];
 
     idx_segmentos_sin_calcular = [];
@@ -130,7 +106,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
                     # Si esta del lado menor coord... (puede estar en ambos)
                     if (pto_inter(x_y) <= puntos_en_cruz(j-1, x_y) + TOL)
-                        
+
                         H{elemento_ganador(j - 1, 1)}.matriz_intersecciones = [
                             H{elemento_ganador(j - 1, 1)}.matriz_intersecciones ;
                             MIP(i, :)
@@ -231,3 +207,59 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
     endfor
     
 endfunction
+
+
+
+
+
+#tic
+#plot_malla(M);
+#hold on;
+#plot(figura_x,figura_y)
+#hold off;
+#toc;
+
+
+
+
+
+
+
+
+paso = pi/2;
+rho = 0.3;
+
+tita = 0:paso:2*pi-paso;
+rho = rho*ones(1,length(tita));
+figura_x = rho .* cos(tita) + 0.5;
+figura_y = rho .* sin(tita) + 0.5;
+
+segmentos_next = ...
+	[ figura_x'(2:end) figura_y'(2:end) ; figura_x'(1) figura_y'(1) ];
+
+segmentos = ...
+	[ figura_x' figura_y' segmentos_next ] ;
+
+
+
+cabecera = [1 1 0];
+P1 = [0 0];
+P2 = [1 0];
+P3 = [1 1];
+P4 = [0 1];
+
+ E = struct("cabecera", cabecera,
+                        "puntos", [P1 ; P2 ; P3 ; P4],
+                        "matriz_intersecciones", [],
+                        "vecinos", []);
+
+
+
+[ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos);
+
+            E.matriz_intersecciones = matriz_intersecciones;
+
+
+# M = subdividir(E,3,1, segmentos);
+H = hijos_marcos(E, 1, segmentos);
+

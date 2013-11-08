@@ -2,13 +2,12 @@
 % Guia 2 - Ejercicio 2
 %////////////////////
 %
-
 % Ecuacion diferencial a Resolver:  y''+ y + 1 = 0,  
 % Condiciones de Contorno:          y(0)=0,y'(1) + y(1) = 0
-% Metodo de Ponderacion:            Galerkin.
+% Método de Ponderación:            Galerkin.
 % Integracion:                      Numerica.
 %////////////////////
-function [psi N a] = ejercicio2(M, paso)
+function [N] = ejercicio2(M, paso)
 
 %       Parametros
 if nargin < 2
@@ -18,7 +17,7 @@ end
 % Cantidad de funciones de forma.    
     L = M;
 % Dominio, para fines de graficacion e integracion
-    x = 0:paso:1-paso;
+    x = 0:paso:1-;
 % Funcion psi, que satisface el contorno.
     psi = 0;
     
@@ -61,17 +60,17 @@ end
     psi = psi + a(m)*N(m,:);
   end
     
-  % Solucion analitica
+  % Solución analítica
       analitica = (cos(x).*(sin(1)+cos(1))+sin(x).*(1+sin(1)-cos(1))...
                     -sin(1)-cos(1))./(sin(1)+cos(1));
                 
       plot(x,analitica);
-
       hold on
   % Aproximacion
       plot(x,psi,'r');
       hold off
   
   ret = psi;
-
+  
 end
+  

@@ -1,4 +1,4 @@
-# Subdivide recursivamente en elemento hasta sub_max.
+% Subdivide recursivamente en elemento hasta sub_max.
 function D = subdividir(E, max_profundidad, cant_ele_inicial, segmentos)
 
     D = {};
@@ -8,13 +8,13 @@ function D = subdividir(E, max_profundidad, cant_ele_inicial, segmentos)
 
     if( profundidad == max_profundidad)
 
-        D = hijos(E, idx_mod, segmentos); # hijos devuelve {cell}
+        D = hijos(E, idx_mod, segmentos); % hijos devuelve {cell}
 
     else
 
         D = hijos(E, idx_mod, segmentos);
 
-        for i = 1:size(D,2)
+        for i = 1:size(D, 2)
       
             if( !isempty(D{i}.matriz_intersecciones) ) % si hay interseccion
                 D{i} = subdividir(D{i},
@@ -32,7 +32,7 @@ endfunction
 
 function [ H ] = hijos(E, idx_mod, segmentos)
 
-    cabecera = [E.cabecera(1), E.cabecera(1) + idx_mod, E.cabecera(3)+1];
+    cabecera = [E.cabecera(2), E.cabecera(2) * idx_mod, E.cabecera(3)+1];
 
     % p7 -- p6 -- p5
     % ||    ||    ||
@@ -40,7 +40,7 @@ function [ H ] = hijos(E, idx_mod, segmentos)
     % ||    ||    ||
     % p1 -- p2 -- p3
 
-    #Calculamos hijos
+    %Calculamos hijos
 
     p1 = E.puntos(1, :);
     p3 = E.puntos(2, :);  
@@ -53,27 +53,27 @@ function [ H ] = hijos(E, idx_mod, segmentos)
     p8 = [ p1(1) , p4(2) ];
     p9 = [ p2(1) , p4(2) ];
 
-    vecinos = []; #@TODO funcion que calcula vecinos
+    vecinos = []; %@TODO funcion que calcula vecinos
 
-    E1 = struct("cabecera", cabecera + [0 1 0],
-                "puntos", [p1 ; p2 ; p9 ; p8],
-                "matriz_intersecciones", [],
-                "vecinos", vecinos);
+    E1 = struct('cabecera', cabecera + [0 1 0],
+                'puntos', [p1 ; p2 ; p9 ; p8],
+                'matriz_intersecciones', [],
+                'vecinos', vecinos);
 
-    E2 = struct("cabecera", cabecera + [0 2 0],
-                "puntos", [p2 ; p3 ; p4 ; p9],
-                "matriz_intersecciones", [],
-                "vecinos", vecinos);
+    E2 = struct('cabecera', cabecera + [0 2 0],
+                'puntos', [p2 ; p3 ; p4 ; p9],
+                'matriz_intersecciones', [],
+                'vecinos', vecinos);
 
-    E3 = struct("cabecera", cabecera + [0 3 0],
-                "puntos", [p9 ; p4 ; p5 ; p6],
-                "matriz_intersecciones", [],
-                "vecinos", vecinos);
+    E3 = struct('cabecera', cabecera + [0 3 0],
+                'puntos', [p9 ; p4 ; p5 ; p6],
+                'matriz_intersecciones', [],
+                'vecinos', vecinos);
 
-    E4 = struct("cabecera", cabecera + [0 4 0],
-                "puntos", [p8 ; p9 ; p6 ; p7],
-                "matriz_intersecciones", [],
-                "vecinos", vecinos);
+    E4 = struct('cabecera', cabecera + [0 4 0],
+                'puntos', [p8 ; p9 ; p6 ; p7],
+                'matriz_intersecciones', [],
+                'vecinos', vecinos);
 
     H = { E1 , E2, E3, E4 };
 
@@ -84,7 +84,7 @@ function [ H ] = hijos(E, idx_mod, segmentos)
 endfunction
 
 
-# MIP = Matriz Intersecciones Padre
+% MIP = Matriz Intersecciones Padre
 function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
     global TOL; 
@@ -98,12 +98,13 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
     elemento_ganador = [ 1 2 ; 2 3 ; 4 3 ; 1 4 ];
 
     idx_segmentos_sin_calcular = [];
-
-    # Calcular Intersecciones Aristas Exteriores
+%H
+%MIP
+    % Calcular Intersecciones Aristas Exteriores
 
     for i = 1 : size(MIP,1)
-        # Si es un segmento interior.
-        if( sum(MIP(i,2:5)) == 0 )
+        % Si es un segmento interior.
+        if( sum(MIP(i, 2:5)) >= 0 )
 
             %~ [hay_inter_1, punto_inter_1] = ...
                 %~ hay_interseccion(segmentos(MIP(i,1))(1),segmentos(MIP(1))(2),
@@ -115,20 +116,20 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
             idx_segmentos_sin_calcular = [ idx_segmentos_sin_calcular , MIP(i,1) ];
         
-        else # Si es un segmento que intersecta
+        else % Si es un segmento que intersecta
 
-            for j = 2:5 # Recorremos Aristas
+            for j = 2:5 % Recorremos Aristas
 
-                pos = j * 4 - 2; # vincula intersecciones de la arista j
+                pos = j * 4 - 2; % vincula intersecciones de la arista j
 
-                if(MIP(i,j) == 1) #Interseccion simple
+                if(MIP(i,j) == 1) %Interseccion simple
 
-                    # Va a depender de la orientacion, 1 o 2 => x o y
+                    % Va a depender de la orientacion, 1 o 2 => x o y
                     x_y = mod(j,2) + 1;
                     
                     pto_inter = [ MIP(i, pos) , MIP(i, pos + 1) ];
 
-                    # Si esta del lado menor coord... (puede estar en ambos)
+                    % Si esta del lado menor coord... (puede estar en ambos)
                     if (pto_inter(x_y) <= puntos_en_cruz(j-1, x_y) + TOL)
                         
                         H{elemento_ganador(j - 1, 1)}.matriz_intersecciones = [
@@ -138,7 +139,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
                         
                     endif
                     
-                    # Si esta del lado mayor coord... (puede estar en ambos)
+                    % Si esta del lado mayor coord... (puede estar en ambos)
                     if (pto_inter(x_y) >= puntos_en_cruz(j-1, x_y) - TOL)
 
                         H{elemento_ganador(j - 1, 2)}.matriz_intersecciones = [
@@ -148,16 +149,16 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
                         
                     endif
 
-                elseif(MIP(i,j) == 2) #Interseccion Coincidente
-                    ## @TODO se puede optimizar reduciendo el numero de casos
+                elseif(MIP(i,j) == 2) %Interseccion Coincidente
+                    %% @TODO se puede optimizar reduciendo el numero de casos
                     
-                    # Va a depender de la orientacion, 1 o 2 => x o y
+                    % Va a depender de la orientacion, 1 o 2 => x o y
                     x_y = mod(j,2) + 1;
                     
                     pto_inter_1 = [ MIP(i, pos) , MIP(i, pos + 1) ];
                     pto_inter_2 = [ MIP(i, pos + 2) , MIP(i, pos + 3) ];
 
-                    # Si estan ambos extremos del lado menor... (puede estar en ambos)
+                    % Si estan ambos extremos del lado menor... (puede estar en ambos)
                     if (pto_inter_1(x_y) <= (puntos_en_cruz(j-1, x_y) + TOL) &&
                         pto_inter_2(x_y) <= (puntos_en_cruz(j-1, x_y) + TOL) )
 
@@ -168,7 +169,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
                         
                     endif
                     
-                    # Si ambos extremos estan del lado mayor... (puede estar en ambos)
+                    % Si ambos extremos estan del lado mayor... (puede estar en ambos)
                     if (pto_inter(x_y) >= (puntos_en_cruz(j-1, x_y) - TOL) &&
                         pto_inter(x_y) >= (puntos_en_cruz(j-1, x_y) - TOL))
 
@@ -179,7 +180,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
                     endif
 
-                    # Si los extremos estan en distintos lados
+                    % Si los extremos estan en distintos lados
                     if ( (pto_inter_1(x_y) - puntos_en_cruz(j-1, x_y)) * 
                          (pto_inter_2(x_y) - puntos_en_cruz(j-1, x_y)) < 0) 
 
@@ -218,14 +219,14 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
     aristas_interiores = [ 0 1 1 0 ; 0 0 1 1 ; 1 0 0 1 ; 1 1 0 0 ];
 
     % Recorre cada uno de los elementos apendando las matrices de intersecciones
-    % de aquellos segmentos que eran "interiores"
+    % de aquellos segmentos que eran 'interiores'
     for k = 1 : 4
 
         H{k}.matriz_intersecciones = [
             H{k}.matriz_intersecciones ;
             segmentos_en_elemento(H{k},
-                                  segmentos(idx_segmentos_sin_calcular, :),
-                                  aristas_interiores(k, :));
+                                  segmentos); %unique(idx_segmentos_sin_calcular), :),
+                                  %aristas_interiores(k, :));
         ];
         
     endfor

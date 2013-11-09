@@ -15,9 +15,9 @@ rho = ones(1,length(tita));
 figura_x = rho .* cos(tita) + 0.3;
 figura_y = rho .* sin(tita) + 0.3;
 
-figura_x = [0 1 -1];
+figura_x = [0 1.01 -1];
 
-figura_y = [-1 1 0];
+figura_y = [-1 1.01 0];
 
 	
 segmentos_next = ...
@@ -27,11 +27,11 @@ segmentos = ...
 	[ figura_x' figura_y' segmentos_next ] ;
 
 tic
-M = generar_malla([-2:2:2], [-2:2:2], segmentos);
+M = generar_malla([-2:2:2], [-2:2:2], segmentos, 5);
 toc
 tic
 
-plot_malla(M, 1);
+plot_malla(M, 0);
 hold on;
 plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
 hold off;

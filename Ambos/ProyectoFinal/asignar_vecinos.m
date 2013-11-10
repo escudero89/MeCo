@@ -37,6 +37,13 @@ function [lista_vecinos] = asignar_vecinos(idx, cant_ele_x, state)
 		case {11}
 			vecino_right = -1;
 			vecino_down = -1;
+
+		% Una sola celda
+		case {16}
+			vecino_upper = -1;
+			vecino_down = -1;
+			vecino_right = -1;
+			vecino_left = -1;
 		
 		otherwise
 			error('Switch de asignar_vecinos mal.');

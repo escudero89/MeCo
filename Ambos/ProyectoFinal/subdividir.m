@@ -87,6 +87,8 @@ endfunction
 % MIP = Matriz Intersecciones Padre
 function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
+#{
+
     global TOL; 
 
     puntos_en_cruz = [
@@ -98,34 +100,31 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
     elemento_ganador = [ 1 2 ; 2 3 ; 4 3 ; 1 4 ];
 
     idx_segmentos_sin_calcular = [];
-%H
-%MIP
+
+    % Las pos son siempre las mismas
+    pos_inter_aristas = [6 10 14 18];
+
     % Calcular Intersecciones Aristas Exteriores
-
     for i = 1 : size(MIP,1)
-        % Si es un segmento interior.
-        if( sum(MIP(i, 2:5)) >= 0 )
 
-            %~ [hay_inter_1, punto_inter_1] = ...
-                %~ hay_interseccion(segmentos(MIP(i,1))(1),segmentos(MIP(1))(2),
-                                    %~ puntos_en_cruz(1), puntos_en_cruz(3));
-                                    %~ 
-            %~ [hay_inter_2, punto_inter_2] = ...
-                            %~ hay_interseccion(segmentos(MIP(i,1))(1),segmentos(MIP(1))(2),
-                                    %~ puntos_en_cruz(4), puntos_en_cruz(2));
+        % Si es un segmento interior.
+        if (sum(MIP(i, 2:5)) == 0 )
 
             idx_segmentos_sin_calcular = [ idx_segmentos_sin_calcular , MIP(i,1) ];
         
         else % Si es un segmento que intersecta
 
+            % Igual agrego los segmentos para trabajar con ellos mas tarde y analizar las aristas interiores
+            idx_segmentos_sin_calcular = [ idx_segmentos_sin_calcular , MIP(i,1) ];
+
             for j = 2:5 % Recorremos Aristas
 
-                pos = j * 4 - 2; % vincula intersecciones de la arista j
+                pos = pos_inter_aristas(j - 1); % vincula intersecciones de la arista j
 
-                if(MIP(i,j) == 1) %Interseccion simple
+                if (MIP(i, j) == 1) %Interseccion simple
 
                     % Va a depender de la orientacion, 1 o 2 => x o y
-                    x_y = mod(j,2) + 1;
+                    x_y = mod(j, 2) + 1;
                     
                     pto_inter = [ MIP(i, pos) , MIP(i, pos + 1) ];
 
@@ -149,7 +148,7 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
                         
                     endif
 
-                elseif(MIP(i,j) == 2) %Interseccion Coincidente
+                elseif (MIP(i,j) == 2) %Interseccion Coincidente
                     %% @TODO se puede optimizar reduciendo el numero de casos
                     
                     % Va a depender de la orientacion, 1 o 2 => x o y
@@ -225,10 +224,27 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
         H{k}.matriz_intersecciones = [
             H{k}.matriz_intersecciones ;
             segmentos_en_elemento(H{k},
-                                  segmentos); %unique(idx_segmentos_sin_calcular), :),
-                                  %aristas_interiores(k, :));
+                                  segmentos(unique(idx_segmentos_sin_calcular), :),
+                                  aristas_interiores(k, :));
         ];
         
     endfor
-    
+
+
+#}
+
+    % La unica optimizacion seria heredar solo los segmentos padres
+    for k = 1 : 4
+
+        if (!isempty(MIP))
+
+        H{k}.matriz_intersecciones = [
+            H{k}.matriz_intersecciones ;
+            segmentos_en_elemento(H{k}, segmentos(unique(MIP(:,1)),:));
+        ];
+
+        endif
+
+    endfor
+
 endfunction

@@ -10,15 +10,18 @@ function [ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos, aristas
 	matriz_intersecciones = []; 
 
 	for kSeg = 1 : size(segmentos, 1)
-		
+
 		P1 = segmentos(kSeg, 1:2); 
 		P2 = segmentos(kSeg, 3:4);
+
+		% Le agregue un indice en la ultima col de segmentos
+		idx_segmento = segmentos(kSeg, end);
 	
 		if ( dentro_elemento(E,P1) && dentro_elemento(E,P2) )
 
 			% Una fila con todos ceros excepto el primer elemento marca un segmento interno
 			matriz_intersecciones = [
-				matriz_intersecciones ; kSeg, zeros(1, 20),
+				matriz_intersecciones ; idx_segmento, zeros(1, 20),
 				];
 				
 		else
@@ -49,7 +52,7 @@ function [ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos, aristas
 			if (sum(hay_inter) > 0)
 
 				matriz_intersecciones = [
-					matriz_intersecciones ; kSeg, hay_inter, punto_inter
+					matriz_intersecciones ; idx_segmento, hay_inter, punto_inter
 					];
 
 			endif

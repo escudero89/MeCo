@@ -31,11 +31,24 @@ idx_segmentos = [ 1 : size(segmentos, 1) ]';
 
 segmentos = [segmentos idx_segmentos];
 
+lim_x = [-1:3:2];
+lim_y = [-1:3:2];
+max_profundidad = 5;
+
 tic
-M = generar_malla([-2:4:2], [-2:4:2], segmentos, 4);
+M = generar_malla(lim_x, lim_y, segmentos, max_profundidad);
 toc
 
-transformar_malla(M);
+tic
+[xnod, inode, state] = transformar_malla(M, lim_x, lim_y, max_profundidad);
+toc
+
+tic
+pltmsh(xnod, inode, [], state);
+hold on;
+plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
+hold off;
+toc
 
 return
 

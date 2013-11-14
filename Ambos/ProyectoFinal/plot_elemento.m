@@ -9,9 +9,12 @@ function plot_elemento(E, etiquetado = 0, lim = 1)
     %~ line([p2(1) p3(1)],[p2(2) p3(2)]);
     %~ line([p3(1) p4(1)],[p3(2) p4(2)]);
     %~ line([p4(1) p1(1)],[p4(2) p1(2)]);
-
-    plot([ E.puntos(:,1) ; p1(1) ], [ E.puntos(:,2) ; p1(2) ], 'k');
-
+    if(isempty(E.matriz_intersecciones))
+	plot([ E.puntos(:,1) ; p1(1) ], [ E.puntos(:,2) ; p1(2) ], 'k');
+    else
+	patch([ E.puntos(:,1) ], [ E.puntos(:,2) ], 'r');
+    endif
+    
     if(lim)
 
 	xlim('auto');

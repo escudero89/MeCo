@@ -9,18 +9,18 @@ function [vector_bordes] = obtener_bordes_r(M, min_coord)
     vector_bordes = [];
     
     if(!isempty(M))
-	for i = 1 : size(M,2)
+    	for i = 1 : size(M,2)
 
-	    if(!iscell(M{i}))
-		if( es_borde(M{i}) );
-		    vector_bordes = [vector_bordes ; obtener_id_de_elemento(M{i}, min_coord)];
-    
-		endif
-	    else
-		vector_bordes = [vector_bordes ; obtener_bordes_r(M{i}, min_coord)];
-	    endif
-		
-	endfor
+    	    if(!iscell(M{i}))
+    		if( es_borde(M{i}) );
+    		    vector_bordes = [vector_bordes ; obtener_id_de_elemento(M{i}, min_coord)];
+        
+    		endif
+    	    else
+    		vector_bordes = [vector_bordes ; obtener_bordes_r(M{i}, min_coord)];
+    	    endif
+    		
+    	endfor
     endif
     
 endfunction

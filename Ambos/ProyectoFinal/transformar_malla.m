@@ -9,15 +9,45 @@ function [xnod, inode, state] = transformar_malla(M, lim_x, lim_y, max_profundid
 	% Obtenemos min cord en x y en y
 	bordes = obtener_bordes(M, [lim_x(1), lim_y(1)]);
 
+	% Recorremos todos los bordes para obtener el min y max row y col idx
+	min_max_row = [bordes(1,1) , bordes(1, 1)];
+	min_max_col = [bordes(1,2) , bordes(1, 2)];
+
+	for i = 1 : size(bordes, 1)
+
+		if (bordes(i, 1) < min_max_row(1))
+			min_max_row(1) = bordes(i, 1);
+		end
+
+		if (bordes(i, 1) > min_max_row(2))
+			min_max_row(2) = bordes(i, 1);
+		end
+
+		if (bordes(i, 2) < min_max_col(1))
+			min_max_col(1) = bordes(i, 2);
+		end
+
+		if (bordes(i, 2) > min_max_col(2))
+			min_max_col(2) = bordes(i, 2);
+		end
+
+	end
+
+	% Reconfiguramos los vectores lim_x y lim_y para solo trabajar con lo que nos interesa
+
+	lim_x = [ lim_x(min_max_col(1) - 1 : min_max_col(2) + 2) ];
+	lim_y = [ lim_y(min_max_row(1) - 1 : min_max_row(2) + 2) ];
+
 	[xnod, inode] = qq3d(lim_x', lim_y');
 
 	state = zeros(sqrt(size(inode, 1)));
 
 	for n = 1 : size(bordes, 1)
 
-		state(bordes(n, 1), bordes(n, 2)) = 1;
+		state(bordes(n, 1) - min_max_row(1) + 2, bordes(n, 2) - min_max_col(1) + 2) = 1;
 
 	endfor
+
 
 	state = balde_de_pintura(state) + 1;
 	state = reshape(state, 1, size(inode, 1));

@@ -57,23 +57,23 @@ function [ H ] = hijos(E, idx_mod, segmentos)
 
     E1 = struct('cabecera', cabecera + [0 1 0],
                 'puntos', [p1 ; p2 ; p9 ; p8],
-                'matriz_intersecciones', [],
-                'vecinos', vecinos);
+                'matriz_intersecciones', []);%,
+                %'vecinos', vecinos);
 
     E2 = struct('cabecera', cabecera + [0 2 0],
                 'puntos', [p2 ; p3 ; p4 ; p9],
-                'matriz_intersecciones', [],
-                'vecinos', vecinos);
+                'matriz_intersecciones', []);%,
+                %'vecinos', vecinos);
 
     E3 = struct('cabecera', cabecera + [0 3 0],
                 'puntos', [p9 ; p4 ; p5 ; p6],
-                'matriz_intersecciones', [],
-                'vecinos', vecinos);
+                'matriz_intersecciones', []);%,
+                %'vecinos', vecinos);
 
     E4 = struct('cabecera', cabecera + [0 4 0],
                 'puntos', [p8 ; p9 ; p6 ; p7],
-                'matriz_intersecciones', [],
-                'vecinos', vecinos);
+                'matriz_intersecciones', []);%,
+                %'vecinos', vecinos);
 
     H = { E1 , E2, E3, E4 };
 
@@ -86,6 +86,22 @@ endfunction
 
 % MIP = Matriz Intersecciones Padre
 function [H] = actualizar_intersecciones(H, MIP, segmentos)
+
+    % La unica optimizacion seria heredar solo los segmentos padres
+    for k = 1 : 4
+
+        if (!isempty(MIP))
+
+        H{k}.matriz_intersecciones = [
+            H{k}.matriz_intersecciones ;
+            segmentos_en_elemento(H{k}, segmentos(unique(MIP(:,1)),:));
+        ];
+
+        endif
+
+    endfor
+
+    %%%% COMENTADO TODO ABAJO. BORRAR CUANDO SE DESEE
 
 #{
 
@@ -232,19 +248,5 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
 
 
 #}
-
-    % La unica optimizacion seria heredar solo los segmentos padres
-    for k = 1 : 4
-
-        if (!isempty(MIP))
-
-        H{k}.matriz_intersecciones = [
-            H{k}.matriz_intersecciones ;
-            segmentos_en_elemento(H{k}, segmentos(unique(MIP(:,1)),:));
-        ];
-
-        endif
-
-    endfor
 
 endfunction

@@ -18889,4 +18889,2921 @@ error: called from:
 error:   /usr/share/octave/3.6.2/m/plot/private/__patch__.m at line 168, column 13
 error:   /usr/share/octave/3.6.2/m/plot/patch.m at line 50, column 18
 error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/pltmsh.m at line 30, column 9
-error:   /media/3B79A23F13FBC324/marcos/WorkSpace
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 62, column 1
+octave:3> 
+octave:3> malla
+Elapsed time is 6.47984 seconds.
+Elapsed time is 21.8168 seconds.
+
+error: reshape: can't reshape 27x26 array to 1x728 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:3> 
+octave:3> 256[K[K6[K7*36[K[K26
+ans =  702
+octave:4> exit
+
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git add .
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git c[Kadd  [K. -u
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> gt c[K[K[Kit commit '[K-m "anda"
+[master 998ec51] anda
+ 9 files changed, 19044 insertions(+), 28 deletions(-)
+ create mode 100644 Ambos/ProyectoFinal/aplicar_df_calor_2d.m
+ create mode 100644 Ambos/ProyectoFinal/loquenostienequedar.png
+ create mode 100644 Ambos/ProyectoFinal/typescript
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git push
+Username for 'https://github.com': escudero89
+Password for 'https://escudero89@github.com': 
+fatal: Authentication failed
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git push
+Username for 'https://github.com': escudero89
+Password for 'https://escudero89@github.com': 
+fatal: Authentication failed
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git push
+Username for 'https://github.com': escudero89
+Password for 'https://escudero89@github.com': 
+To https://github.com/escudero89/MeCo.git
+   2a9e339..998ec51  master -> master
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> git push[K[K[K[K[K[K[K[Koctave
+GNU Octave, version 3.6.2
+Copyright (C) 2012 John W. Eaton and others.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i686-pc-linux-gnu".
+
+Additional information about Octave is available at http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit http://www.octave.org/help-wanted.html
+
+Read http://www.octave.org/bugs.html to learn how to submit bug reports.
+
+For information about changes from previous versions, type `news'.
+
+octave:1> malla
+Elapsed time is 6.01976 seconds.
+Elapsed time is 21.4472 seconds.
+Elapsed time is 0.325936 seconds.
+Elapsed time is 0.10231 seconds.
+octave:2> malla
+Elapsed time is 6.43899 seconds.
+Elapsed time is 22.1594 seconds.
+error: transformar_malla: subscript indices must be either positive integers or logicals
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 49, column 71
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:2> malla[K[K[K[K[Kmalla
+Elapsed time is 6.58545 seconds.
+Elapsed time is 0.288934 seconds.
+Elapsed time is 0.281934 seconds.
+octave:3> malla
+Elapsed time is 2.02131 seconds.
+Elapsed time is 0.09525 seconds.
+Elapsed time is 0.281736 seconds.
+octave:4> malla
+Elapsed time is 1.71052 seconds.
+error: reshape: can't reshape 12x13 array to 1x132 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 57, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:4> malla
+Elapsed time is 1.83437 seconds.
+Elapsed time is 0.10034 seconds.
+Elapsed time is 0.268388 seconds.
+octave:5> malla
+Elapsed time is 1.83552 seconds.
+Elapsed time is 0.0936369 seconds.
+Elapsed time is 0.277685 seconds.
+octave:6> malla
+Elapsed time is 1.96054 seconds.
+Elapsed time is 0.10368 seconds.
+Elapsed time is 0.296941 seconds.
+octave:7> malla
+Elapsed time is 1.78706 seconds.
+Elapsed time is 0.0995939 seconds.
+Elapsed time is 0.286539 seconds.
+octave:8> malla
+Elapsed time is 1.93545 seconds.
+error: transformar_malla: A(I): index out of bounds; value 34 out of bound 33
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 39, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:8> malla
+Elapsed time is 1.74408 seconds.
+error: transformar_malla: A(I): index out of bounds; value 34 out of bound 33
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 39, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:8> malla
+Elapsed time is 1.38603 seconds.
+Elapsed time is 0.070427 seconds.
+Elapsed time is 0.26805 seconds.
+octave:9> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 5.02134 seconds.
+error: reshape: can't reshape 10x10 array to 1x110 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:9> malla
+Elapsed time is 4.2736 seconds.
+Elapsed time is 0.0842409 seconds.
+Elapsed time is 0.265268 seconds.
+octave:10> malla
+Elapsed time is 4.75393 seconds.
+Elapsed time is 5.56664 seconds.
+
+octave:10> 
+malla^C
+octave:10> 
+malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+^C
+octave:10> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 5.09784 seconds.
+Elapsed time is 7.37277 seconds.
+error: reshape: can't reshape 10x10 array to 1x110 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:10> exit
+
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> octave
+GNU Octave, version 3.6.2
+Copyright (C) 2012 John W. Eaton and others.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i686-pc-linux-gnu".
+
+Additional information about Octave is available at http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit http://www.octave.org/help-wanted.html
+
+Read http://www.octave.org/bugs.html to learn how to submit bug reports.
+
+For information about changes from previous versions, type `news'.
+
+octave:1> # Octave 3.6.2, Mon Nov 18 15:57:07 2013 ART <marcos@marcosNetbook>[C[C[C[C[C[C[C[C[C[Cexit[Kmalla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 4.54914 seconds.
+Elapsed time is 7.52267 seconds.
+
+
+octave:1> 
+^C
+octave:1> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 4.91532 seconds.
+Elapsed time is 7.82559 seconds.
+
+
+octave:1> 
+^C
+octave:1> 
+^C
+octave:1> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 5.06553 seconds.
+Elapsed time is 10.8553 seconds.
+
+
+octave:1> 
+^C
+octave:1> 
+^C
+octave:1> 
+^C
+octave:1> malla
+Elapsed time is 6.50078 seconds.
+Elapsed time is 31.776 seconds.
+
+
+octave:1> 
+^C
+octave:1> 
+^C
+octave:1> 
+^C
+octave:1> malla
+Elapsed time is 6.47787 seconds.
+Elapsed time is 21.8433 seconds.
+error: reshape: can't reshape 27x26 array to 1x728 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:1> 27*26
+ans =  702
+octave:2> 27*26malla
+Elapsed time is 3.928 seconds.
+Elapsed time is 6.804 seconds.
+
+
+octave:2> 
+^C
+octave:2> malla
+Elapsed time is 5.149 seconds.
+Elapsed time is 8.765 seconds.
+Elapsed time is 0.1782 seconds.
+Elapsed time is 0.09991 seconds.
+
+octave:3> 
+octave:3> malla27*26malla# Octave 3.6.2, Mon Nov 18 15:57:07 2013 ART <marcos@marcosNetbook>[C[C[C[C[C[C[C[C[C[Cmalla[K27*26malla[Kre
+re_read_readline_init_file  rectint                     rename
+read_readline_init_file     recycle                     repelems
+readdir                     refresh                     replot
+readlink                    refreshdata                 repmat
+real                        regexp                      reset
+reallog                     regexpi                     reshape
+realmax                     regexprep                   residue
+realmin                     regexptranslate             resize
+realpow                     register_graphics_toolkit   restoredefaultpath
+realsqrt                    rehash                      rethrow
+record                      rem                         return
+rectangle                   remove_input_event_hook     
+octave:3> ret = aplicar_df_calor_2d(xnod, inode, state_matrix, 1);[C[C[C[C[C[C[C[C[C[C[C[C[C
+dx =  0.093750
+dy =  0.093750
+molecula_comp =
+
+   113.78  -455.11   113.78
+
+octave:4> ret = aplicar_df_calor_2d(xnod, inode, state_matrix, 1);[C[C[C[C[C[C[C[C[C[Cmalla[K
+Elapsed time is 6.9 seconds.
+Elapsed time is 22 seconds.
+error: reshape: can't reshape 27x26 array to 1x728 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:4> help reshape
+[?1h=`reshape' is a built-in function
+
+ -- Built-in Function:  reshape (A, M, N, ...)
+ -- Built-in Function:  reshape (A, [M N ...])
+ -- Built-in Function:  reshape (A, ..., [], ...)
+ -- Built-in Function:  reshape (A, SIZE)
+     Return a matrix with the specified dimensions (M, N, ...)  whose
+     elements are taken from the matrix A.  The elements of the matrix
+     are accessed in column-major order (like Fortran arrays are
+     stored).
+
+     The following code demonstrates reshaping a 1x4 row vector into a
+     2x2 square matrix.
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K[?1l>octave:5> help reshape[C[C[C[C[C[C[C[C[C[C[7Pmalla
+Elapsed time is 6.5 seconds.
+Elapsed time is 23 seconds.
+error: reshape: can't reshape 27x26 array to 1x728 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:5> malla
+Elapsed time is 4 seconds.
+Elapsed time is 7.6 seconds.
+
+
+octave:5> 
+^C
+octave:5> 
+^C
+octave:5> 
+^C
+octave:5> malla
+Elapsed time is 4.7 seconds.
+Elapsed time is 5.1 seconds.
+Elapsed time is 0.099 seconds.
+Elapsed time is 0.1 seconds.
+octave:6> malla
+Elapsed time is 7.3 seconds.
+Elapsed time is 15 seconds.
+Elapsed time is 0.26 seconds.
+Elapsed time is 0.1 seconds.
+
+octave:7> 
+octave:7> malla
+error: `figura_x' undefined near line 30 column 4
+error: invalid dimension inquiry of a non-existent value
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 29, column 16
+octave:7> malla
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 1.58029e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 9.2626e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 4.89526e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 3.007e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 5.48134e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 9.31296e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+warning: matrix singular to machine precision, rcond = 6.96228e-17
+Elapsed time is 3.5 seconds.
+Elapsed time is 24 seconds.
+error: reshape: can't reshape 24x27 array to 1x616 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 58, column 37
+octave:7> 
+^C
+octave:7> 
+^C
+octave:7> exit
+
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> octave
+GNU Octave, version 3.6.2
+Copyright (C) 2012 John W. Eaton and others.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i686-pc-linux-gnu".
+
+Additional information about Octave is available at http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit http://www.octave.org/help-wanted.html
+
+Read http://www.octave.org/bugs.html to learn how to submit bug reports.
+
+For information about changes from previous versions, type `news'.
+
+octave:1> # Octave 3.6.2, Mon Nov 18 16:30:50 2013 ART <marcos@marcosNetbook>[C[C[C[C[C[C[C[C[C[Cexit[K# Octave 3.6.2, Mon Nov 18 16:30:50 2013 ART <marcos@marcosNetbook>[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmalla
+Elapsed time is 2.37541 seconds.
+Elapsed time is 13.2626 seconds.
+Elapsed time is 0.211676 seconds.
+Elapsed time is 0.101769 seconds.
+
+octave:2> 
+octave:2> malla
+[?1h=figura_x =
+
+ Columns 1 through 8:
+
+   2.0000e+00   1.0781e+00   2.6909e-01   1.9964e-25  -2.6909e-01  -1.0781e+00  -2.0000e+00  -2.1503e+00
+
+ Columns 9 through 13:
+
+  -1.2926e+00  -7.3476e-16   1.2926e+00   2.1503e+00   2.0000e+00
+
+figura_y =
+
+ Columns 1 through 11:
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hfigura_x =
+
+ Columns 1 through 8:
+
+   2.0000e+00   1.0781e+00   2.6909e-01   1.9964e-25  -2.6909e-01  -1.0781e+00  -2.0000e+00  -2.1503e+00
+
+ Columns 9 through 13:
+
+  -1.2926e+00  -7.3476e-16   1.2926e+00   2.1503e+00   2.0000e+00
+
+figura_y =
+
+ Columns 1 through 11:
+
+   0.00000   0.62245   0.46609   0.00000   0.46609   0.62245   0.00000  -1.24150  -2.23888  -4.00000  -2.23888
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hfigura_x =
+
+ Columns 1 through 8:
+
+   2.0000e+00   1.0781e+00   2.6909e-01   1.9964e-25  -2.6909e-01  -1.0781e+00  -2.0000e+00  -2.1503e+00
+
+ Columns 9 through 13:
+
+  -1.2926e+00  -7.3476e-16   1.2926e+00   2.1503e+00   2.0000e+00
+
+figura_y =
+
+ Columns 1 through 11:
+
+   0.00000   0.62245   0.46609   0.00000   0.46609   0.62245   0.00000  -1.24150  -2.23888  -4.00000  -2.23888
+
+ Columns 12 and 13:
+
+  -1.24150  -0.00000
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K[?1l>octave:3> [Koctave:3> [Koctave:3> malla
+[?1h=segmentos =
+
+   2.00000   0.00000   1.07811   0.62245
+   1.07811   0.62245   0.26909   0.46609
+   0.26909   0.46609   0.00000   0.00000
+   0.00000   0.00000  -0.26909   0.46609
+  -0.26909   0.46609  -1.07811   0.62245
+  -1.07811   0.62245  -2.00000   0.00000
+  -2.00000   0.00000  -2.15034  -1.24150
+  -2.15034  -1.24150  -1.29262  -2.23888
+  -1.29262  -2.23888  -0.00000  -4.00000
+  -0.00000  -4.00000   1.29262  -2.23888
+   1.29262  -2.23888   2.15034  -1.24150
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hsegmentos =
+
+   2.00000   0.00000   1.07811   0.62245
+   1.07811   0.62245   0.26909   0.46609
+   0.26909   0.46609   0.00000   0.00000
+   0.00000   0.00000  -0.26909   0.46609
+  -0.26909   0.46609  -1.07811   0.62245
+  -1.07811   0.62245  -2.00000   0.00000
+  -2.00000   0.00000  -2.15034  -1.24150
+  -2.15034  -1.24150  -1.29262  -2.23888
+  -1.29262  -2.23888  -0.00000  -4.00000
+  -0.00000  -4.00000   1.29262  -2.23888
+   1.29262  -2.23888   2.15034  -1.24150
+   2.15034  -1.24150   2.00000  -0.00000
+   2.00000  -0.00000   2.00000   0.00000
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hsegmentos =
+
+   2.00000   0.00000   1.07811   0.62245
+   1.07811   0.62245   0.26909   0.46609
+   0.26909   0.46609   0.00000   0.00000
+   0.00000   0.00000  -0.26909   0.46609
+  -0.26909   0.46609  -1.07811   0.62245
+  -1.07811   0.62245  -2.00000   0.00000
+  -2.00000   0.00000  -2.15034  -1.24150
+  -2.15034  -1.24150  -1.29262  -2.23888
+  -1.29262  -2.23888  -0.00000  -4.00000
+  -0.00000  -4.00000   1.29262  -2.23888
+   1.29262  -2.23888   2.15034  -1.24150
+   2.15034  -1.24150   2.00000  -0.00000
+   2.00000  -0.00000   2.00000   0.00000
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K[?1l>octave:4> clc
+[H[2Joctave:5> clcmalla
+[?1h=segmentos =
+
+   2.00000   0.00000   1.07811   0.62245
+   1.07811   0.62245   0.26909   0.46609
+   0.26909   0.46609   0.00000   0.00000
+   0.00000   0.00000  -0.26909   0.46609
+  -0.26909   0.46609  -1.07811   0.62245
+  -1.07811   0.62245  -2.00000   0.00000
+  -2.00000   0.00000  -2.15034  -1.24150
+  -2.15034  -1.24150  -1.29262  -2.23888
+  -1.29262  -2.23888  -0.00000  -4.00000
+  -0.00000  -4.00000   1.29262  -2.23888
+   1.29262  -2.23888   2.15034  -1.24150
+   2.15034  -1.24150   2.00000  -0.00000
+   2.00000  -0.00000   2.00000   0.00000
+
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K[?1l>octave:6> plot(segmentos[K[K[K[K[K[K[K[K[K[K[K[K[K[Kplot(segmentos(1[K:,1:2)[C[C[C[C[C[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+octave:7> [Koctave:7> [Koctave:7> plot(segmentos(:,1:2))[C[C[1P2))[1P))[C,) )p)[1P)s)e)g)m)e)n)t)o)s)():),)2)[C)[C[C[C[C[C[C
+octave:8> [Koctave:8> [Koctave:8> plot(segmentos(:,1), segmentos(:,2)):2))[K[C[C[C[C[C[C[C[C[C[Cmalla[K
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 3.9067 seconds.
+Elapsed time is 26.988 seconds.
+
+
+octave:8> A = [-1 0 ; 0 1][C[C[C[C[C[C[C[C[C[C[C[C
+A =
+
+  -1   0
+   0   1
+
+octave:9> det(A)[C[C[C
+ans = -1
+octave:10> det(A)A = [-1 0 ; 0 1][C[C[C[C[C[C[C[C[C[C[Cmalla[K
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+^CElapsed time is 4.2 seconds.
+
+^C
+
+octave:10> 
+^C
+octave:10> 
+^C
+octave:10> 
+^C
+octave:10> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 4.3 seconds.
+Elapsed time is 27 seconds.
+
+
+octave:10> 
+^C
+octave:10> 
+^C
+octave:10> 
+^C
+octave:10> 
+^C
+octave:10> malla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+Elapsed time is 4.2 seconds.
+Elapsed time is 40 seconds.
+
+
+octave:10> eps
+ans =  2.2204e-16
+octave:11> epsmalla
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+^C
+Elapsed time is 4.225 seconds.
+Elapsed time is 40.29 seconds.
+
+octave:11> malla
+[?1h=ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[K[K[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[14;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[1m~[0m
+[1m~[0m
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[H[2J[Hans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+^[[B^[[B[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[HMans = asd
+[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K[?1l>warning: matrix singular to machine precision, rcond = 9.79685e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 9.79685e-17
+^C[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K[?1l>octave:11> ~[Kmalla
+[?1h=ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KCC[H[2J[H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KDD[H[2J[Hans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+^[[B^[[B^[[B[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KDD[H[2J[Hans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KCC[H[2J[H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KDD[H[2J[Hans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+^[[B^[[B[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = dsa
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K55[K~~[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[K66[K~~[Kans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KAA[K[HMans = asd
+[33;1H[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = dsa
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[Kans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[7m-- less (100%) (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>warning: matrix singular to machine precision, rcond = 4.89843e-17
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+warning: matrix singular to machine precision, rcond = 4.89843e-17
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B[?1h=ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+ans = dsa
+ans = asd
+[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K [KESCESC[K[[[KBB[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K[7m-- less -- (f)orward, (b)ack, (q)uit[27m[K[K[?1l>warning: matrix singular to machine precision, rcond = 9.79685e-17
+
+octave:11> [Koctave:11> [Koctave:11> malla
+Elapsed time is 3.875 seconds.
+Elapsed time is 38.81 seconds.
+error: reshape: can't reshape 31x30 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:11> 30*31
+ans =  930
+octave:12> [Koctave:12> [Koctave:12> 30*31
+ans =  930
+octave:13> 30*31malla
+^C
+octave:13> [Koctave:13> [Koctave:13> malla
+Elapsed time is 3.95 seconds.
+Elapsed time is 1.401e-05 seconds.
+error: `lenght' undefined near line 43 column 16
+error: evaluating argument list element number 1
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 43, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:13> [Koctave:13> [Koctave:13> malla
+Elapsed time is 3.904 seconds.
+Elapsed time is 1.494e-05 seconds.
+
+error: reshape: can't reshape 31x33 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:13> 
+octave:13> [Koctave:13> [Koctave:13> 30&[K*31[K2
+ans =  960
+octave:14> [Koctave:14> [Koctave:14> 30*32malla
+Elapsed time is 3.913 seconds.
+Elapsed time is 1.507e-05 seconds.
+error: reshape: can't reshape 31x32 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:14> [Koctave:14> [Koctave:14> 30[K1[K[K[Koctave:14> [Koctave:14> malla
+Elapsed time is 3.932 seconds.
+Elapsed time is 1.5e-05 seconds.
+error: reshape: can't reshape 31x32 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:14> [Koctave:14> [Koctave:14> malla
+Elapsed time is 3.995 seconds.
+Elapsed time is 1.506e-05 seconds.
+ans =  31
+ans =  33
+ans =  960
+error: reshape: can't reshape 31x32 array to 1x960 array
+error: called 

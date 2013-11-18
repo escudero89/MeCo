@@ -10,10 +10,10 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
     f = [(A1 - P1)'];
 
     % Sistema compatible determinado
-    if (det(K) != 0)
+    if (abs(det(K)) > 0.001)
 
         t = K \ f;
-    
+
         if (sum(t >= 0) == 2 && sum(t <= 1) == 2)
             
             punto_inter = [ P1 + (P2 - P1) * t(1) , 0 , 0 ];

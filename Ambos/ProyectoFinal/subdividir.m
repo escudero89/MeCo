@@ -4,7 +4,7 @@ function D = subdividir(E, max_profundidad, cant_ele_inicial, segmentos)
     D = {};
     profundidad = E.cabecera(3);
 
-    idx_mod = cant_ele_inicial * 4^profundidad;
+    idx_mod = 0;
 
     if( profundidad == max_profundidad)
 

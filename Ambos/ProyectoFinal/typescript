@@ -21806,4 +21806,87 @@ ans =  31
 ans =  33
 ans =  960
 error: reshape: can't reshape 31x32 array to 1x960 array
-error: called 
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 60, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:14> [Koctave:14> [Koctave:14> 31}[K*32
+ans =  992
+octave:15> 31*32[K1
+ans =  961
+octave:16> 31*31\*31[1P*31[1P*310*31
+ans =  930
+octave:17> 30*31[K2
+ans =  960
+octave:18> [Koctave:18> [Koctave:18> 30*3211*312malla[Koctave:18> malla[Koctave:18> malla[Koctave:18> malla[Koctave:18> malla[Koctave:18> malla[Koctave:18> mallama[K[K
+Elapsed time is 4.02 seconds.
+Elapsed time is 1.507e-05 seconds.
+ans =  31
+ans =  33
+ans =  960
+error: reshape: can't reshape 31x31 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 60, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:18> [Koctave:18> [Koctave:18> malla
+Elapsed time is 4.029 seconds.
+Elapsed time is 1.393e-05 seconds.
+ans =  31
+ans =  33
+ans =  960
+error: reshape: can't reshape 30x31 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 60, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:18> [Koctave:18> [Koctave:18> 30&[K*31
+ans =  930
+octave:19> [Koctave:19> [Koctave:19> 30*31
+ans =  930
+octave:20> 30*31malla
+Elapsed time is 3.952 seconds.
+Elapsed time is 1.4e-05 seconds.
+ans =  31
+ans =  33
+ans =  960
+Elapsed time is 0.3617 seconds.
+Elapsed time is 0.2727 seconds.
+octave:21> [Koctave:21> [Koctave:21> [Koctave:21> [Koctave:21> malla
+Elapsed time is 4.011 seconds.
+Elapsed time is 1.505e-05 seconds.
+error: reshape: can't reshape 31x30 array to 1x960 array
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/transformar_malla.m at line 55, column 8
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 60, column 37
+octave:21> 31*30
+ans =  930
+octave:22> [Koctave:22> [Koctave:22> 31*30
+ans =  930
+octave:23> 31*30malla
+Elapsed time is 2.542 seconds.
+Elapsed time is 1.391e-05 seconds.
+Elapsed time is 0.1921 seconds.
+Elapsed time is 0.2698 seconds.
+octave:24> [Koctave:24> [Koctave:24> malla
+error: `figura_x' undefined near line 30 column 4
+error: invalid dimension inquiry of a non-existent value
+error: called from:
+error:   /media/3B79A23F13FBC324/marcos/WorkSpace/MeCo/Ambos/ProyectoFinal/malla.m at line 29, column 16
+octave:24> [Koctave:24> [Koctave:24> malla
+Elapsed time is 2.66 seconds.
+Elapsed time is 1.396e-05 seconds.
+Elapsed time is 0.2454 seconds.
+Elapsed time is 0.2749 seconds.
+octave:25> [Koctave:25> [Koctave:25> [Koctave:25> [Koctave:25> malla
+Elapsed time is 19.94 seconds.
+Elapsed time is 1.495e-05 seconds.
+
+Violación de segmento (`core' generado)
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> 
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos/ProyectoFinal[00m$] 
+ >> [K >> [K >> [K >> [K >> gi [Kt add [K[K[K[K[K[K[K[Kls[K[Kcd ..
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos[00m$] 
+ >> git add .
+g]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos[00m$] 
+ >> git add . -8[Ku
+]0;marcos@marcosNetbook: ~/datos/WorkSpace/MeCo/Ambos[[01;32mmarcos@marcosNetbook[00m:[01;34m~/datos/WorkSpace/MeCo/Ambos[00m$] 
+ >> git commmit[K[K[Kit - [Km "Tenemos 

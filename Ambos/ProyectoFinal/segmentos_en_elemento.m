@@ -37,17 +37,19 @@ function [ matriz_intersecciones ] = segmentos_en_elemento(E, segmentos, aristas
 					hay_inter_n = 0;
 					punto_inter_n = zeros(1, 4);					
 				endif
+				4*(kAr-1)+1 : 4*kAr;
 				
 				hay_inter(kAr) = hay_inter_n;
 				punto_inter(4*(kAr-1)+1 : 4*kAr) = punto_inter_n;
 				
 			endfor
 			
+		%	 A = E.puntos;
 			% El for de arriba hace esto:
-			%~ [hay_inter(1), punto_inter(1:4)] = hay_interseccion(P1, P2, A(1,:), A(2,:));
-			%~ [hay_inter(2), punto_inter(5:8)] = hay_interseccion(P1, P2, A(2,:), A(3,:));
-			%~ [hay_inter(3), punto_inter(9:12)] = hay_interseccion(P1, P2, A(3,:), A(4,:));
-			%~ [hay_inter(4), punto_inter(13:16)] = hay_interseccion(P1, P2, A(4,:), A(1,:));
+	%		 [hay_inter(1), punto_inter(1:4)] = hay_interseccion(P1, P2, A(1,:), A(2,:));
+	%		 [hay_inter(2), punto_inter(5:8)] = hay_interseccion(P1, P2, A(2,:), A(3,:));
+	%		 [hay_inter(3), punto_inter(9:12)] = hay_interseccion(P1, P2, A(3,:), A(4,:));
+	%		 [hay_inter(4), punto_inter(13:16)] = hay_interseccion(P1, P2, A(4,:), A(1,:));
 
 			if (sum(hay_inter) > 0)
 

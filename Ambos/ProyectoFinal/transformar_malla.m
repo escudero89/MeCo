@@ -1,4 +1,4 @@
-function [xnod, inode, state] = transformar_malla(M, lim_x, lim_y, max_profundidad)
+function [xnod, inode, state, state_matrix] = transformar_malla(M, lim_x, lim_y, max_profundidad)
 
 	% Redefino los limites con el nuevo paso
 	factor = 2^(max_profundidad + 1);
@@ -50,6 +50,8 @@ function [xnod, inode, state] = transformar_malla(M, lim_x, lim_y, max_profundid
 
 
 	state = balde_de_pintura(state) + 1;
+
+	state_matrix = state;
 	state = reshape(state, 1, size(inode, 1));
 
 endfunction

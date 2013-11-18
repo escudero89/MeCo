@@ -25,9 +25,11 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
     else
         
         % Son coincidentes (necesito el 0 para el producto cruz con 3 dim)
-        if (sum(cross([A2 - P1 , 0], [P2 - P1 , 0])) < eps)
+        if !(sum((cross([A2 - P1 , 0], [P2 - P1 , 0]))(1:2)) < eps)
             
             hay_inter = 2;
+
+            punto_inter = [];
 
             P = [P1 ; P2 ; A1 ; A2];
             P_sum = [sum(P1), sum(P2), sum(A1), sum(A2)];
@@ -40,7 +42,7 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
             for i = idx
                 % Estoy en uno de los dos puntos que no son min ni max
                 if (i != max_P && i!= min_P)
-                        
+
                     punto_inter = [punto_inter , P(i, :)];
 
                 endif
@@ -52,7 +54,6 @@ function [hay_inter, punto_inter] = hay_interseccion(P1,P2,A1,A2)
     endif
 
 #{
-punto_inter
 
     clf;
     hold on;

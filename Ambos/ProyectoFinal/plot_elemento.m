@@ -39,8 +39,7 @@ function plot_elemento(E, etiquetado = 0, lim = 1)
 	x_c = (p3(1) + p1(1))/2;
 		y_c = (p4(2) + p1(2))/2;
 
-	label = strcat("E = ", num2str(E.cabecera(2)), 
-		       "\n V: [", num2str(E.vecinos), "]",
+	label = strcat("E = ", num2str(E.cabecera(2)),
 		       "\n", num2str(idx_segmentos));
 
 	text(x_c, y_c, label);

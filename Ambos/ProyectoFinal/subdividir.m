@@ -97,6 +97,8 @@ function [H] = actualizar_intersecciones(H, MIP, segmentos)
             segmentos_en_elemento(H{k}, segmentos(unique(MIP(:,1)),:));
         ];
 
+        
+
         endif
 
     endfor

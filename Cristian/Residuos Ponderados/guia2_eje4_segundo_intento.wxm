@@ -57,6 +57,19 @@ Nmatrix(z) := matrix([N[z,1], 0], [0, N[z, 2]]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+ev(transpose(dL(Nmatrix(1))) . (D . dL(Nmatrix(2))), diff)$
+float(4 * integrate(integrate(''%, x, lim_x_l, lim_x_r), y, lim_y_l, lim_y_r));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(K);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mat_unblocker(genmatrix(lambda([l,m], K[l,m]), 3, 3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 mat_unblocker(genmatrix(lambda([l,m], ev(transpose(dL(Nmatrix(l))) . (D . dL(Nmatrix(m))), diff)), 3, 3));
 K : float(4 * integrate(integrate(''%, x, lim_x_l, lim_x_r), y, lim_y_l, lim_y_r));
 /* [wxMaxima: input   end   ] */
@@ -96,8 +109,11 @@ Ploteamos.
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-wxplot3d(u_vec, [x, -1, 1], [y, -1, 1])$
-wxplot3d(v_vec, [x, -1, 1], [y, -1, 1])$
+plot3d(u_vec, [x, -1, 1], [y, -1, 1])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(v_vec, [x, -1, 1], [y, -1, 1])$
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

@@ -2,11 +2,23 @@
 %% M es una malla de puntos
 %% k = [ kx ky ];
 
-function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, Q = @Q_default, dirichlet = 1)
+function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_default, dirichlet = 1)
+
+	xorigin = xnod(1,1);
+	yorigin = xnod(1,2);
+
+	paso_x = 1/(size(state_matrix, 2) * 2);
+	paso_y = 1/(size(state_matrix, 1) * 2);
+
+	[xx , yy] = meshgrid(0 : paso_x : 1 - paso_x, 0 : paso_y : 1 - paso_y);
+
+	xx = (xnod(end, 1) - xorigin) * xx + xorigin;
+	yy = (xnod(end, 2) - yorigin) * yy + yorigin;
+
+	dx_origin = abs(xx(1,1) - xx(1,2));
+	dy_origin = abs(yy(1,1) - yy(2,1));
 
 	[M, dx, dy] = obtener_malla(xnod, inode, state_matrix);
-	dx
-	dy
 
 	Ceros = zeros(size(M));
 
@@ -16,7 +28,7 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, Q = @Q_defaul
 	end
 	
 	%% arriba , centro, derecho
-	molecula_comp = [ k(2)/dy^2 , -2*(k(1)/dx^2 + k(2)/dy^2) , k(1)/dx^2 ] 
+	molecula_comp = [ k(2)/dy^2 , -2*(k(1)/dx^2 + k(2)/dy^2) , k(1)/dx^2 ]; 
 
 	% Matriz de diferencia finitas
 	KK = zeros(prod(size(M)));
@@ -40,7 +52,8 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, Q = @Q_defaul
 				Z(i, j - 1) = molecula_comp(3);
 				Z(i, j + 1) = molecula_comp(3);
 
-				ff(KK_pos) = Q(1,1);
+%%				ff(KK_pos) = Q(xorigin + (j - 1) * dx_origin, yorigin + (i - 1) * dy_origin);
+				ff(KK_pos) = Q(xx(i,j), yy(i,j));				
 
 			% Borde o afuera
 			else
@@ -61,16 +74,11 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, Q = @Q_defaul
 	end
 
 	ret = KK\ff;
-%csvwrite('filename.cvs',[KK ff]);
-	paso_y = 1/(size(state_matrix, 1) * 2);
-	paso_x = 1/(size(state_matrix, 2) * 2);
-
-	[xx , yy] = meshgrid(0 : paso_x : 1 - paso_x, 0 : paso_y : 1 - paso_y);
 
 	mesh(xx, yy, reshape(ret, size(state_matrix, 1)*2, size(state_matrix, 2)*2));
-%	r = symrcm(KK);
-% hacer lo mismo en el vector solucion derp y en el f
-%	ret = KK(r, r) \ ff;
+	xlabel('x');
+	ylabel('y');
+	zlabel('Temperatura');
 
 endfunction
 
@@ -105,6 +113,6 @@ endfunction
 
 function [ret] = Q_default(x, y)
 
-	ret = -1;
-
+	ret = -(x+y)/100;
+	
 endfunction

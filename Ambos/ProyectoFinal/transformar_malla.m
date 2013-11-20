@@ -1,4 +1,4 @@
-function [xnod, inode, state, state_matrix] = transformar_malla(M, lim_x, lim_y, max_profundidad)
+function [xnod, icone, state, state_matrix] = transformar_malla(M, lim_x, lim_y, max_profundidad)
 
 	% Redefino los limites con el nuevo paso
 	factor = 2^(max_profundidad + 1);
@@ -38,13 +38,12 @@ function [xnod, inode, state, state_matrix] = transformar_malla(M, lim_x, lim_y,
 	lim_x = [ lim_x(min_max_col(1) - 1 : min_max_col(2) + 2) ];
 	lim_y = [ lim_y(min_max_row(1) - 1 : min_max_row(2) + 2) ];
 
-	[xnod, inode] = qq3d(lim_x', lim_y');
-
-	state = zeros(sqrt(size(inode, 1)));
+	[xnod, icone] = qq3d(lim_x', lim_y');
+	state = zeros(length(lim_x) - 1, length(lim_y) - 1);
 
 	for n = 1 : size(bordes, 1)
-
-		state(bordes(n, 1) - min_max_row(1) + 2, bordes(n, 2) - min_max_col(1) + 2) = 1;
+	
+		state(bordes(n, 2) - min_max_col(1) + 2, bordes(n, 1) - min_max_row(1) + 2) = 1;
 
 	endfor
 
@@ -52,7 +51,7 @@ function [xnod, inode, state, state_matrix] = transformar_malla(M, lim_x, lim_y,
 	state = balde_de_pintura(state) + 1;
 
 	state_matrix = state;
-	state = reshape(state, 1, size(inode, 1));
+	state = reshape(state, 1, size(icone, 1));
 
 endfunction
 

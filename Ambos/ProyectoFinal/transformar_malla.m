@@ -44,18 +44,26 @@ function [xnod, icone, state, state_matrix] = transformar_malla(M, lim_x, lim_y,
 	for n = 1 : size(bordes, 1)
 	
 		state(bordes(n, 2) - min_max_col(1) + 2, bordes(n, 1) - min_max_row(1) + 2) = 1;
+		%state(bordes(n, 1) - min_max_row(1) + 2, bordes(n, 2) - min_max_col(1) + 2) = 1;
 
 	endfor
 
-
 	state = balde_de_pintura(state) + 1;
 
-	state_matrix = state;
+	%state_matrix = state
+
+	for m = 1 : size(state, 1)
+		for l = 1 : size(state, 2)
+			state_matrix(l, m) = state(m, l);
+		end
+	end
+
 	state = reshape(state, 1, size(icone, 1));
 
 endfunction
 
 function state = balde_de_pintura( state )
+
 	max_recursion_depth( 2000000 );
 	state(1,1) = -1;
 	

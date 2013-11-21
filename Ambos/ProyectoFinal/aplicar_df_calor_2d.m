@@ -2,11 +2,11 @@
 %% M es una malla de puntos
 %% k = [ kx ky ];
 
-function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_default, dirichlet = 1)
+function [ret] = aplicar_df_calor_2d(xnod, icone, state_matrix, k = 1, Q = @Q_default, dirichlet = 1)
 
 	xorigin = xnod(1,1);
 	yorigin = xnod(1,2);
-
+		
 	paso_x = 1/(size(state_matrix, 2) * 2);
 	paso_y = 1/(size(state_matrix, 1) * 2);
 
@@ -18,7 +18,7 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_de
 	dx_origin = abs(xx(1,1) - xx(1,2));
 	dy_origin = abs(yy(1,1) - yy(2,1));
 
-	[M, dx, dy] = obtener_malla(xnod, inode, state_matrix);
+	[M, dx, dy] = obtener_malla(xnod, icone, state_matrix);
 
 	Ceros = zeros(size(M));
 
@@ -66,7 +66,7 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_de
 			end
 		
 			% Necesito transponer porque me daba mal sino
-			Z = Z';
+			%Z = Z';
 
 			% Reshapear mi Z para que quede como fila
 			KK(KK_pos, :) = reshape(Z, 1, prod(size(M)));
@@ -86,9 +86,9 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_de
 endfunction
 
 
-function [M, dx, dy] = obtener_malla(xnod, inode, state_matrix)
+function [M, dx, dy] = obtener_malla(xnod, icone, state_matrix)
 
-	puntos_ele1 = xnod(inode(1, :), :);
+	puntos_ele1 = xnod(icone(1, :), :);
 
 	dx = puntos_ele1(3, 1) - puntos_ele1(1, 1);
 	dy = puntos_ele1(3, 2) - puntos_ele1(1, 2);

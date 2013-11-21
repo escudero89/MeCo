@@ -48,6 +48,7 @@ global TOL = eps;
 	if (1) # ¿Ploteo?
 		tic
 		figure(1);
+		clf;
 		plot_malla(M, 0);
 		hold on;
 		plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
@@ -67,6 +68,7 @@ global TOL = eps;
 	if(1) # ¿Ploteo?
 		tic
 		figure(2)
+		clf;
 		pltmsh(xnod, inode, [], state);
 		hold on;
 		plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
@@ -86,10 +88,11 @@ global TOL = eps;
 	
 	# Fuente de calor (negativo aporta calor)
 	function [ret] = Q(x, y)
-		ret = -1;
+		ret = -x+y;
 	endfunction
 
 	figure(3);
+	clf;
 	[ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, @Q, dirichlet);
 
 	disp('Metodo de diferencias finitas y ploteo 3: ');

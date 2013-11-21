@@ -4,12 +4,13 @@ clf('reset');
 close;
 global TOL = eps;
 
-# Generamos puntos (circulo)
-	paso = pi/6;
+# Generamos puntos (Circulo)
+	paso = pi/12;
 	tita = 0:paso:2*pi-paso;
 	rho = ones(1,length(tita));
+
 	figura_x = rho .* cos(tita) + eps;
-	figura_y = rho .* sin(tita) + eps;
+	figura_y = rho .* sin(tita) + eps ;
 	figura_x *= 10;
 	figura_y *= 10;
 
@@ -42,6 +43,7 @@ global TOL = eps;
 	if (1) # ¿Ploteo?
 		tic
 		figure(1);
+		clf;
 		plot_malla(M, 0);
 		hold on;
 		plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
@@ -61,6 +63,7 @@ global TOL = eps;
 	if(1) # ¿Ploteo?
 		tic
 		figure(2)
+		clf;
 		pltmsh(xnod, inode, [], state);
 		hold on;
 		plot([figura_x , figura_x(1)], [figura_y , figura_y(1)])
@@ -84,6 +87,7 @@ global TOL = eps;
 	endfunction
 
 	figure(3);
+	clf;
 	[ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k, @Q, dirichlet);
 
 	disp('Metodo de diferencias finitas y ploteo 3: ');

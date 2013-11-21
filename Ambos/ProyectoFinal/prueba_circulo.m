@@ -83,7 +83,7 @@ global TOL = eps;
 	
 	# Fuente de calor (negativo aporta calor)
 	function [ret] = Q(x, y)
-		ret = -(x+y)/100;
+		ret = -x+y;
 	endfunction
 
 	figure(3);

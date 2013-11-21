@@ -66,7 +66,7 @@ function [ret] = aplicar_df_calor_2d(xnod, inode, state_matrix, k = 1, Q = @Q_de
 			end
 		
 			% Necesito transponer porque me daba mal sino
-			Z = Z';
+			%Z = Z';
 
 			% Reshapear mi Z para que quede como fila
 			KK(KK_pos, :) = reshape(Z, 1, prod(size(M)));

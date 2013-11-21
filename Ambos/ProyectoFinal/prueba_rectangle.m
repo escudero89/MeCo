@@ -5,13 +5,20 @@ close;
 global TOL = eps;
 
 # Generamos puntos (circulo)
-	paso = pi/6;
-	tita = 0:paso:2*pi-paso;
-	rho = ones(1,length(tita));
-	figura_x = rho .* cos(tita) + eps;
-	figura_y = rho .* sin(tita) + eps;
-	figura_x *= 10;
-	figura_y *= 10;
+
+	figura = [
+		-20, -10;
+		20, -10;
+		20, 10;
+		%5, 5;
+%		5, 10;
+%		-5, 10;
+%		-5, 5;
+		-20, 10;
+		];
+
+	figura_x = figura(:,1)';
+	figura_y = figura(:,2)';
 
 # Armamos vector de Segmentos
 	segmentos_next = ...
@@ -20,14 +27,13 @@ global TOL = eps;
 	segmentos = ...
 		[ figura_x' figura_y' segmentos_next ];
 
-
 # Agregamos indice a todos los elementos
 	idx_segmentos = [ 1 : size(segmentos, 1) ]';
 	segmentos = [segmentos idx_segmentos];
 
 # Establecemos los limites de la malla
-	lim_x = [-15:30:15];
-	lim_y = [-15:30:15];
+	lim_x = [-30:60:30];
+	lim_y = [-20:40:20];
 
 # Establecemos profundidad maxima
 	max_profundidad = 4;
@@ -80,7 +86,7 @@ global TOL = eps;
 	
 	# Fuente de calor (negativo aporta calor)
 	function [ret] = Q(x, y)
-		ret = -(x+y)/100;
+		ret = -1;
 	endfunction
 
 	figure(3);

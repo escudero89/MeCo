@@ -1,0 +1,135 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Elemento Cuadrangular
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Inicializo el problema:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+N1:1/4*(1-xi)*(1-eta)$
+N2:1/4*(1+xi)*(1-eta)$
+N3:1/4*(1+xi)*(1+eta)$
+N4:1/4*(1-xi)*(1+eta)$
+
+p1 : [0, 0]$
+p2 : [1, 0]$
+p3 : [1, 1]$
+p4 : [0, 1]$
+
+n1 : [-1,-1]$
+n2 : [1,-1]$
+n3 : [1,1]$
+n4 : [-1,1]$
+
+u : [0, 0, 0.04, 0.01];
+v : [0, 0, 0.02, 0.03];
+
+x : ratsimp(p1[1]*N1 + p2[1]*N2 + p3[1]*N3 + p4[1]*N4);
+y : ratsimp(p1[2]*N1 + p2[2]*N2 + p3[2]*N3 + p4[2]*N4);
+
+J : matrix([diff(x,xi),diff(y,xi)],[diff(x,eta),diff(y,eta)]);
+
+Jdet : ratsimp(determinant(J));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Determino el tipo de D (tension plana 1ero o deformacion plana 2do) y el espesor (t):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+t : 0.5;
+
+E : 2*10^6;
+nu : 0.2;
+
+Dtension : E / (1-nu^2) * matrix([1, nu, 0], [nu, 1, 0], [0, 0, (1-nu)/2]);
+Ddeformacion : E * (1-nu) / ((1+nu)*(1-2*nu)) * matrix([1, nu/(1-nu), 0], [nu/(1-nu), 1, 0], [0, 0, (1-nu)/(2*(1-nu))]);
+
+D : Dtension;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobaciones (no deberia variar el signo de |J| a lo largo del elemento):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+matrix([
+subst(n1[1], xi, subst(n1[2], eta, Jdet)),
+subst(n2[1], xi, subst(n2[2], eta, Jdet)),
+subst(n3[1], xi, subst(n3[2], eta, Jdet)),
+subst(n4[1], xi, subst(n4[2], eta, Jdet))]);
+
+wxplot3d(Jdet, [xi, -1, 1], [eta, -1, 1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Relacion deformacion-desplazamiento. Calculo matriz de deformacion:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Jinv : ratsimp(invert(J));
+Jinv : genmatrix(lambda([i,j], Jinv[i,j]), 2, 2);
+
+I : matrix([1,0,0,0],[0,0,0,1],[0,1,1,0]);
+Jinv_big : mat_unblocker(matrix([Jinv, matrix([0,0],[0,0])],[matrix([0,0],[0,0]), Jinv]));
+
+LNe : matrix(
+[diff(N1,xi), 0, diff(N2,xi), 0, diff(N3,xi), 0, diff(N4,xi), 0],
+[diff(N1,eta), 0, diff(N2,eta), 0, diff(N3,eta), 0, diff(N4,eta), 0],
+[0, diff(N1,xi), 0, diff(N2,xi), 0, diff(N3,xi), 0, diff(N4,xi)],
+[0, diff(N1,eta), 0, diff(N2,eta), 0, diff(N3,eta), 0, diff(N4,eta)]
+);
+
+delta_e : mat_unblocker(genmatrix(lambda([i,j], matrix([u[i]],[v[i]])), 4, 1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Resolviendo y obteniendo el vector deformacion (epsilon):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+B : ratsimp(I . Jinv_big . LNe);
+s : ratsimp(B . delta_e);
+
+epsilon : makelist(s[i, 1], i, 1, length(s));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculo de matriz de rigidez:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+B1 : matrix([B[1,1],B[1,2]], [B[2,1],B[2,2]], [B[2,2],B[1,1]])$
+B2 : matrix([B[1,3],B[1,4]], [B[2,3],B[2,4]], [B[2,4],B[1,3]])$
+B3 : matrix([B[1,5],B[1,6]], [B[2,5],B[2,6]], [B[2,6],B[1,5]])$
+B4 : matrix([B[1,7],B[1,8]], [B[2,7],B[2,8]], [B[2,8],B[1,7]])$
+
+Bsub : [B1, B2, B3, B4];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Kij2(i, j) := trigreduce(transpose(Bsub[i]) . D . Bsub[j] * Jdet * t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K2(i,j) := matrix(
+[''integrate(''integrate(Kij2(i,j)[1,1], eta, -1, 1), xi, -1, 1), ''integrate(''integrate(Kij2(i,j)[1,2], eta, -1, 1), xi, -1, 1)],
+[''integrate(''integrate(Kij2(i,j)[2,1], eta, -1, 1), xi, -1, 1), ''integrate(''integrate(Kij2(i,j)[2,2], eta, -1, 1), xi, -1, 1)]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Kr(row) := mat_unblocker(matrix([K2(row,1), K2(row,2), K2(row,3), K2(row,4)]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratprint: false$
+K : mat_unblocker(matrix([Kr(1)],[Kr(2)],[Kr(3)],[Kr(4)]));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

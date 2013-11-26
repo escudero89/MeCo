@@ -21,13 +21,25 @@ function [KK] = Kglobal(K, inode, onlynode = [])
 
 	% Si le pasamos un vector de nodos a utilizar solamente
 	% como onlynode = [3 4 6]
+	% o un onlynode = [3 4 6 ; 1 2 5] [ filas ; columnas ]
 	if (!isempty(onlynode))
-		idx = 1 : length(onlynode); 
+		idx = 1 : size(onlynode, 2); 
 
-		v(idx * 2 - 1) = onlynode * 2 - 1; 
-		v(idx * 2) = onlynode * 2;
+		if (size(onlynode, 1) == 1)
 
-		KK = KK(v, v);
+			v(idx * 2 - 1) = onlynode * 2 - 1; 
+			v(idx * 2) = onlynode * 2;
+
+			KK = KK(v, v);
+
+		else
+
+			v(:, idx * 2 - 1) = onlynode * 2 - 1; 
+			v(:, idx * 2) = onlynode * 2;
+			
+			KK = KK(v(1, :), v(2, :));
+
+		end
 	end
 
 endfunction

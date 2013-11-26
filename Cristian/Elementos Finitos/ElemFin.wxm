@@ -14,8 +14,16 @@ load("/media/Cristian/Repositorios/MeCo/Cristian/Elementos Finitos/Cuadrangulo.m
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-inode : [1 , 2 , 3 , 4 , 5 , 6];
+ninode : 6;
 icone : [[1 , 2 , 3 , 4] , [2 , 5 , 6 , 3]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Kglobal : genmatrix(lambda([i,j], [i,j]), ninode, ninode);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K;
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

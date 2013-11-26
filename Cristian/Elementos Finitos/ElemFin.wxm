@@ -1,0 +1,22 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Calculo del resto (ElemFin)
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Cargo la correspondiente K (OJO, reemplzar por Cuadrangulo.mac o Triangulo.mac, segun corresponda)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("/media/Cristian/Repositorios/MeCo/Cristian/Elementos Finitos/Cuadrangulo.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+inode : [1 , 2 , 3 , 4 , 5 , 6];
+icone : [[1 , 2 , 3 , 4] , [2 , 5 , 6 , 3]];
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,32 @@
+BOOK:Temperature_Constraints
+NUMBER: 1 CONDITION: Temperature_Constraints
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: X_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Temperature-X,0.0Cel)(#DEFAULT#,RESTORE,Temperature-X,0.0Cel)
+QUESTION: Temperature-X#UNITS#
+VALUE: 0.000Cel
+END CONDITION
+NUMBER: 2 CONDITION: Linear_Constraints
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: X_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Temperature-X,0.0Cel)(#DEFAULT#,RESTORE,Temperature-X,0.0Cel)
+QUESTION: Temperature-X#UNITS#
+VALUE: 0.000Cel
+END CONDITION
+BOOK:Punctual_Flux
+NUMBER: 3 CONDITION: Punctual_Flux
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Flux#UNITS#
+VALUE: 0.0 N/m/s
+END CONDITION
+BOOK:Uniform_Flux
+NUMBER: 4 CONDITION: Uniform_Flux
+CONDTYPE: over lines
+QUESTION: Normal-Flux:#UNITS#
+VALUE: 0.0 N/m^2/s
+END CONDITION

@@ -1,0 +1,9 @@
+NUMBER: 1 MATERIAL: Material1
+TITLE: Material_Properties
+QUESTION: Kx (J/m*s*C)
+VALUE: 1.0
+QUESTION: Ky (J/m*s*C)
+VALUE: 1.0
+QUESTION: Q(x) (N/m^2*s)
+VALUE: 0.0
+END MATERIAL

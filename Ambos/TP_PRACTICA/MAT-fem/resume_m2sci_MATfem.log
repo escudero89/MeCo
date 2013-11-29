@@ -1,0 +1,21 @@
+   ****** MATfem: Functions of mfile2sci() session ******
+   *
+   2 Matlab Function(s) not yet converted, original calling sequence used : 
+   "transpose"
+   "setdiff"
+   *
+   0 Matlab Toolbox(es) Functions, original calling sequence used :
+   *
+   11 Unknown Function(s), original calling sequence used :
+   "timing"
+   "constt"
+   "elements"
+   "coordinates"
+   "TrStif"
+   "QdStif"
+   "sideload"
+   "pointload"
+   "fixnodes"
+   "Stress"
+   "ToGiD"
+   *

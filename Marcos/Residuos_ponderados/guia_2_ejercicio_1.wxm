@@ -1,0 +1,68 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: title   start ]
+Guia 2 | Ejercicio 1
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Aproximar funcion %phi = 1 + sin(%pi/2 * x).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos algunas funciones y variables
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+%psi(x):=x+1;
+Nm(m,x):=sin(x * %pi * m);
+Wl(l,x):= sin(x * %pi * l);
+N : 3;
+L : N;
+%phi(x) := 1+sin(%pi/2 * x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos la Matriz K
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+K: genmatrix(lambda([l,m], integrate(Nm(m,x) * Wl(l,x), x, 0, 1)), L, N);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos el vector f
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f: genmatrix(lambda([l,m], integrate(Wl(l,x)*(sin(%pi/2 * x)-x),x,0,1) ), L, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Invertimos matriz
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+K_inv : invert(K);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : K_inv . f;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Obtenemos phi aproximado y ploteamos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+phi_aprox : %psi(x) + sum(a[m]*Nm(m,x), m, 1, N);
+asdf = args(phi_aprox)
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([%phi(x), phi_aprox], [x,0,1])$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

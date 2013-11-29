@@ -1,0 +1,105 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: title   start ]
+Guia 2, Ejercicio 4.
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos Variables Principales.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E : 30/16 $
+v : 1/4 $
+x_lim_1 : -1 $
+x_lim_2 : 1 $
+y_lim_1 : -1 $
+y_lim_2 : 1 $
+M : 3 $
+L : M $
+D : E/(1-v^2) * matrix([1,v,0],[v,1,0],[0,0,(1-v)/2]) $
+
+t(y) := matrix([E*(1-y^2)/(1+v)],[ 0 ]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos Operadores diferenciales
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+dL(X) := matrix(['diff(X[1,1], x), 0], [0, 'diff(X[2,2], y)], ['diff(X[1,1], y), 'diff(X[2,2], x)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Definimos funciones de forma y pesos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+N : genmatrix(lambda([i,j], (x^i + y^j) * (1-y^2)), M, 2);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Anda solo con estas funciones de forma, ¿POR QUÉ?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+N : matrix([x*(1-y^2),y*(1-y^2)],[x^3 * (1-y^2),x^2 * y *(1-y^2)],[x*y^2 *(1-y^2),y^3 * (1-y^2)]);
+N_matrix(m) := matrix([N[m,1] ,0],[0,N[m,2] ]);
+W_matrix(l) := matrix([N[l,1] ,0],[0,N[l,2] ]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Armamos K a partir de K_i,j (Matrices de 2x2) 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+K : mat_unblocker(genmatrix(lambda([m,l],ev(transpose(dL(W_matrix(l))) . D . dL(N_matrix(m)),diff)),M,M))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K : float(integrate(integrate(K,x,x_lim_1,x_lim_2),y,y_lim_1,y_lim_2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Armamos terminos independientes
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f : mat_unblocker(genmatrix(lambda([l, m], integrate(
+ subst(1,x,W_matrix(l)) . t(y) - subst(-1,x,W_matrix(l)) . t(y), y, y_lim_1, y_lim_2)) ,M,1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K_inv : invert(K);
+a : K_inv . f;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u_vec : a[1,1] * N[1,1] + a[3,1] * N[2,1] + a[5,1] * N[3,1];
+v_vec : a[2,1] * N[1,2] + a[4,1] * N[2,2] + a[6,1] * N[3,2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Desplazamiento en la dirección de x, cuadratico en ambos lados y = +/- 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(u_vec, [x, -1, 1], [y, -1, 1])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Desplazamiento en la dirección de y, (casi cero)  => [ok!]
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(v_vec, [x, -1, 1], [y, -1, 1])$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

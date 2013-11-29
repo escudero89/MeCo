@@ -1,0 +1,11 @@
+PROBLEM DATA
+TITLE: General_Data
+QUESTION: Problem_Title
+VALUE: Untitled
+HELP: The title of the problem
+QUESTION: Results_units#CB#(ºC-N/m*s)
+VALUE: ºC-N/m*s
+HELP: Choose the units for the results to postprocess after calculation
+END PROBLEM DATA
+INTERVAL DATA
+END INTERVAL DATA

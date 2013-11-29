@@ -1,0 +1,21 @@
+   ****** Beginning of mfile2sci() session ******
+   File to convert: K:/LIBRO/PROGRAMA/MAT-fem/MATfem.m
+   Result file path: K:/LIBRO/PROGRAMA/MAT-fem/
+   Recursive mode: OFF
+   Only double values used in M-file: NO
+   Verbose mode: 1
+   Generate formated code: YES
+   M-file reading...
+   M-file reading: Done
+   Syntax modification...
+   Syntax modification: Done
+   Macro to tree conversion...
+   Conversion of M-tree...
+   Conversion of M-tree: Done
+   Macro to tree conversion: Done
+   Translation may be improved: see the //! comments and for all mtlb_<funname> 
+ function call
+     Type help mtlb_<funname> in Scilab command window to get information about 
+ improvements
+   Translation may be wrong (see the //!! comments)
+   ****** End of mfile2sci() session ******

@@ -1,0 +1,27 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: input   start ] */
+c_E : E/(1-v^2);
+
+D : c_E * matrix([1,v,0],[v,1,0],[0,0,(1-v)/2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B_j : matrix([bj,0],[0,cj],[cj,bj]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B_i : transpose(matrix([bi,0],[0,ci],[ci,bi]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(B_i . D . B_j);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

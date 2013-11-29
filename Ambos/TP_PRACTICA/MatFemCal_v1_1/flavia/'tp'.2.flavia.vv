@@ -1,11 +1,11 @@
-BeginZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
-   x -104.654 164.654
-   y 110.645 -10.6447
+BeginZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/flavia/'tp'.2.flavia.vv
+   x -22.9464 71.567
+   y 70.9101 28.3437
    z -181.934 181.934
    e 60.6447
-   v 0 0 0
-   r 1
-   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+   v 0.618659 0.0525675 -0.0576487
+   r 0.781776
+   m 0.987827 0.155179 0.0108622 0 -0.0250941 0.227875 -0.973367 0 -0.153522 0.961245 0.228996 0 0 0 0 1
    c 30 50 0
    pd 0
    pno 0
@@ -29,7 +29,7 @@ BeginZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
    OGLStereo(EyeDistance) 0.075
    OGLStereo(LeftEyeDistance) 1 0 0 1
    OGLStereo(RightEyeDistance) 0 1 1 1
-EndZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
+EndZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/flavia/'tp'.2.flavia.vv
 
 
 BeginPostState
@@ -54,7 +54,7 @@ BeginSingleMesh
     Property Stream Arrow: 0
   EndSet: 0
 EndSingleMesh
-  ResultView: {Id 15} {Contour Fill} Load_Analysis 1.0 Fluxes Fx 0.0
+  ResultView: {Id 20} {Contour Fill} Load_Analysis 1.0 Temperatures Temperature 0.0
   Post_Prefs_Vector_Size: 0 32 32 32
 EndPostState
 

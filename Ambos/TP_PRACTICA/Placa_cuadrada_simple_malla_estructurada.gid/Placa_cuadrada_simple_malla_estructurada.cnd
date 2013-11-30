@@ -1,0 +1,46 @@
+BOOK:Displacement_Constraints
+NUMBER: 1 CONDITION: Point_Constraints
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: X_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Displacement-X,0.0m)(#DEFAULT#,RESTORE,Displacement-X,0.0m)
+QUESTION: Displacement-X#UNITS#
+VALUE: 0.000m
+QUESTION: Y_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Displacement-Y,0.0m)(#DEFAULT#,RESTORE,Displacement-Y,0.0m)
+QUESTION: Displacement-Y#UNITS#
+VALUE: 0.000m
+END CONDITION
+NUMBER: 2 CONDITION: Linear_Constraints
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: X_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Displacement-X,0.0m)(#DEFAULT#,RESTORE,Displacement-X,0.0m)
+QUESTION: Displacement-X#UNITS#
+VALUE: 0.000m
+QUESTION: Y_Constraint:#CB#(1,0)
+VALUE: 1
+DEPENDENCIES: (0,SET,Displacement-Y,0.0m)(#DEFAULT#,RESTORE,Displacement-Y,0.0m)
+QUESTION: Displacement-Y#UNITS#
+VALUE: 0.000m
+END CONDITION
+BOOK:Point_Loads
+NUMBER: 3 CONDITION: Point_Load
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: X-Force#UNITS#
+VALUE: 0.0N
+QUESTION: Y-Force#UNITS#
+VALUE: 0.0N
+END CONDITION
+BOOK:Uniform_Side_Loads
+NUMBER: 4 CONDITION: Uniform_Side_Load
+CONDTYPE: over lines
+QUESTION: X-Load:#UNITS#
+VALUE: 0.0N/m
+QUESTION: Y-Load:#UNITS#
+VALUE: 0.0N/m
+END CONDITION

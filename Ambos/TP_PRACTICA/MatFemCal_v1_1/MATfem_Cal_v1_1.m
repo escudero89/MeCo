@@ -23,9 +23,9 @@
   rho = 7897;
   cp = 0.108;
   tmax = 100000;
-  dt = 20000;
+  dt = 2000;
   contador = 0;
-  paso_graph = floor((tmax/dt+1)/6);
+  paso_graph = floor((tmax/dt+1)/10);
 
   flag_euler = 1; % 0 forward, 1 backward, 2 crank-nicholson
   

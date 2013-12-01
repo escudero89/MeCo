@@ -126,7 +126,7 @@
   ttim = timing('Time to  solve the  nodal stresses',ttim); %Reporting time
   
 % Graphic representation.
-  ToGiD (file_name,u,reaction,Strnod);
+  ToGiD (['flavia/', file_name],u,reaction,Strnod);
 
   ttim = timing('Time  used to write  the  solution',ttim); %Reporting time
   itim = toc;                                               %Close last tic

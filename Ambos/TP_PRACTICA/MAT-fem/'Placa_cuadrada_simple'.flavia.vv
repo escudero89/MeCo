@@ -1,12 +1,12 @@
-BeginZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
-   x -104.654 164.654
-   y 110.645 -10.6447
-   z -181.934 181.934
-   e 60.6447
-   v 0 0 0
-   r 1
-   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
-   c 30 50 0
+BeginZE Z:/home/marcos/TP_PRACTICA/MAT-fem/'Placa_cuadrada_simple'.flavia.vv
+   x -6.53754 16.5375
+   y 12.2648 -2.26483
+   z -21.7945 21.7945
+   e 7.26483
+   v 2.18557e-008 1.91069e-015 -8.74228e-008
+   r -1
+   m 1 -1.74846e-007 -7.64274e-015 0 1.74846e-007 1 4.37114e-008 0 0 -4.37114e-008 1 0 0 0 0 1
+   c 5 5 0
    pd 0
    pno 0
    pfo 0
@@ -29,7 +29,7 @@ BeginZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
    OGLStereo(EyeDistance) 0.075
    OGLStereo(LeftEyeDistance) 1 0 0 1
    OGLStereo(RightEyeDistance) 0 1 1 1
-EndZE Z:/home/marcos/TP_PRACTICA/MatFemCal_v1_1/'tp'.5.flavia.vv
+EndZE Z:/home/marcos/TP_PRACTICA/MAT-fem/'Placa_cuadrada_simple'.flavia.vv
 
 
 BeginPostState
@@ -48,13 +48,13 @@ BeginSingleMesh
     Color Shininess: 0.5
     Property Massive: 0
     Property Transparent: 0
-    Property Style: 13
+    Property Style: 14
     Property Edge Width: 1
     Property Vector Filter Factor: 0
     Property Stream Arrow: 0
   EndSet: 0
 EndSingleMesh
-  ResultView: {Id 15} {Contour Fill} Load_Analysis 1.0 Fluxes Fx 0.0
+  ResultView: {Id 35} {Display Vectors} Load_Analysis 1.0 Displacements |Displacements| 13858.9189453125
   Post_Prefs_Vector_Size: 0 32 32 32
 EndPostState
 

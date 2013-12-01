@@ -1,0 +1,15 @@
+PROBLEM DATA
+TITLE: General_Data
+QUESTION: Problem_Title
+VALUE: Untitled
+HELP: The title of the problem
+QUESTION: Problem_Type#CB#(Plane-Stress,Plane-Strain)
+VALUE: Plane-Stress
+QUESTION: Consider_Self_weight#CB#(Yes,No)
+VALUE: Yes
+QUESTION: Results_units#CB#(N-m-kg,N-cm-kg,N-mm-kg,kp-m-utm,kp-cm-utm,kN-m-kg,kN-cm-kg,ton-m-kg,ton-cm-kg)
+VALUE: N-m-kg
+HELP: Choose the units for the results to postprocess after calculation
+END PROBLEM DATA
+INTERVAL DATA
+END INTERVAL DATA

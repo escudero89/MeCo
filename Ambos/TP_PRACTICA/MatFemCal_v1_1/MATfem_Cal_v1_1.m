@@ -22,10 +22,10 @@
 
   rho = 7897;
   cp = 0.108;
-  tmax = 10000;
+  tmax = 100000;
   dt = 2000;
   contador = 0;
-  paso_graph = floor((tmax/dt+1)/6);
+  paso_graph = floor((tmax/dt+1)/10);
 
   flag_euler = 1; % 0 forward, 1 backward, 2 crank-nicholson
   
@@ -164,7 +164,7 @@ for t = 0 : dt : tmax
     if (mod(t/dt, paso_graph) == 0)
         contador = contador + 1;
         
-        ToGiDCal ([ file_name, '.', num2str(contador) ],u,reaction,Strnod);
+        ToGiDCal ([ 'flavia/', file_name, '.', num2str(contador) ],u,reaction,Strnod);
     end
     
 end

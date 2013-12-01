@@ -25,8 +25,8 @@
 
   tic;                   % Start clock
   ttim = 0;              % Initialize time counter
-  eval (file_name);      % Read input file
-
+  run (eval (file_name));      % Read input file
+  
 % Finds basics dimensions
   npnod  = size(coordinates,1);        % Number of nodes
   nndof  = 2*npnod;                    % Number of total DOF
